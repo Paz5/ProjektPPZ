@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Units/Mob/Red/Red_Bully/Red_Bully.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Levels/Test/MobTest.gd" type="Script" id=2]
+
+[node name="MobRoot" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )

@@ -8,10 +8,39 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "LevelData",
+"language": "GDScript",
+"path": "res://Scripts/Levels/LevelData.gd"
+}, {
+"base": "Node",
+"class": "Manager",
+"language": "GDScript",
+"path": "res://Scripts/Managers/Manager.gd"
+}, {
+"base": "Node2D",
+"class": "MobTest",
+"language": "GDScript",
+"path": "res://Scripts/Levels/Test/MobTest.gd"
+} ]
+_global_script_class_icons={
+"LevelData": "",
+"Manager": "",
+"MobTest": ""
+}
+
 [application]
 
 config/name="ProjektPPZ"
 config/icon="res://icon.png"
+
+[autoload]
+
+GameManager="*res://Scripts/Managers/GameManager.gd"
+StateManager="*res://Scripts/Managers/StateManager.gd"
+PlayerProfileManager="*res://Scripts/Managers/PlayerProfileManager.gd"
+LevelManager="*res://Scripts/Managers/LevelManager.gd"
 
 [editor_plugins]
 
