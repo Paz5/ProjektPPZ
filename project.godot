@@ -28,12 +28,18 @@ _global_script_classes=[ {
 "class": "MobTest",
 "language": "GDScript",
 "path": "res://Scripts/Levels/Test/MobTest.gd"
+}, {
+"base": "Node",
+"class": "TeamManager",
+"language": "GDScript",
+"path": "res://Scripts/TeamManager.gd"
 } ]
 _global_script_class_icons={
 "LevelData": "",
 "Manager": "",
 "Mob": "",
-"MobTest": ""
+"MobTest": "",
+"TeamManager": ""
 }
 
 [application]
