@@ -25,7 +25,7 @@ material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 4 )
 animation = "Attack"
-frame = 15
+frame = 11
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -33,14 +33,14 @@ offset = Vector2( 0, -4.056 )
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Attack"
-frame = 14
+frame = 10
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites"]
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 2 )
 animation = "Attack"
-frame = 14
+frame = 10
 playing = true
 offset = Vector2( 0, -4.056 )
 
