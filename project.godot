@@ -49,6 +49,12 @@ StateManager="*res://Scripts/Managers/StateManager.gd"
 PlayerProfileManager="*res://Scripts/Managers/PlayerProfileManager.gd"
 LevelManager="*res://Scripts/Managers/LevelManager.gd"
 
+[display]
+
+window/size/width=1920
+window/size/height=1080
+window/size/fullscreen=true
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg" )
