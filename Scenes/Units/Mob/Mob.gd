@@ -1,16 +1,26 @@
 extends Node2D
 
+class_name Mob
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var moveSpeed = 5.0
+var target: Node2D
 
 
-# Called when the node enters the scene tree for the first time.
+
+func _init():
+	pass
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
+func _process(delta):
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func attack():
+	pass
+
+func move():
+	pass
+
+func SetTarget(target):
+	self.target = target as Node2D
