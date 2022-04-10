@@ -1,12 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Units/Mob/MobRecolor.gdshader" type="Shader" id=1]
+[ext_resource path="res://Sprites/LUTs/redLUT.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/LUTs/baseLUT.png" type="Texture" id=3]
-
-[sub_resource type="StreamTexture" id=1]
-load_path = "res://.import/blueLUT.png-372033dfac1551376970ab0808feaaea.stex"
 
 [resource]
 shader = ExtResource( 1 )
 shader_param/baseLUT = ExtResource( 3 )
-shader_param/targetLUT = SubResource( 1 )
+shader_param/targetLUT = ExtResource( 2 )
