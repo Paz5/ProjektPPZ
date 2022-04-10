@@ -11,8 +11,6 @@ var team : TeamManager
 signal mobDiead
 signal mobNeedsTarget
 
-
-
 func _init():
 	pass
 
@@ -27,6 +25,9 @@ func _process(delta):
 	pass
 
 func attack():
+	if(target == null):
+		team.FindTarget(self)
+		return
 	pass
 
 func move():

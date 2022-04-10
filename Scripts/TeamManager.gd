@@ -2,13 +2,23 @@ extends Node
 
 class_name TeamManager
 
+var mobManager
 var mobs : Array
+var rng = RandomNumberGenerator.new()
 
 signal allMobsDead
 
-func StartTeam():
+func StartTeam(mobManager):
+	self.mobManager = mobManager
 	#spawn all mobs	
 	pass
+
+func FindTarget(mob):
+	mob.SetTarget(mobManager.FindTargetFor(self))
+	pass
+	
+func getRandomMob():
+	return mobs[rng.range(0,mobs.size())]
 
 func spawnMob(mob):
 	mobs.append(mob)
