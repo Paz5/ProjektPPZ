@@ -18,18 +18,30 @@ margin_left = -110.0
 margin_top = -64.5
 margin_right = 110.0
 margin_bottom = 64.5
+rect_min_size = Vector2( 220, 129 )
 
 [node name="BtnPlay" type="Button" parent="VBoxContainer"]
-margin_right = 220.0
-margin_bottom = 46.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -64.5
+margin_right = 110.0
+margin_bottom = -18.5
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 text = "PLAY"
 
 [node name="BtnQuit" type="Button" parent="VBoxContainer"]
-margin_top = 50.0
-margin_right = 220.0
-margin_bottom = 96.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -110.0
+margin_top = -24.5
+margin_right = 110.0
+margin_bottom = 21.5
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 text = "QUIT"
