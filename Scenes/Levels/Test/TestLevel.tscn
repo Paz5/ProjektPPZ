@@ -12,31 +12,34 @@ font_data = ExtResource( 2 )
 [node name="TestLevel" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 512, 304 )
-scale = Vector2( 1.59063, 1.65556 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
+offset = Vector2( 320, 180 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 22.0
-margin_top = 22.0
-margin_right = 483.0
-margin_bottom = 134.0
+margin_left = 297.667
+margin_top = 15.0
+margin_right = 758.667
+margin_bottom = 127.0
+rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "Test level"
 
 [node name="Team1Counter" type="RichTextLabel" parent="."]
-margin_left = -3.0
-margin_top = 157.0
-margin_right = 130.0
-margin_bottom = 269.0
+margin_left = 8.33333
+margin_top = 343.333
+margin_right = 141.333
+margin_bottom = 455.333
+rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "99"
 
 [node name="Team2Counter" type="RichTextLabel" parent="."]
-margin_left = 797.0
-margin_top = 163.0
-margin_right = 947.0
-margin_bottom = 275.0
+margin_left = 611.667
+margin_top = 340.667
+margin_right = 761.667
+margin_bottom = 452.667
+rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "99"
 
