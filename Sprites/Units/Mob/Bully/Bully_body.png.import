@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Red_Bully.png-c3bbd0b151ffac1640fbe22c54921f60.stex"
+path="res://.import/Bully_body.png-b2797b68ee6422f70fa22ef85d0b9bc1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Units/Mob/Red/Red_Bully/Red_Bully.png"
-dest_files=[ "res://.import/Red_Bully.png-c3bbd0b151ffac1640fbe22c54921f60.stex" ]
+source_file="res://Sprites/Units/Mob/Bully/Bully_body.png"
+dest_files=[ "res://.import/Bully_body.png-b2797b68ee6422f70fa22ef85d0b9bc1.stex" ]
 
 [params]
 
