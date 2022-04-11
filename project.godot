@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ProjektPPZ"
-run/main_scene="res://Scenes/Levels/Test/MainMenuTest.tscn"
+run/main_scene="res://Scenes/Root.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -63,9 +63,11 @@ LevelManager="*res://Scripts/Managers/LevelManager.gd"
 
 [display]
 
-window/size/width=1920
-window/size/height=1080
+window/size/width=640
+window/size/height=360
 window/size/fullscreen=true
+window/size/test_width=1920
+window/size/test_height=1080
 
 [editor_plugins]
 
