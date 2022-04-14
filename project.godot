@@ -73,6 +73,10 @@ window/size/test_height=1080
 
 enabled=PoolStringArray( "res://addons/AsepriteWizard/plugin.cfg" )
 
+[global]
+
+display=false
+
 [importer_defaults]
 
 texture={
