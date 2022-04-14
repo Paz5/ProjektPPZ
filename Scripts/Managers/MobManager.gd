@@ -1,5 +1,7 @@
 extends Node
 
+export(Array, PackedScene) var mobsToSpawn
+
 class_name MobManager
 export(Array, NodePath) var teamPaths : Array
 var teams : Array
@@ -8,6 +10,7 @@ func _ready():
 	for teamPath in teamPaths:
 		teams.append(get_node(teamPath))
 		get_node(teamPath).StartTeam(self)
+		get_node(teamPath).spawnMobs(mobsToSpawn)
 
 func FindTargetFor(team : TeamManager):
 	if(teams.has(team)):
