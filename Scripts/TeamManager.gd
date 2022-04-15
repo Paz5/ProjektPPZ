@@ -9,14 +9,14 @@ var rng = RandomNumberGenerator.new()
 
 signal allMobsDead
 
+func _init():
+	rng.randomize()
+
 func StartTeam(mobManager):
 	self.mobManager = mobManager
-	#spawn all mobs	
-	pass
 
 func FindTarget(mob):
-	mob.SetTarget(mobManager.FindTargetFor(self))
-	pass
+	return mobManager.FindTargetFor(self)
 	
 func getRandomMob():
 	return mobs[rng.randf_range(0,mobs.size())]
@@ -27,15 +27,13 @@ func spawnMobs(newMobs : Array):
 		add_child(mobInstance)
 		mobs.append(mobInstance)
 		
-		mobInstance.initialize(self,FindTarget(mobInstance))
+		mobInstance.initializeMob(self,FindTarget(mobInstance))
 		var viewportSize = get_viewport().size
 		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
 		mobInstance.setTeamMaterial(teamMaterial)
-	pass
 	
 func remobeMob(mob):
 	if(mobs.has(mob)):
 		mobs.remove(mob)
 	if(mobs.size()==0):
 		emit_signal("allMobsDead")
-	pass

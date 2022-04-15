@@ -13,9 +13,14 @@ func _ready():
 		get_node(teamPath).StartTeam(self)
 		get_node(teamPath).spawnMobs(mobsToSpawn)
 
-func FindTargetFor(team : TeamManager):
-	if(teams.has(team)):
-		var index = (teams.find(team)+1)%teams.size()
-		return teams[index].getRandomMob()
-	print("No team " + team.name + " in teams collection")
+func FindTargetFor(targetTeam : TeamManager):
+	if(teams.has(targetTeam)):
+		teams.shuffle()
+		for team in teams:
+			if(team != targetTeam):
+				return team.getRandomMob()
+		print("Couldn't find team other than " + targetTeam.name)
+		return null
+	
+	print("No team " + targetTeam.name + " in teams collection")
 	return null

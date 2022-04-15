@@ -4,9 +4,9 @@ class_name Mob
 
 var maxHealth = 10
 var health
-var moveSpeed = 5.0
+var moveSpeed = 1.0
 var attackDelay = 1
-var attackRange = 5
+var attackRange = 50
 var target: Node2D
 var team : TeamManager
 
@@ -14,12 +14,13 @@ signal mobDiead
 signal mobNeedsTarget
 
 func _init():
+	health = maxHealth
 	pass
 
 func _ready():
 	pass
 	
-func initialize(team : TeamManager, target : Node2D):
+func initializeMob(team : TeamManager, target : Node2D):
 	self.team = team
 	self.target = target
 	
@@ -29,18 +30,21 @@ func _process(delta):
 
 func attack(delta):
 	if(target == null):
+		target = team.FindTarget(self)
 		return
 	pass
 
 func move(delta):
 	if(target == null):
+		target = team.FindTarget(self)
 		return
 	moveToTarget(delta)
 	pass
 	
 func moveToTarget(delta):
-	var dir = (position - target.position).normalized()
-	position += dir * moveSpeed;
+	var vec = target.position - position
+	if vec.length() > attackRange:
+		position += vec.clamped(1) * moveSpeed;
 	
 func damage(damage):
 	health -= damage
