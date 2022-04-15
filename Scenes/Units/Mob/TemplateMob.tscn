@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_body.res" type="SpriteFrames" id=3]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_back.res" type="SpriteFrames" id=4]
-[ext_resource path="res://Scenes/Units/Mob/MobRecolorBlue.tres" type="Material" id=5]
+[ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
