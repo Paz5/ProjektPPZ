@@ -1,16 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Managers/MobManager.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/TeamManager.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Units/Mob/Mob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Units/Mob/TemplateMob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Units/Mob/MobRecolorBlue.tres" type="Material" id=4]
+[ext_resource path="res://Scenes/Units/Mob/MobRecolorRed.tres" type="Material" id=6]
 
 [node name="MobManager" type="Node"]
 script = ExtResource( 1 )
-mobsToSpawn = [ ExtResource( 3 ) ]
+__meta__ = {
+"_editor_description_": ""
+}
+mobsToSpawn = [ ExtResource( 3 ), ExtResource( 3 ) ]
 teamPaths = [ NodePath("TeamRed"), NodePath("TeamBlue") ]
 
 [node name="TeamRed" type="Node" parent="."]
 script = ExtResource( 2 )
+teamMaterial = ExtResource( 6 )
 
 [node name="TeamBlue" type="Node" parent="."]
 script = ExtResource( 2 )
+teamMaterial = ExtResource( 4 )

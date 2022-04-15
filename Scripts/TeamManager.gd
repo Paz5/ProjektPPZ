@@ -2,6 +2,7 @@ extends Node
 
 class_name TeamManager
 
+export var teamMaterial : Material
 var mobManager
 var mobs : Array
 var rng = RandomNumberGenerator.new()
@@ -20,20 +21,16 @@ func FindTarget(mob):
 func getRandomMob():
 	return mobs[rng.randf_range(0,mobs.size())]
 
-func spawnMob(newMob : Resource):
-	var mobInstance = load(newMob.path)
-	add_child(mobInstance)
-	mobs.append(mobInstance)
-	pass
-
 func spawnMobs(newMobs : Array):
 	for newMob in newMobs:
 		var mobInstance = newMob.instance()
 		add_child(mobInstance)
 		mobs.append(mobInstance)
 		
+		mobInstance.initialize(self,FindTarget(mobInstance))
 		var viewportSize = get_viewport().size
 		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
+		mobInstance.setTeamMaterial(teamMaterial)
 	pass
 	
 func remobeMob(mob):

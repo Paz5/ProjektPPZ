@@ -1,5 +1,6 @@
 extends Node
 
+#temporary arary, in the future pass mobs from a round manager
 export(Array, PackedScene) var mobsToSpawn
 
 class_name MobManager
@@ -15,6 +16,6 @@ func _ready():
 func FindTargetFor(team : TeamManager):
 	if(teams.has(team)):
 		var index = (teams.find(team)+1)%teams.size()
-		return teams[index].findRandomMob()
+		return teams[index].getRandomMob()
 	print("No team " + team.name + " in teams collection")
 	return null

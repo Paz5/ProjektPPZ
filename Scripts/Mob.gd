@@ -5,6 +5,8 @@ class_name Mob
 var maxHealth = 10
 var health
 var moveSpeed = 5.0
+var attackDelay = 1
+var attackRange = 5
 var target: Node2D
 var team : TeamManager
 
@@ -17,21 +19,28 @@ func _init():
 func _ready():
 	pass
 	
-func initialize(mobTeam : TeamManager):
-	team = mobTeam
-	pass
-
+func initialize(team : TeamManager, target : Node2D):
+	self.team = team
+	self.target = target
+	
 func _process(delta):
+	move(delta)
 	pass
 
-func attack():
+func attack(delta):
 	if(target == null):
-		team.FindTarget(self)
 		return
 	pass
 
-func move():
+func move(delta):
+	if(target == null):
+		return
+	moveToTarget(delta)
 	pass
+	
+func moveToTarget(delta):
+	var dir = (position - target.position).normalized()
+	position += dir * moveSpeed;
 	
 func damage(damage):
 	health -= damage
@@ -43,3 +52,7 @@ func SetTarget(target):
 
 func onDeath():
 	team.remobeMob(self)
+	
+func setTeamMaterial(mat : Material):
+	get_node("YSort/KinematicBody2D/Sprites/Body").material = mat
+	pass

@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_body.res" type="SpriteFrames" id=3]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_back.res" type="SpriteFrames" id=4]
-[ext_resource path="res://Scenes/Units/Mob/MobRecolorRed.tres" type="Material" id=5]
+[ext_resource path="res://Scenes/Units/Mob/MobRecolorBlue.tres" type="Material" id=5]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -25,7 +25,7 @@ material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 4 )
 animation = "Attack"
-frame = 8
+frame = 14
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -33,14 +33,14 @@ offset = Vector2( 0, -4.056 )
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Attack"
-frame = 7
+frame = 13
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites"]
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 2 )
 animation = "Attack"
-frame = 7
+frame = 13
 playing = true
 offset = Vector2( 0, -4.056 )
 
