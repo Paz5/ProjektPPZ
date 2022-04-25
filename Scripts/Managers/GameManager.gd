@@ -6,6 +6,9 @@ var CurrentGameState
 # Aktualna scena
 var CurrentScene
 
+#Wartosc betu
+var Bet
+
 func _ready():
 	# Początkowy stan gry, aktualnie startuje z menu głównego, jeśli w przyszłości zrobimy splash screeny to trzeba zmienic tu na splashe
 	CurrentGameState = StateManager.GameStates.MainMenu
