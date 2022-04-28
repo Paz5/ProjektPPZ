@@ -1,20 +1,18 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var Player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.connect("SceneChanged", self, "OnSceneChanged")
+	
 	$TimerForLabelMessage.start()
 	get_node("Box").hide()
 	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-
+	
+func OnSceneChanged(oldScene, newScene):
+	# Mikołaj - Ustawnienie wartości slidera na 0
+	get_node("Box/BetSlider").value = 0
 
 func _on_Cancel_pressed():
 	get_tree().quit()
@@ -33,7 +31,17 @@ func _on_BtnBlue_pressed():
 func _on_Timer_timeout():
 	get_node("BetLabel_Message").hide()
 	get_node("Box").show()
+	
+	# Mikołaj - Ustawnienie maksymalnej wartości slidera na taką ile mamy pieniędzy
+	get_node("Box/BetSlider").max_value = PlayerProfileManager.money
 
 
 func _on_Confirm_pressed():
-	get_tree().change_scene("res://Scenes/UI/KoniecRundy.tscn")
+	# Mikołaj - Zablokowanie możliwości uruchomienia levelu jeśli wartość slidera wynosi 0
+	if get_node("Box/BetSlider").value == 0: return
+	
+	# Mikołaj - Odjęcie z profilu gracza tyle ile obstawiliśmy
+	PlayerProfileManager.SpendMoney(GameManager.Bet)
+	
+	GameManager.LoadEndRoundScene()
+	

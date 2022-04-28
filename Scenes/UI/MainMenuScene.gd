@@ -12,7 +12,7 @@ func _ready():
 #Przycisk PLAY
 func _on_BtnPlay_pressed():
 	#Tymczasowe zmiana sceny na scene gry/wyboru 
-	get_tree().change_scene("res://Scenes/UI/Obstawianie.tscn")
+	GameManager.LoadBetScene()
 
 #Przycisk QUIT
 func _on_BtnQuit_pressed():

@@ -22,19 +22,45 @@ var pathToFileSave = "user://GameSave.sav"
 # ======== Metody ========
 
 # Dodanie "value" monet do profilu gracza
-func AddMoney(var value : int): money += value
+func AddMoney(var value : int): 
+	money += value
+	SaveGame()
+
+# Wydanie "value" monet z profilu gracza
+func SpendMoney(var value : int):
+	money -= value
+	SaveGame()
 
 # Przypisanie "value" money do profilu gracza
-func SetMoney(var value : int) : money = value
+func SetMoney(var value : int) :
+	money = value
+	SaveGame()
 
 # Pobranie aktualnej ilości monet
-func GetCurrentMoney() -> int: return money;
+func GetCurrentMoney() -> int: return money
+
+# Tworzenie nowego profilu
+func CreateNewProfile():
+	InitValues()
+	SaveGame()
+	
+# Wartości początkowe do nowo utworzonego profilu
+func InitValues():
+	SetMoney(120)
+
+# Odświeża dane na dictionary danych do zapisu
+func RefreshSaveData():
+	SaveData = 	{
+		"SaveVersion" : saveVersion,
+		"Money" : money
+	}
 
 # Zapisanie profilu z SaveData który jest serializowany i parsowany  do .json, szyfrowane by uniemożliwić prostą edycję pliku z zapisem, zapisywana do pliku GameSave.sav
 # Klucz szyfrowania/deszyfrowania to: SmiesznyKlucz
 # Jesli zdeycdujemy sie na trzymanie zapisu gry na jakimś serwerze trzeba usunąć szyfrowanie!
 func SaveGame():
-	
+	RefreshSaveData()
+
 	var toFile = to_json(SaveData)
 	
 	var file = File.new()
@@ -48,11 +74,13 @@ func LoadGame():
 	var file = File.new()
 	
 	if not file.file_exists(pathToFileSave):
-		print_debug("Nie odnaleziono pliku z zapisem gry! - zapisywanie")
-		SaveGame()
+		print_debug("Nie odnaleziono pliku z zapisem gry! - Tworzenie nowego profilu")
+		CreateNewProfile()
 		return
 		
 	
 	file.open_encrypted_with_pass(pathToFileSave, File.READ, "SmiesznyKlucz")
 	var fromFile = parse_json(file.get_as_text())
 	SaveData = fromFile
+	
+	SetMoney(SaveData["Money"])
