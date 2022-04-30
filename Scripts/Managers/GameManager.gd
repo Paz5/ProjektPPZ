@@ -37,7 +37,7 @@ func PlayLevel(var levelName : String):
 	
 	get_tree().get_root().add_child(CurrentScene)
 	
-	LevelManager.CurrentLevel = CurrentScene.get_node("LevelData")
+	RoundManager.CurrentLevel = CurrentScene.get_node("LevelData")
 
 
 # Uruchamia główne menu

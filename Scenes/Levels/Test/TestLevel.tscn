@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/arial.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Scripts/Levels/LevelData.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Levels/Test/MobTest.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -46,5 +45,3 @@ text = "99"
 [node name="LevelData" type="Node" parent="."]
 script = ExtResource( 3 )
 LevelName = "TestLevel"
-MobsToSpawn = [ ExtResource( 4 ) ]
-MobsAmount = 5

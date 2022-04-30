@@ -29,11 +29,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Managers/MobManager.gd"
 }, {
-"base": "Node2D",
-"class": "MobTest",
-"language": "GDScript",
-"path": "res://Scripts/Levels/Test/MobTest.gd"
-}, {
 "base": "Node",
 "class": "TeamManager",
 "language": "GDScript",
@@ -44,7 +39,6 @@ _global_script_class_icons={
 "Manager": "",
 "Mob": "",
 "MobManager": "",
-"MobTest": "",
 "TeamManager": ""
 }
 
@@ -59,7 +53,7 @@ config/icon="res://icon.png"
 GameManager="*res://Scripts/Managers/GameManager.gd"
 StateManager="*res://Scripts/Managers/StateManager.gd"
 PlayerProfileManager="*res://Scripts/Managers/PlayerProfileManager.gd"
-LevelManager="*res://Scripts/Managers/LevelManager.gd"
+RoundManager="*res://Scripts/Managers/RoundManager.gd"
 
 [display]
 
