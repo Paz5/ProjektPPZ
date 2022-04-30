@@ -1,7 +1,5 @@
 extends Control
 
-var Player
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
@@ -22,10 +20,10 @@ func _on_HSlider_value_changed(value):
 	$"/root/GameManager".Bet=value
 
 func _on_BtnRed_pressed():
-	Player = "Red"
+	GameManager.SelectedTeam = "Red"
 
 func _on_BtnBlue_pressed():
-	Player = "Blue"
+	GameManager.SelectedTeam = "Blue"
 
 
 func _on_Timer_timeout():
@@ -43,5 +41,5 @@ func _on_Confirm_pressed():
 	# Mikołaj - Odjęcie z profilu gracza tyle ile obstawiliśmy
 	PlayerProfileManager.SpendMoney(GameManager.Bet)
 	
-	GameManager.LoadEndRoundScene()
+	GameManager.PlayLevel()
 	

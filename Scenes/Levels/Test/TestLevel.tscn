@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
 [ext_resource path="res://Fonts/arial.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Scripts/Levels/LevelData.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Levels/RoundData.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/MobManager.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/Pixeled.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 192.25, 375.5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 600
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=1]
-size = 100
+size = 101
 font_data = ExtResource( 2 )
 
 [node name="TestLevel" type="Node2D"]
@@ -15,16 +24,34 @@ scale = Vector2( 3, 3 )
 texture = ExtResource( 1 )
 offset = Vector2( 320, 180 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 297.667
-margin_top = 15.0
-margin_right = 758.667
-margin_bottom = 127.0
-rect_scale = Vector2( 0.1, 0.1 )
-custom_fonts/normal_font = SubResource( 1 )
-text = "Test level"
+[node name="RoundData" type="Node" parent="."]
+script = ExtResource( 3 )
+blueTeamSpawn = NodePath("../SpawnPoints/BlueTeamSpawn")
 
-[node name="Team1Counter" type="RichTextLabel" parent="."]
+[node name="MobManager" parent="." instance=ExtResource( 5 )]
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="RedTeamSpawn" type="CollisionShape2D" parent="SpawnPoints"]
+position = Vector2( 189.75, 700.5 )
+shape = SubResource( 2 )
+
+[node name="BlueTeamSpawn" type="CollisionShape2D" parent="SpawnPoints"]
+position = Vector2( 1722, 700.5 )
+shape = SubResource( 2 )
+
+[node name="RoundUI" type="Node" parent="."]
+
+[node name="TimerText" type="RichTextLabel" parent="RoundUI"]
+margin_left = 822.0
+margin_top = 1.19209e-07
+margin_right = 3572.0
+margin_bottom = 1800.0
+rect_scale = Vector2( 0.1, 0.1 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "00:00"
+
+[node name="Team1Counter" type="RichTextLabel" parent="RoundUI"]
 margin_left = 8.33333
 margin_top = 343.333
 margin_right = 141.333
@@ -33,7 +60,7 @@ rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "99"
 
-[node name="Team2Counter" type="RichTextLabel" parent="."]
+[node name="Team2Counter" type="RichTextLabel" parent="RoundUI"]
 margin_left = 611.667
 margin_top = 340.667
 margin_right = 761.667
@@ -41,7 +68,3 @@ margin_bottom = 452.667
 rect_scale = Vector2( 0.1, 0.1 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "99"
-
-[node name="LevelData" type="Node" parent="."]
-script = ExtResource( 3 )
-LevelName = "TestLevel"

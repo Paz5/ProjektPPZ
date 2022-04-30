@@ -7,8 +7,6 @@ var mobManager
 var mobs : Array
 var rng = RandomNumberGenerator.new()
 
-signal allMobsDead
-
 func _init():
 	rng.randomize()
 
@@ -35,5 +33,6 @@ func spawnMobs(newMobs : Array):
 func remobeMob(mob):
 	if(mobs.has(mob)):
 		mobs.remove(mob)
+		
 	if(mobs.size()==0):
-		emit_signal("allMobsDead")
+		GameManager.OnAllMobsDead()

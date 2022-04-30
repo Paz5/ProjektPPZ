@@ -10,11 +10,6 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
-"class": "LevelData",
-"language": "GDScript",
-"path": "res://Scripts/Levels/LevelData.gd"
-}, {
-"base": "Node",
 "class": "Manager",
 "language": "GDScript",
 "path": "res://Scripts/Managers/Manager.gd"
@@ -30,15 +25,20 @@ _global_script_classes=[ {
 "path": "res://Scripts/Managers/MobManager.gd"
 }, {
 "base": "Node",
+"class": "RoundData",
+"language": "GDScript",
+"path": "res://Scripts/Levels/RoundData.gd"
+}, {
+"base": "Node",
 "class": "TeamManager",
 "language": "GDScript",
 "path": "res://Scripts/TeamManager.gd"
 } ]
 _global_script_class_icons={
-"LevelData": "",
 "Manager": "",
 "Mob": "",
 "MobManager": "",
+"RoundData": "",
 "TeamManager": ""
 }
 

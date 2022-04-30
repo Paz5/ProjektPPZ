@@ -55,6 +55,7 @@ func SetTarget(target):
 	self.target = target as Node2D
 
 func onDeath():
+	GameManager.OnMobKilled(self)
 	team.remobeMob(self)
 	
 func setTeamMaterial(mat : Material):
