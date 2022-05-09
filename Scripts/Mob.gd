@@ -7,6 +7,7 @@ var health
 var moveSpeed = 1.0
 var attackDelay = 1
 var attackRange = 50
+var velocity = Vector2(0,0)
 var target: Node2D
 var team : TeamManager
 
@@ -45,6 +46,19 @@ func moveToTarget(delta):
 	var vec = target.position - position
 	if vec.length() > attackRange:
 		position += vec.clamped(1) * moveSpeed;
+		
+	var angle=get_angle_to(target.global_position)
+	velocity.x=cos(angle)
+	velocity.y=cos(angle)
+	if velocity.x > 0:
+		flipSprites(false)
+	elif velocity.x < 0:
+		flipSprites(true)
+		
+func flipSprites(state):
+	get_node("YSort/KinematicBody2D/Sprites/Body").set_flip_h(state)
+	get_node("YSort/KinematicBody2D/Sprites/BackHand").set_flip_h(state)
+	get_node("YSort/KinematicBody2D/Sprites/FrontHand").set_flip_h(state)
 	
 func damage(damage):
 	health -= damage
