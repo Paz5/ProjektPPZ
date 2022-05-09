@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/UI/MainMenuScene.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Themes/Button_Theme.tres" type="Theme" id=3]
+[ext_resource path="res://Themes/Button_Theme_main_menu.tres" type="Theme" id=3]
 [ext_resource path="res://Fonts/Pixeled_Font_Titles.tres" type="DynamicFont" id=4]
 
 [node name="MainMenuScene" type="Control"]

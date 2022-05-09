@@ -2,7 +2,7 @@ extends Control
 
 func _ready():
 	pass # Replace with function body.
-	get_node("Obstawianie").hide()
+
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
