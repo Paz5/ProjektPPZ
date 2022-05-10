@@ -3,8 +3,8 @@ extends "res://Scripts/StateMachine/States/State.gd"
 
 func get_class(): return "MobState"
 
-var target
-var teamManager
+var target: Node2D 
+var teamManager: TeamManager
 
 func Initialize(msg := {}) -> void:
 	target = GetProperty("target",msg)

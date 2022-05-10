@@ -4,7 +4,7 @@ extends Node
 var activeState: State = null
 var states: Dictionary
 
-func _process(delta: float) -> void:
+func Run(delta: float) -> void:
 	activeState.Process(delta)
 	
 func AddState(newState: State, msg : Dictionary = {}) -> void:

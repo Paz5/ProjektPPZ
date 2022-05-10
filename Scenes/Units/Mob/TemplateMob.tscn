@@ -29,9 +29,10 @@ position = Vector2( 0, -32 )
 
 [node name="Body" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites"]
 material = ExtResource( 5 )
+z_index = 1
 frames = ExtResource( 3 )
-animation = "Attack"
-frame = 13
+animation = "Idle"
+frame = 1
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="YSort/KinematicBody2D/Sprites"]
@@ -40,33 +41,17 @@ playing = true
 material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 4 )
-animation = "Run"
-frame = 4
-playing = true
-offset = Vector2( 0, -4.056 )
-
-[node name="Body" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites"]
-material = ExtResource( 5 )
-frames = ExtResource( 3 )
-animation = "Run"
-frame = 5
-playing = true
-
-[node name="FrontHand" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites"]
-position = Vector2( 0, 4.056 )
-frames = ExtResource( 2 )
-animation = "Run"
-frame = 5
-animation = "Attack"
-frame = 14
+animation = "Idle"
+frame = 20
 playing = true
 offset = Vector2( 0, -4.056 )
 
 [node name="FrontHand" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites/HandContainer"]
 position = Vector2( 0, 4.056 )
+z_index = 2
 frames = ExtResource( 2 )
-animation = "Attack"
-frame = 13
+animation = "Idle"
+frame = 16
 playing = true
 offset = Vector2( 0, -4.056 )
 

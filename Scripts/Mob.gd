@@ -25,13 +25,13 @@ func initializeMob(team : TeamManager, target : Node2D):
 	
 	mobStateMachine = StateMachine.new()
 	mobStateMachine.AddState(MobIdleState.new(),{"target":target, "teamManager": team})
-	mobStateMachine.AddState(MobMoveState.new(),{"moveSpeed": moveSpeed,"target":target, "teamManager": team})
+	mobStateMachine.AddState(MobMoveState.new(),{"moveSpeed": moveSpeed,"transformNode": self,"target":target, "teamManager": team})
 	mobStateMachine.AddState(MobAttackMeleeState.new(),{"attackDelay": attackDelay,"target": target, "teamManager": team})
 	mobStateMachine.Transition("MobMoveState")
 
 	
 func _process(delta):
-	pass
+	mobStateMachine.Run(delta)
 
 func damage(damage):
 	health -= damage
@@ -47,7 +47,6 @@ func onDeath():
 	
 func setTeamMaterial(mat : Material):
 	get_node("YSort/KinematicBody2D/Sprites/Body").material = mat
-	pass
 
 func _on_AttackRange_area_entered(area):
 	print(area)
