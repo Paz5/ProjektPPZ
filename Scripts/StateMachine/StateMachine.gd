@@ -5,7 +5,8 @@ var activeState: State = null
 var states: Dictionary
 
 func Run(delta: float) -> void:
-	activeState.Process(delta)
+	if(activeState.Process(delta)):
+		Transition(states[0].get_class())
 	
 func AddState(newState: State, msg : Dictionary = {}) -> void:
 	if(states.has(newState.get_class())):
@@ -15,7 +16,7 @@ func AddState(newState: State, msg : Dictionary = {}) -> void:
 	if(activeState == null):
 		activeState = newState
 	
-func Transition(stateName: String, msg: Dictionary = {}) -> void:
+func Transition(stateName: String) -> void:
 	if not states.has(stateName):
 		return
 	

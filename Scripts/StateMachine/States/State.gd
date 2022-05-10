@@ -17,8 +17,8 @@ func Initialize(_msg := {}) -> void:
 func Begin():
 	pass
 	
-func Process(delta : float):
-	pass
+func Process(delta : float) -> bool:
+	return false
 	
 func End():
 	pass

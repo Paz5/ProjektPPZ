@@ -11,9 +11,10 @@ func Initialize(msg := {}) -> void:
 	moveSpeed = GetProperty("moveSpeed",msg)
 	transformNode = GetProperty("transformNode",msg)
 	
-func Process(delta : float):
+func Process(delta : float) -> bool:
 	.Process(delta)
 	if(target == null):
 		target = teamManager.FindTarget()
 	var vec = target.position - transformNode.position
 	transformNode.position += vec.clamped(1) * moveSpeed
+	return false

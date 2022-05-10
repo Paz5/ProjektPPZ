@@ -18,12 +18,14 @@ func Begin():
 	.Begin()
 	attackTimer = 0.0
 	
-func Process(delta : float):
+func Process(delta : float) -> bool:
 	.Process(delta)
 	attackTimer += delta
 	if(attackTimer>attackDelay):
 		MeleeAttack()
 		attackTimer = 0
+		return true
+	return false
 	
 func MeleeAttack():
 	pass
