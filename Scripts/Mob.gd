@@ -14,19 +14,23 @@ var team : TeamManager
 signal mobDiead
 signal mobNeedsTarget
 
-func _init():
-	health = maxHealth
-	pass
+var mobStateMachine: StateMachine
 
 func _ready():
-	pass
+	health = maxHealth
+
 	
 func initializeMob(team : TeamManager, target : Node2D):
 	self.team = team
 	self.target = target
 	
+	mobStateMachine = StateMachine.new()
+	mobStateMachine.AddState(MobIdleState.new(),{"target":target, "teamManager": team})
+	mobStateMachine.AddState(MobMoveState.new(),{"moveSpeed": moveSpeed,"target":target, "teamManager": team})
+	mobStateMachine.AddState(MobAttackMeleeState.new(),{"attackDelay": attackDelay,"target": target, "teamManager": team})
+	mobStateMachine.Transition("MobMoveState")
+	
 func _process(delta):
-	move(delta)
 	pass
 
 func attack(delta):
@@ -75,3 +79,6 @@ func onDeath():
 func setTeamMaterial(mat : Material):
 	get_node("YSort/KinematicBody2D/Sprites/Body").material = mat
 	pass
+
+func _on_AttackRange_area_entered(area):
+	print(area)

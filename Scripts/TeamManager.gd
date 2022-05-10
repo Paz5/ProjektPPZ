@@ -13,7 +13,7 @@ func _init():
 func StartTeam(mobManager):
 	self.mobManager = mobManager
 
-func FindTarget(mob):
+func FindTarget():
 	return mobManager.FindTargetFor(self)
 	
 func getRandomMob():
@@ -25,7 +25,7 @@ func spawnMobs(newMobs : Array):
 		add_child(mobInstance)
 		mobs.append(mobInstance)
 		
-		mobInstance.initializeMob(self,FindTarget(mobInstance))
+		mobInstance.initializeMob(self,FindTarget())
 		var viewportSize = get_viewport().size
 		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
 		mobInstance.setTeamMaterial(teamMaterial)

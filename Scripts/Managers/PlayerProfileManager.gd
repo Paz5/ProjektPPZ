@@ -84,3 +84,4 @@ func LoadGame():
 	SaveData = fromFile
 	
 	SetMoney(SaveData["Money"])
+	SetMoney(1000)
