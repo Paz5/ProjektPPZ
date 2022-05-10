@@ -1,5 +1,5 @@
 class_name MobAttackMeleeState
-extends "res://MobAttackState.gd"
+extends "res://Scripts/StateMachine/States/MobAttackState.gd"
 
 var attackTimer = 0.0
 var attackDelay

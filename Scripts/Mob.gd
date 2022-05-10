@@ -1,6 +1,5 @@
-extends Node2D
-
 class_name Mob
+extends Node2D
 
 var maxHealth = 10
 var health
@@ -29,41 +28,11 @@ func initializeMob(team : TeamManager, target : Node2D):
 	mobStateMachine.AddState(MobMoveState.new(),{"moveSpeed": moveSpeed,"target":target, "teamManager": team})
 	mobStateMachine.AddState(MobAttackMeleeState.new(),{"attackDelay": attackDelay,"target": target, "teamManager": team})
 	mobStateMachine.Transition("MobMoveState")
+
 	
 func _process(delta):
 	pass
 
-func attack(delta):
-	if(target == null):
-		target = team.FindTarget(self)
-		return
-	pass
-
-func move(delta):
-	if(target == null):
-		target = team.FindTarget(self)
-		return
-	moveToTarget(delta)
-	pass
-	
-func moveToTarget(delta):
-	var vec = target.position - position
-	if vec.length() > attackRange:
-		position += vec.clamped(1) * moveSpeed;
-		
-	var angle=get_angle_to(target.global_position)
-	velocity.x=cos(angle)
-	velocity.y=cos(angle)
-	if velocity.x > 0:
-		flipSprites(false)
-	elif velocity.x < 0:
-		flipSprites(true)
-		
-func flipSprites(state):
-	get_node("YSort/KinematicBody2D/Sprites/Body").set_flip_h(state)
-	get_node("YSort/KinematicBody2D/Sprites/BackHand").set_flip_h(state)
-	get_node("YSort/KinematicBody2D/Sprites/FrontHand").set_flip_h(state)
-	
 func damage(damage):
 	health -= damage
 	if(health < 0):

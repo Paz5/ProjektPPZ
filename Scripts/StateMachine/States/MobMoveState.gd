@@ -1,5 +1,5 @@
 class_name MobMoveState
-extends "res://MobState.gd"
+extends "res://Scripts/StateMachine/States/MobState.gd"
 
 var moveSpeed
 
