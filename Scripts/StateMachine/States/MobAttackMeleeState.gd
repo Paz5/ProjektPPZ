@@ -4,15 +4,15 @@ extends "res://Scripts/StateMachine/States/MobAttackState.gd"
 var attackTimer = 0.0
 var attackDelay
 var handContainer
-var hitBox
+var hurtBox
 
 func get_class(): return "MobAttackMeleeState"
 
 func UpdateProperties(msg := {}) -> void:
 	.UpdateProperties(msg)
-	SetProperty("handContainer",msg,handContainer)
-	SetProperty("attackDelay",msg,attackDelay)
-	SetProperty("hitBox",msg,hitBox)
+	handContainer = mob.handContainer
+	attackDelay = mob.attackDelay
+	hurtBox = mob.hurtBox
 	
 func Begin():
 	.Begin()

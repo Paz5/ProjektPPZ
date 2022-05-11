@@ -6,6 +6,12 @@ var health
 export var moveSpeed = 1.0
 export var attackDelay = 1
 export var attackRange = 50
+export(NodePath) var handContainerPath
+export(NodePath) var hurtBoxPath
+var handContainer: Node2D
+var hurtBox: CollisionShape2D
+
+
 var team: TeamManager
 var target: Node2D
 var animator: MobAnimator
@@ -17,17 +23,24 @@ var mobStateMachine: StateMachine
 
 func _ready():
 	health = maxHealth
+	handContainer = get_node(handContainerPath)
+	hurtBox = get_node(hurtBoxPath)
 
 	
 func initializeMob(team : TeamManager, target : Node2D):
 	self.team = team
 	self.target = target
-	
 	mobStateMachine = StateMachine.new()
-	mobStateMachine.AddState(MobIdleState.new(),{"target":target, "teamManager": team})
-	mobStateMachine.AddState(MobMoveState.new(),{"moveSpeed": moveSpeed,"transformNode": self,"target":target, "teamManager": team})
-	mobStateMachine.AddState(MobAttackMeleeState.new(),{"attackDelay": attackDelay,"target": target, "teamManager": team})
-
+	
+	var idleState = get_node("MobIdleState")
+	idleState.mob = self
+	var moveState = get_node("MobMoveState")
+	moveState.mob = self
+	var attackState = get_node("MobAttackMeleeState")
+	attackState.mob = self
+	mobStateMachine.AddState(idleState)
+	mobStateMachine.AddState(moveState)
+	mobStateMachine.AddState(attackState)
 	
 func _process(delta):
 	mobStateMachine.Run(delta)

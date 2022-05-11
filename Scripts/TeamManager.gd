@@ -24,8 +24,9 @@ func spawnMobs(newMobs : Array):
 		var mobInstance = newMob.instance()
 		add_child(mobInstance)
 		mobs.append(mobInstance)
-		
+	
 		mobInstance.initializeMob(self,FindTarget())
+
 		var viewportSize = get_viewport().size
 		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
 		mobInstance.setTeamMaterial(teamMaterial)

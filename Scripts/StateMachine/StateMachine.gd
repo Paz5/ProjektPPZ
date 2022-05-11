@@ -16,6 +16,8 @@ func AddState(newState: State, msg : = {}) -> void:
 	newState.UpdateProperties(msg)
 	if(activeState == null):
 		activeState = newState
+	activeState.Begin()
+	emit_signal("transitioned",activeState.name)
 	
 func UpdateAllStatesProperties(msg := {}):
 	for state in states.values():

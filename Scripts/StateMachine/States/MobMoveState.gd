@@ -6,16 +6,14 @@ var transformNode: Node2D
 
 func get_class(): return "MobMoveState"
 
-
 func UpdateProperties(msg := {}) -> void:
 	.UpdateProperties(msg)
-	SetProperty("moveSpeed",msg,moveSpeed)
-	SetProperty("transformNode",msg, transformNode)
+	moveSpeed = mob.moveSpeed
 	
 func Process(delta : float) -> bool:
 	.Process(delta)
-	if(target == null):
+	if(mob.target == null):
 		return true
-	var vec = target.position - transformNode.position
-	transformNode.position += vec.clamped(1) * moveSpeed
+	var vec = mob.target.position - mob.position
+	mob.position += vec.clamped(1) * moveSpeed
 	return true
