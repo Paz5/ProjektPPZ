@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scripts/StateMachine/States/MobAttackMeleeState.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/StateMachine/States/MobIdleState.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/StateMachine/States/MobMoveState.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/StateMachine/StateMachine.gd" type="Script" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -20,8 +21,12 @@ radius = 16.0
 [node name="Mob" type="Node2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
+moveSpeed = 3.0
+attackDelay = 5
+attackRange = 125
 handContainerPath = NodePath("YSort/KinematicBody2D/Sprites/HandContainer")
 hurtBoxPath = NodePath("YSort/KinematicBody2D/Sprites/HandContainer/Hurtbox/CollisionShape2D")
+mobStateMachinePath = NodePath("MobStateMachine")
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -30,13 +35,16 @@ hurtBoxPath = NodePath("YSort/KinematicBody2D/Sprites/HandContainer/Hurtbox/Coll
 [node name="Sprites" type="Node2D" parent="YSort/KinematicBody2D"]
 position = Vector2( 0, -32 )
 script = ExtResource( 1 )
+bodySpritePath = NodePath("Body")
+frontHandSpritePath = NodePath("HandContainer/FrontHand")
+backHandSpritePath = NodePath("HandContainer/BackHand")
 
 [node name="Body" type="AnimatedSprite" parent="YSort/KinematicBody2D/Sprites"]
 material = ExtResource( 5 )
 z_index = 1
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 5
+frame = 10
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="YSort/KinematicBody2D/Sprites"]
@@ -46,7 +54,7 @@ material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 3
+frame = 8
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -55,7 +63,7 @@ position = Vector2( 0, 4.056 )
 z_index = 2
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 20
+frame = 4
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -77,3 +85,8 @@ script = ExtResource( 9 )
 
 [node name="MobAttackMeleeState" type="Node2D" parent="."]
 script = ExtResource( 7 )
+
+[node name="MobStateMachine" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[connection signal="transitioned" from="MobStateMachine" to="YSort/KinematicBody2D/Sprites" method="_on_MobStateMachine_transitioned"]

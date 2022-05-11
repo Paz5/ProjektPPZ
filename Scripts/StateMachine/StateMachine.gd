@@ -2,12 +2,14 @@ class_name StateMachine
 extends Node
 
 var activeState: State = null
+var defaultState: State = null
 var states: Dictionary
-var activeStateFinished = false
 
+signal transitioned(stateName)
 
 func Run(delta: float) -> void:
-	activeStateFinished = activeState.Process(delta)
+	if(activeState.Process(delta)):
+		Transition(defaultState.get_class())
 	
 func AddState(newState: State, msg : = {}) -> void:
 	if(states.has(newState.get_class())):
@@ -16,6 +18,7 @@ func AddState(newState: State, msg : = {}) -> void:
 	newState.UpdateProperties(msg)
 	if(activeState == null):
 		activeState = newState
+		defaultState = newState
 	activeState.Begin()
 	emit_signal("transitioned",activeState.name)
 	
@@ -24,13 +27,14 @@ func UpdateAllStatesProperties(msg := {}):
 		state.UpdateProperties(msg)
 		
 
-func Transition(stateName: String, ovveride = false) -> void:
-	if(!activeStateFinished && !ovveride):
-		return
+func Transition(stateName: String) -> void:
 	if not states.has(stateName):
 		return
+	
+	if(states[stateName] != activeState):
+		emit_signal("transitioned",stateName)
 	
 	activeState.End()
 	activeState = states[stateName]
 	activeState.Begin()
-	emit_signal("transitioned",activeState.name)
+

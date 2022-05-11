@@ -1,29 +1,38 @@
 class_name MobAnimator
 extends Node2D
 
-var bodySpriteRenderer: AnimatedSprite
-var frontHandSpriteRenderer: AnimatedSprite
-var backHandSpriteRenderer: AnimatedSprite
+export(NodePath) var bodySpritePath
+export(NodePath) var frontHandSpritePath
+export(NodePath) var backHandSpritePath
+var bodySprite: AnimatedSprite
+var frontHandSprite: AnimatedSprite
+var backHandSprite: AnimatedSprite
 
 var aimHands: bool
 var target: Node2D
 
+func _ready():
+	bodySprite = get_node(bodySpritePath)
+	frontHandSprite = get_node(frontHandSpritePath)
+	backHandSprite = get_node(backHandSpritePath)
+
 func StartAnimation(animationName: String):
-	bodySpriteRenderer.animation = animationName
-	bodySpriteRenderer.frame = 0
-	frontHandSpriteRenderer.animation = animationName
-	frontHandSpriteRenderer.frame = 0
-	backHandSpriteRenderer.animation = animationName
-	backHandSpriteRenderer.frame = 0
+	bodySprite.animation = animationName
+	bodySprite.frame = 0
+	frontHandSprite.animation = animationName
+	frontHandSprite.frame = 0
+	backHandSprite.animation = animationName
+	backHandSprite.frame = 0
 
 func _process(delta):
 	if(aimHands):
-		frontHandSpriteRenderer.look_at(target.position)
+		frontHandSprite.look_at(target.position)
+		backHandSprite.look_at(target.position)
 
 func Flip(state: bool):
-	bodySpriteRenderer.set_flip_h(state)
-	frontHandSpriteRenderer.set_flip_h(state)
-	backHandSpriteRenderer.set_flip_h(state)
+	bodySprite.set_flip_h(state)
+	frontHandSprite.set_flip_h(state)
+	backHandSprite.set_flip_h(state)
 
 func Idle():
 	StartAnimation("Idle")
@@ -39,3 +48,17 @@ func Run():
 	
 func Win():
 	StartAnimation("Win")
+
+
+func _on_MobStateMachine_transitioned(stateName):
+	match(stateName):
+		"MobIdleState":
+			Idle()
+		"MobAttackMeleeState":
+			Attack()
+		"MobDeathState":
+			Death()
+		"MobMoveState":
+			Run()
+		"MobWinState":
+			Win()

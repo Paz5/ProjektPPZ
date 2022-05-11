@@ -19,10 +19,12 @@ var animator: MobAnimator
 signal mobDiead
 signal mobNeedsTarget
 
+export(NodePath) var mobStateMachinePath
 var mobStateMachine: StateMachine
 
 func _ready():
 	health = maxHealth
+	mobStateMachine = get_node(mobStateMachinePath)
 	handContainer = get_node(handContainerPath)
 	hurtBox = get_node(hurtBoxPath)
 
@@ -30,8 +32,7 @@ func _ready():
 func initializeMob(team : TeamManager, target : Node2D):
 	self.team = team
 	self.target = target
-	mobStateMachine = StateMachine.new()
-	
+
 	var idleState = get_node("MobIdleState")
 	idleState.mob = self
 	var moveState = get_node("MobMoveState")
@@ -47,10 +48,10 @@ func _process(delta):
 	if(target==null):
 		FindNewTarget()
 	if(target==null):
-		mobStateMachine.Transition("MobIdleState",true)
+		mobStateMachine.Transition("MobIdleState")
 		return
 	if((position-target.position).length()<attackRange):
-		mobStateMachine.Transition("MobAttackState")
+		mobStateMachine.Transition("MobAttackMeleeState")
 	else:
 		mobStateMachine.Transition("MobMoveState")
 
