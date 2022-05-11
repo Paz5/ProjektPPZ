@@ -14,6 +14,6 @@ func Process(delta : float) -> bool:
 	.Process(delta)
 	if(mob.target == null):
 		return true
-	var vec = mob.target.position - mob.position
-	mob.position += vec.clamped(1) * moveSpeed
+	var vec = mob.target.global_position - mob.global_position
+	mob.global_position += vec.clamped(1) * moveSpeed
 	return true

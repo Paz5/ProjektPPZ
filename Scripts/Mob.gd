@@ -70,7 +70,7 @@ func onDeath():
 	team.remobeMob(self)
 	
 func setTeamMaterial(mat : Material):
-	get_node("YSort/KinematicBody2D/Sprites/Body").material = mat
+	get_node("KinematicBody2D/Sprites/Body").material = mat
 
 func _on_AttackRange_area_entered(area):
 	print(area)

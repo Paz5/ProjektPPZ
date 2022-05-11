@@ -26,8 +26,12 @@ func StartAnimation(animationName: String):
 
 func _process(delta):
 	if(aimHands):
-		frontHandSprite.look_at(target.position)
-		backHandSprite.look_at(target.position)
+		frontHandSprite.look_at(target.global_position)
+		backHandSprite.look_at(target.global_position)
+		
+	bodySprite.z_index = global_position.y + 500
+	frontHandSprite.z_index = global_position.y + 500 + 1
+	backHandSprite.z_index = global_position.y + 500 - 1
 
 func Flip(state: bool):
 	bodySprite.set_flip_h(state)
