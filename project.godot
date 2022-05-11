@@ -22,7 +22,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "MobAnimator",
 "language": "GDScript",
-"path": "res://Scenes/Units/Mob/MobAnimator.gd"
+"path": "res://Scripts/MobAnimator.gd"
 }, {
 "base": "Node2D",
 "class": "MobAttackMeleeState",

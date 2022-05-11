@@ -6,15 +6,16 @@ var transformNode: Node2D
 
 func get_class(): return "MobMoveState"
 
-func Initialize(msg := {}) -> void:
-	.Initialize(msg)
-	moveSpeed = GetProperty("moveSpeed",msg)
-	transformNode = GetProperty("transformNode",msg)
+
+func UpdateProperties(msg := {}) -> void:
+	.UpdateProperties(msg)
+	SetProperty("moveSpeed",msg,moveSpeed)
+	SetProperty("transformNode",msg, transformNode)
 	
 func Process(delta : float) -> bool:
 	.Process(delta)
 	if(target == null):
-		target = teamManager.FindTarget()
+		return true
 	var vec = target.position - transformNode.position
 	transformNode.position += vec.clamped(1) * moveSpeed
-	return false
+	return true

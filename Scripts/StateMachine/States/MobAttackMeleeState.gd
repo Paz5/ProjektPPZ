@@ -8,11 +8,11 @@ var hitBox
 
 func get_class(): return "MobAttackMeleeState"
 
-func Initialize(msg := {}) -> void:
-	.Initialize(msg)
-	handContainer = GetProperty("handContainer",msg)
-	attackDelay = GetProperty("attackDelay",msg)
-	hitBox = GetProperty("hitBox",msg)
+func UpdateProperties(msg := {}) -> void:
+	.UpdateProperties(msg)
+	SetProperty("handContainer",msg,handContainer)
+	SetProperty("attackDelay",msg,attackDelay)
+	SetProperty("hitBox",msg,hitBox)
 	
 func Begin():
 	.Begin()

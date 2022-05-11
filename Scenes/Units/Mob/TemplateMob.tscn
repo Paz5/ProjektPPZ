@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/Units/Mob/MobAnimator.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_body.res" type="SpriteFrames" id=3]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_back.res" type="SpriteFrames" id=4]
@@ -31,7 +31,7 @@ material = ExtResource( 5 )
 z_index = 1
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 11
+frame = 3
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="YSort/KinematicBody2D/Sprites"]
@@ -41,7 +41,7 @@ material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 9
+frame = 1
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -50,7 +50,7 @@ position = Vector2( 0, 4.056 )
 z_index = 2
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 5
+frame = 18
 playing = true
 offset = Vector2( 0, -4.056 )
 

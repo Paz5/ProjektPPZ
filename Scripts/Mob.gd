@@ -8,6 +8,7 @@ export var attackDelay = 1
 export var attackRange = 50
 var team: TeamManager
 var target: Node2D
+var animator: MobAnimator
 
 signal mobDiead
 signal mobNeedsTarget
@@ -26,13 +27,24 @@ func initializeMob(team : TeamManager, target : Node2D):
 	mobStateMachine.AddState(MobIdleState.new(),{"target":target, "teamManager": team})
 	mobStateMachine.AddState(MobMoveState.new(),{"moveSpeed": moveSpeed,"transformNode": self,"target":target, "teamManager": team})
 	mobStateMachine.AddState(MobAttackMeleeState.new(),{"attackDelay": attackDelay,"target": target, "teamManager": team})
-	mobStateMachine.Transition("MobMoveState")
 
 	
 func _process(delta):
 	mobStateMachine.Run(delta)
-	if(target!=null && (position-target.position).length()<attackRange):
+	if(target==null):
+		FindNewTarget()
+	if(target==null):
+		mobStateMachine.Transition("MobIdleState",true)
+		return
+	if((position-target.position).length()<attackRange):
 		mobStateMachine.Transition("MobAttackState")
+	else:
+		mobStateMachine.Transition("MobMoveState")
+
+func FindNewTarget():
+	target = team.FindTarget()
+	if(target!=null):
+		mobStateMachine.UpdateAllStatesProperties({"target":target})
 
 func damage(damage):
 	health -= damage

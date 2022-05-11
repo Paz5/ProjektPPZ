@@ -5,20 +5,20 @@ var stateMachine = null
 
 func get_class(): return "State"
 
-func GetProperty(name, _msg):
-	if(_msg.has(name)):
-		return _msg.get(name)
+func SetProperty(name, msg, property):
+	if(msg.has(name)):
+		property = msg.get(name)
+		return
 	push_error(get_class() + " lacks " + name)
-	return null
 
-func Initialize(_msg := {}) -> void:
+func UpdateProperties(msg := {}) -> void:
 	pass
 
 func Begin():
 	pass
 	
 func Process(delta : float) -> bool:
-	return false
+	return true
 	
 func End():
 	pass

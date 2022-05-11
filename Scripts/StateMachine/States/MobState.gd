@@ -6,6 +6,6 @@ func get_class(): return "MobState"
 var target: Node2D 
 var teamManager: TeamManager
 
-func Initialize(msg := {}) -> void:
-	target = GetProperty("target",msg)
-	teamManager = GetProperty("teamManager",msg)
+func UpdateProperties(msg := {}) -> void:
+	SetProperty("target",msg,target)
+	SetProperty("teamManager",msg,teamManager)
