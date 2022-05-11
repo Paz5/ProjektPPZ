@@ -24,8 +24,10 @@ script = ExtResource( 6 )
 moveSpeed = 3.0
 attackDelay = 5
 attackRange = 125
-handContainerPath = NodePath("KinematicBody2D/Sprites/HandContainer")
-hurtBoxPath = NodePath("KinematicBody2D/Sprites/HandContainer/Hurtbox/CollisionShape2D")
+handContainerPath = NodePath("KinematicBody2D/Animator/HandContainer")
+hurtBoxPath = NodePath("KinematicBody2D/Animator/HandContainer/Hurtbox/CollisionShape2D")
+animatorPath = NodePath("KinematicBody2D/Animator")
+spritePaths = [ NodePath("KinematicBody2D/Animator/Body"), NodePath("KinematicBody2D/Animator/HandContainer/BackHand"), NodePath("KinematicBody2D/Animator/HandContainer/FrontHand") ]
 mobStateMachinePath = NodePath("MobStateMachine")
 
 [node name="MobIdleState" type="Node2D" parent="."]
@@ -42,23 +44,23 @@ script = ExtResource( 10 )
 
 [node name="KinematicBody2D" type="KinematicBody2D" parent="."]
 
-[node name="Sprites" type="Node2D" parent="KinematicBody2D"]
+[node name="Animator" type="Node2D" parent="KinematicBody2D"]
 position = Vector2( 0, -32 )
 script = ExtResource( 1 )
 bodySpritePath = NodePath("Body")
 frontHandSpritePath = NodePath("HandContainer/FrontHand")
 backHandSpritePath = NodePath("HandContainer/BackHand")
 
-[node name="Body" type="AnimatedSprite" parent="KinematicBody2D/Sprites"]
+[node name="Body" type="AnimatedSprite" parent="KinematicBody2D/Animator"]
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
 frame = 10
 playing = true
 
-[node name="HandContainer" type="Node2D" parent="KinematicBody2D/Sprites"]
+[node name="HandContainer" type="Node2D" parent="KinematicBody2D/Animator"]
 
-[node name="BackHand" type="AnimatedSprite" parent="KinematicBody2D/Sprites/HandContainer"]
+[node name="BackHand" type="AnimatedSprite" parent="KinematicBody2D/Animator/HandContainer"]
 material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 z_index = -1
@@ -69,7 +71,7 @@ frame = 8
 playing = true
 offset = Vector2( 0, -4.056 )
 
-[node name="FrontHand" type="AnimatedSprite" parent="KinematicBody2D/Sprites/HandContainer"]
+[node name="FrontHand" type="AnimatedSprite" parent="KinematicBody2D/Animator/HandContainer"]
 position = Vector2( 0, 4.056 )
 z_index = 1
 z_as_relative = false
@@ -79,9 +81,9 @@ frame = 4
 playing = true
 offset = Vector2( 0, -4.056 )
 
-[node name="Hurtbox" type="KinematicBody2D" parent="KinematicBody2D/Sprites/HandContainer"]
+[node name="Hurtbox" type="KinematicBody2D" parent="KinematicBody2D/Animator/HandContainer"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Sprites/HandContainer/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Animator/HandContainer/Hurtbox"]
 position = Vector2( 33, 3 )
 shape = SubResource( 4 )
 
@@ -89,4 +91,4 @@ shape = SubResource( 4 )
 scale = Vector2( 1.724, 1.202 )
 shape = SubResource( 2 )
 
-[connection signal="transitioned" from="MobStateMachine" to="KinematicBody2D/Sprites" method="_on_MobStateMachine_transitioned"]
+[connection signal="transitioned" from="MobStateMachine" to="KinematicBody2D/Animator" method="_on_MobStateMachine_transitioned"]

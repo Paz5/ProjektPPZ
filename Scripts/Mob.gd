@@ -8,6 +8,8 @@ export var attackDelay = 1
 export var attackRange = 50
 export(NodePath) var handContainerPath
 export(NodePath) var hurtBoxPath
+export(NodePath) var animatorPath
+export(Array, NodePath) var spritePaths
 var handContainer: Node2D
 var hurtBox: CollisionShape2D
 
@@ -24,14 +26,14 @@ var mobStateMachine: StateMachine
 
 func _ready():
 	health = maxHealth
+	animator = get_node(animatorPath)
 	mobStateMachine = get_node(mobStateMachinePath)
 	handContainer = get_node(handContainerPath)
 	hurtBox = get_node(hurtBoxPath)
 
 	
-func initializeMob(team : TeamManager, target : Node2D):
+func initializeMob(team : TeamManager):
 	self.team = team
-	self.target = target
 
 	var idleState = get_node("MobIdleState")
 	idleState.mob = self
@@ -59,6 +61,7 @@ func FindNewTarget():
 	target = team.FindTarget()
 	if(target!=null):
 		mobStateMachine.UpdateAllStatesProperties({"target":target})
+		animator.target = target
 
 func damage(damage):
 	health -= damage
@@ -70,7 +73,8 @@ func onDeath():
 	team.remobeMob(self)
 	
 func setTeamMaterial(mat : Material):
-	get_node("KinematicBody2D/Sprites/Body").material = mat
-
+	for path in spritePaths:
+		get_node(path).material = mat
+	
 func _on_AttackRange_area_entered(area):
 	print(area)

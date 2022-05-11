@@ -8,7 +8,7 @@ var bodySprite: AnimatedSprite
 var frontHandSprite: AnimatedSprite
 var backHandSprite: AnimatedSprite
 
-var aimHands: bool
+var aimHands: bool = true
 var target: Node2D
 
 func _ready():
@@ -25,33 +25,46 @@ func StartAnimation(animationName: String):
 	backHandSprite.frame = 0
 
 func _process(delta):
-	if(aimHands):
-		frontHandSprite.look_at(target.global_position)
-		backHandSprite.look_at(target.global_position)
+	if(target != null):
+		if((global_position-target.global_position).x > 0):
+			bodySprite.set_flip_h(true)
+		else:
+			bodySprite.set_flip_h(false)
+		if(aimHands):
+			frontHandSprite.look_at(target.global_position - Vector2(0,100))
+			backHandSprite.look_at(target.global_position - Vector2(0,100))
+			if((global_position-target.global_position).x > 0):
+				frontHandSprite.set_flip_v(true)
+				backHandSprite.set_flip_v(true)
+			else:
+				bodySprite.set_flip_h(false)
+				frontHandSprite.set_flip_v(false)
+				backHandSprite.set_flip_v(false)
 		
 	bodySprite.z_index = global_position.y + 500
 	frontHandSprite.z_index = global_position.y + 500 + 1
 	backHandSprite.z_index = global_position.y + 500 - 1
 
-func Flip(state: bool):
-	bodySprite.set_flip_h(state)
-	frontHandSprite.set_flip_h(state)
-	backHandSprite.set_flip_h(state)
 
 func Idle():
 	StartAnimation("Idle")
+	aimHands = false
 
 func Attack():
 	StartAnimation("Attack")
+	aimHands = true
 	
 func Death():
 	StartAnimation("Death")
+	aimHands = false
 	
 func Run():
 	StartAnimation("Run")
+	aimHands = false
 	
 func Win():
 	StartAnimation("Win")
+	aimHands = false
 
 
 func _on_MobStateMachine_transitioned(stateName):
