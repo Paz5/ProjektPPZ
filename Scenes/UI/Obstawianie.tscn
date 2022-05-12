@@ -4,18 +4,12 @@
 [ext_resource path="res://Scenes/UI/Obstawianie.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Pixeled_Font_Titles.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Sprites/UI/TeamButtonRed.res" type="SpriteFrames" id=5]
+[ext_resource path="res://Sprites/UI/TeamButtonBlue.res" type="SpriteFrames" id=6]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 4 )
 VBoxContainer/constants/separation = 4
-
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0, 0.327869, 0.775956, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.699454, 0.699454, 0.699454, 1, 0.0234375, 0.267578, 1, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
-width = 1
 
 [node name="Obstawianie" type="Control"]
 anchor_left = 0.5
@@ -121,29 +115,35 @@ text = "$0
 "
 align = 1
 
-[node name="BtnRed" type="Button" parent="."]
-margin_left = 1304.0
-margin_top = 194.0
-margin_right = 1702.0
-margin_bottom = 324.0
-theme = ExtResource( 1 )
-custom_fonts/font = ExtResource( 4 )
-text = "RED"
-
 [node name="BtnBlue" type="Button" parent="."]
-margin_left = 245.0
-margin_top = 194.0
-margin_right = 643.0
-margin_bottom = 324.0
-theme = ExtResource( 1 )
+margin_left = 108.0
+margin_top = 150.0
+margin_right = 506.0
+margin_bottom = 280.0
 custom_fonts/font = ExtResource( 4 )
 text = "BLUE"
 
-[node name="Light2D" type="Light2D" parent="BtnBlue"]
-position = Vector2( 196.5, 64.5 )
-scale = Vector2( 329, 73 )
-texture = SubResource( 3 )
-color = Color( 0, 0.133333, 1, 1 )
+[node name="BtnBlueAnim" type="AnimatedSprite" parent="BtnBlue"]
+position = Vector2( 186, 62 )
+scale = Vector2( 4.85226, 5.61277 )
+frames = ExtResource( 6 )
+animation = "Default"
+playing = true
+
+[node name="BtnRed" type="Button" parent="."]
+margin_left = 1443.0
+margin_top = 150.0
+margin_right = 1841.0
+margin_bottom = 280.0
+custom_fonts/font = ExtResource( 4 )
+text = "RED"
+
+[node name="BtnRedAnim" type="AnimatedSprite" parent="BtnRed"]
+position = Vector2( 186.5, 62 )
+scale = Vector2( 4.83654, 5.61142 )
+frames = ExtResource( 5 )
+animation = "Default"
+playing = true
 
 [node name="BetLabel_Message" type="Label" parent="."]
 anchor_right = 1.0
@@ -154,18 +154,18 @@ text = "MAKE  A  BET !"
 align = 1
 
 [node name="TeamLabel" type="Label" parent="."]
-margin_left = 678.0
-margin_top = 79.0
-margin_right = 2020.0
-margin_bottom = 347.0
+margin_left = 281.0
+margin_top = 832.0
+margin_right = 1623.0
+margin_bottom = 1100.0
 custom_fonts/font = ExtResource( 3 )
 
 [connection signal="pressed" from="Box/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Box/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="value_changed" from="Box/BetSlider" to="." method="_on_HSlider_value_changed"]
-[connection signal="mouse_entered" from="BtnRed" to="." method="_on_BtnRed_mouse_entered"]
-[connection signal="mouse_exited" from="BtnRed" to="." method="_on_BtnRed_mouse_exited"]
-[connection signal="pressed" from="BtnRed" to="." method="_on_BtnRed_pressed"]
 [connection signal="mouse_entered" from="BtnBlue" to="." method="_on_BtnBlue_mouse_entered"]
 [connection signal="mouse_exited" from="BtnBlue" to="." method="_on_BtnBlue_mouse_exited"]
 [connection signal="pressed" from="BtnBlue" to="." method="_on_BtnBlue_pressed"]
+[connection signal="mouse_entered" from="BtnRed" to="." method="_on_BtnRed_mouse_entered"]
+[connection signal="mouse_exited" from="BtnRed" to="." method="_on_BtnRed_mouse_exited"]
+[connection signal="pressed" from="BtnRed" to="." method="_on_BtnRed_pressed"]

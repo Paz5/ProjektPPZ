@@ -10,7 +10,7 @@ var CurrentScene
 var Bet
 
 # Wybrany zespół który wygra
-var SelectedTeam
+var SelectedTeam 
 
 # Tablica ze scenami z których będzie losowana 1 na której odbędzie się bitwa
 # Ważne! Todo: Sceny te muszą znajdować się w tym samym katalogu
