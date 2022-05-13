@@ -17,6 +17,7 @@
 radius = 16.0
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 21.3135
 
 [node name="Mob" type="Node2D"]
 scale = Vector2( 3, 3 )
@@ -55,7 +56,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 10
+frame = 20
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="KinematicBody2D/Animator"]
@@ -67,7 +68,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 8
+frame = 18
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -77,7 +78,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 4
+frame = 14
 playing = true
 offset = Vector2( 0, -4.056 )
 

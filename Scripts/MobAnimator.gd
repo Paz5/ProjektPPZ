@@ -28,11 +28,17 @@ func _process(delta):
 	if(target != null):
 		if((global_position-target.global_position).x > 0):
 			bodySprite.set_flip_h(true)
+			frontHandSprite.set_flip_h(true)
+			backHandSprite.set_flip_h(true)
 		else:
 			bodySprite.set_flip_h(false)
+			frontHandSprite.set_flip_h(false)
+			backHandSprite.set_flip_h(false)
 		if(aimHands):
 			frontHandSprite.look_at(target.global_position - Vector2(0,100))
 			backHandSprite.look_at(target.global_position - Vector2(0,100))
+			frontHandSprite.set_flip_h(false)
+			backHandSprite.set_flip_h(false)
 			if((global_position-target.global_position).x > 0):
 				frontHandSprite.set_flip_v(true)
 				backHandSprite.set_flip_v(true)
