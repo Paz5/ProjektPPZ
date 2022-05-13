@@ -7,6 +7,10 @@
 [node name="Root" type="Node"]
 
 [node name="MainMenuScene" parent="." instance=ExtResource( 1 )]
+margin_left = -4.0
+margin_top = -4.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="Obstawianie" parent="MainMenuScene" instance=ExtResource( 2 )]
 visible = false

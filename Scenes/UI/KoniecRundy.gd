@@ -1,6 +1,7 @@
 extends Control
 
 func _ready():
+	
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
 
 func OnSceneChanged(oldScene, newScene):
@@ -11,6 +12,10 @@ func OnSceneChanged(oldScene, newScene):
 	# Mikołaj - Dodanie do profilu gracza naszą wygraną
 	# Mikołaj - Todo - sprawdzenie rezultatu rundy, chyba że będzie split na scenę z przegraną i scenę z wygraną
 	PlayerProfileManager.AddMoney(GameManager.Bet)
+
+func _process(delta):
+	pass
+	
 
 func _on_Quit_pressed():
 	get_tree().quit()

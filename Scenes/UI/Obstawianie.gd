@@ -11,13 +11,15 @@ func _process(delta):
 	if $BtnRed/BtnRedAnim.is_playing() == true:
 		if $BtnRed/BtnRedAnim.get_frame() == 10 && $BtnRed/BtnRedAnim.get_animation()=="CLick":
 			$BtnRed/BtnRedAnim.stop()
-	if $BtnBlue/BtnBlueAnim.is_playing() == true:
+	elif $BtnBlue/BtnBlueAnim.is_playing() == true:
 		if $BtnBlue/BtnBlueAnim.get_frame() == 10 && $BtnBlue/BtnBlueAnim.get_animation()=="CLick":
 			$BtnBlue/BtnBlueAnim.stop()
-	if GameManager.SelectedTeam == "Blue":
-		$BtnRed/BtnRedAnim.set_animation("Default")
-	else:
-		$BtnBlue/BtnBlueAnim.set_animation("Default")
+	#if GameManager.SelectedTeam == "Red":
+	#	$BtnBlue/BtnBlueAnim.set_animation("Hover")
+	#elif GameManager.SelectedTeam == "Blue":
+	#	$BtnRed/BtnRedAnim.set_animation("Hover")
+		
+	
 		
 	
 func OnSceneChanged(oldScene, newScene):
@@ -61,6 +63,7 @@ func _on_BtnRed_pressed():
 		GameManager.SelectedTeam = "Red"
 		$BtnRed/BtnRedAnim.set_animation("CLick")
 		$TeamLabel.set_text(GameManager.SelectedTeam)
+		$BtnBlue/BtnBlueAnim.set_animation("Default")
 		
 		
 func _on_BtnBlue_pressed():
@@ -71,6 +74,7 @@ func _on_BtnBlue_pressed():
 		GameManager.SelectedTeam = "Blue"
 		$BtnBlue/BtnBlueAnim.set_animation("CLick")
 		$TeamLabel.set_text(GameManager.SelectedTeam)
+		$BtnRed/BtnRedAnim.set_animation("Default")
 	
 # Krystian - Jeżeli najechane na button'a pojawia się animacja koloru czerwonego
 func _on_BtnRed_mouse_entered():
@@ -81,6 +85,9 @@ func _on_BtnRed_mouse_entered():
 		
 # Krystian - Jeżeli nie ma myszy na buttonie usuwa sie animacja 
 func _on_BtnRed_mouse_exited():
+	if GameManager.SelectedTeam != "Red":
+		$BtnRed/BtnRedAnim.set_animation("Default")
+
 	pass
 	
 # Krystian - Jeżeli najechane na button'a pojawia się animacja koloru niebieskiego
@@ -90,4 +97,5 @@ func _on_BtnBlue_mouse_entered():
 		$BtnBlue/BtnBlueAnim.play()
 # Krystian - Jeżeli nie ma myszy na buttonie usuwa sie animacja 
 func _on_BtnBlue_mouse_exited():
-	pass # Replace with function body.
+	if GameManager.SelectedTeam != "Blue":
+		$BtnBlue/BtnBlueAnim.set_animation("Default")

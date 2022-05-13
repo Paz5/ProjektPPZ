@@ -115,21 +115,6 @@ text = "$0
 "
 align = 1
 
-[node name="BtnBlue" type="Button" parent="."]
-margin_left = 108.0
-margin_top = 150.0
-margin_right = 506.0
-margin_bottom = 280.0
-custom_fonts/font = ExtResource( 4 )
-text = "BLUE"
-
-[node name="BtnBlueAnim" type="AnimatedSprite" parent="BtnBlue"]
-position = Vector2( 186, 62 )
-scale = Vector2( 4.85226, 5.61277 )
-frames = ExtResource( 6 )
-animation = "Default"
-playing = true
-
 [node name="BtnRed" type="Button" parent="."]
 margin_left = 1443.0
 margin_top = 150.0
@@ -142,6 +127,21 @@ text = "RED"
 position = Vector2( 186.5, 62 )
 scale = Vector2( 4.83654, 5.61142 )
 frames = ExtResource( 5 )
+animation = "Default"
+playing = true
+
+[node name="BtnBlue" type="Button" parent="."]
+margin_left = 108.0
+margin_top = 150.0
+margin_right = 506.0
+margin_bottom = 280.0
+custom_fonts/font = ExtResource( 4 )
+text = "BLUE"
+
+[node name="BtnBlueAnim" type="AnimatedSprite" parent="BtnBlue"]
+position = Vector2( 186, 62 )
+scale = Vector2( 4.85226, 5.61277 )
+frames = ExtResource( 6 )
 animation = "Default"
 playing = true
 
@@ -163,9 +163,9 @@ custom_fonts/font = ExtResource( 3 )
 [connection signal="pressed" from="Box/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Box/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="value_changed" from="Box/BetSlider" to="." method="_on_HSlider_value_changed"]
-[connection signal="mouse_entered" from="BtnBlue" to="." method="_on_BtnBlue_mouse_entered"]
-[connection signal="mouse_exited" from="BtnBlue" to="." method="_on_BtnBlue_mouse_exited"]
-[connection signal="pressed" from="BtnBlue" to="." method="_on_BtnBlue_pressed"]
 [connection signal="mouse_entered" from="BtnRed" to="." method="_on_BtnRed_mouse_entered"]
 [connection signal="mouse_exited" from="BtnRed" to="." method="_on_BtnRed_mouse_exited"]
 [connection signal="pressed" from="BtnRed" to="." method="_on_BtnRed_pressed"]
+[connection signal="mouse_entered" from="BtnBlue" to="." method="_on_BtnBlue_mouse_entered"]
+[connection signal="mouse_exited" from="BtnBlue" to="." method="_on_BtnBlue_mouse_exited"]
+[connection signal="pressed" from="BtnBlue" to="." method="_on_BtnBlue_pressed"]
