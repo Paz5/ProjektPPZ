@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/UI/Statystyka.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/SHPinscher-Regular.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 4 )
+
+[node name="Statystyka" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="BlueTeamContainer" type="VBoxContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 150.0
+margin_top = -325.0
+margin_right = 677.0
+margin_bottom = -75.0
+
+[node name="TeamLabelLabel" type="Label" parent="BlueTeamContainer"]
+margin_right = 527.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0.101961, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "BLUE TEAM"
+valign = 1
+
+[node name="TroopsAliveLabel" type="Label" parent="BlueTeamContainer"]
+margin_top = 41.0
+margin_right = 527.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 2 )
+text = "Troops Alive:"
+valign = 1
+uppercase = true
+
+[node name="TroopsLostLabel" type="Label" parent="BlueTeamContainer"]
+margin_top = 82.0
+margin_right = 527.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 3 )
+text = "Troops Lost:"
+valign = 1
+uppercase = true
+
+[node name="ChancesLabel" type="Label" parent="BlueTeamContainer"]
+margin_top = 123.0
+margin_right = 527.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 4 )
+text = "Chances of Victory :"
+valign = 1
+uppercase = true
+
+[node name="WerdyktLabel" type="Label" parent="BlueTeamContainer/ChancesLabel"]
+margin_top = 54.0
+margin_right = 519.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 1 )
+text = "
+"
+
+[node name="RedTeamContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -650.0
+margin_top = -325.0
+margin_right = -150.0
+margin_bottom = -75.0
+
+[node name="TeamLabelLabel" type="Label" parent="RedTeamContainer"]
+margin_right = 500.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "RED TEAM"
+align = 2
+
+[node name="TroopsAliveLabel" type="Label" parent="RedTeamContainer"]
+margin_top = 41.0
+margin_right = 500.0
+margin_bottom = 78.0
+custom_fonts/font = SubResource( 6 )
+text = "Troops Alive:"
+align = 2
+uppercase = true
+
+[node name="TroopsLostLabel" type="Label" parent="RedTeamContainer"]
+margin_top = 82.0
+margin_right = 500.0
+margin_bottom = 119.0
+custom_fonts/font = SubResource( 7 )
+text = "Troops Lost:"
+align = 2
+uppercase = true
+
+[node name="ChancesLabel" type="Label" parent="RedTeamContainer"]
+margin_top = 123.0
+margin_right = 500.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 8 )
+text = "Chances of Victory :"
+align = 2
+uppercase = true
+
+[node name="WerdyktLabel" type="Label" parent="RedTeamContainer/ChancesLabel"]
+margin_top = 54.0
+margin_right = 519.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 1 )
+text = "
+"

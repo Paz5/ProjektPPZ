@@ -21,32 +21,35 @@ align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -100.0
-margin_right = 100.0
-margin_bottom = 100.0
+margin_left = -196.0
+margin_top = 391.0
+margin_right = 4.0
+margin_bottom = 591.0
+rect_scale = Vector2( 2, 2 )
 alignment = 1
 
 [node name="BtnPlay" type="Button" parent="VBoxContainer"]
-margin_top = 48.0
+margin_top = 39.0
 margin_right = 200.0
-margin_bottom = 98.0
+margin_bottom = 89.0
 rect_min_size = Vector2( 0, 50 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 text = "PLAY"
 
-[node name="BtnQuit" type="Button" parent="VBoxContainer"]
-margin_top = 102.0
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 93.0
 margin_right = 200.0
-margin_bottom = 152.0
+margin_bottom = 107.0
+
+[node name="BtnQuit" type="Button" parent="VBoxContainer"]
+margin_top = 111.0
+margin_right = 200.0
+margin_bottom = 161.0
 rect_min_size = Vector2( 0, 50 )
 theme = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 text = "QUIT"
 
 [connection signal="pressed" from="VBoxContainer/BtnPlay" to="." method="_on_BtnPlay_pressed"]
-[connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]

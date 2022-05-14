@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Themes/BetScene_Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/Obstawianie.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Sprites/UI/TeamButtonRed.res" type="SpriteFrames" id=5]
 [ext_resource path="res://Sprites/UI/TeamButtonBlue.res" type="SpriteFrames" id=6]
+[ext_resource path="res://Scenes/UI/slider.png" type="Texture" id=7]
+[ext_resource path="res://Themes/Slider_texture.tres" type="StyleBox" id=8]
+[ext_resource path="res://Scenes/UI/Empty_teksturka.tres" type="StyleBox" id=9]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 4 )
@@ -70,10 +73,10 @@ color = Color( 0, 0, 0, 0.45098 )
 [node name="Confirm" type="Button" parent="Box"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 71.0
+margin_left = 36.5
 margin_top = -110.0
-margin_right = 251.0
-margin_bottom = -11.0
+margin_right = 336.5
+margin_bottom = -35.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "CONFIRM"
@@ -83,11 +86,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -240.0
+margin_left = -340.5
 margin_top = -110.0
-margin_right = -60.0
-margin_bottom = -11.0
-rect_rotation = -0.554043
+margin_right = -40.5
+margin_bottom = -35.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "CANCEL"
@@ -97,18 +99,23 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -216.5
-margin_top = -8.0
-margin_right = 228.5
-margin_bottom = 48.0
+margin_left = -289.0
+margin_top = -21.0
+margin_right = 311.0
+margin_bottom = 54.0
+custom_icons/tick = ExtResource( 7 )
+custom_icons/grabber_disabled = ExtResource( 7 )
+custom_icons/grabber_highlight = ExtResource( 7 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = ExtResource( 8 )
 ticks_on_borders = true
 
 [node name="BetLabel" type="Label" parent="Box"]
 anchor_right = 1.0
 margin_left = 0.5
-margin_top = 59.0
+margin_top = 57.0
 margin_right = 0.5
-margin_bottom = 506.0
+margin_bottom = 508.0
 custom_fonts/font = ExtResource( 3 )
 text = "$0
 
@@ -121,6 +128,11 @@ margin_top = 150.0
 margin_right = 1841.0
 margin_bottom = 280.0
 custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
 text = "RED"
 
 [node name="BtnRedAnim" type="AnimatedSprite" parent="BtnRed"]
@@ -136,6 +148,11 @@ margin_top = 150.0
 margin_right = 506.0
 margin_bottom = 280.0
 custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
 text = "BLUE"
 
 [node name="BtnBlueAnim" type="AnimatedSprite" parent="BtnBlue"]
@@ -147,18 +164,11 @@ playing = true
 
 [node name="BetLabel_Message" type="Label" parent="."]
 anchor_right = 1.0
-margin_top = 374.0
-margin_bottom = 521.0
+margin_top = 372.0
+margin_bottom = 519.0
 custom_fonts/font = ExtResource( 3 )
 text = "MAKE  A  BET !"
 align = 1
-
-[node name="TeamLabel" type="Label" parent="."]
-margin_left = 281.0
-margin_top = 832.0
-margin_right = 1623.0
-margin_bottom = 1100.0
-custom_fonts/font = ExtResource( 3 )
 
 [connection signal="pressed" from="Box/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Box/Cancel" to="." method="_on_Cancel_pressed"]

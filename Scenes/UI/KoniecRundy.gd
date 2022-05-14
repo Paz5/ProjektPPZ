@@ -17,8 +17,8 @@ func _process(delta):
 	pass
 	
 
-func _on_Quit_pressed():
-	get_tree().quit()
+func _on_BtnQuit_pressed():
+	get_tree().change_scene("res://Scenes/UI/MainMenuScene.tscn")
 
 
 func _on_BtnNextRound_pressed():
