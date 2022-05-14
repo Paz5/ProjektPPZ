@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Themes/Button_Theme_main_menu.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/UI/KoniecRundy.gd" type="Script" id=2]
+[ext_resource path="res://Fonts/Pixeled_Font_Titles.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Scenes/UI/Statystyka.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Fonts/Pixeled.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 6 )
+
+[node name="KoniecRundy" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -849, -81 )
+script = ExtResource( 2 )
+
+[node name="Statystyka" parent="." instance=ExtResource( 5 )]
+
+[node name="MessageLabel_GoodBet" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 339.0
+margin_right = 652.0
+margin_bottom = -594.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_fonts/font = ExtResource( 3 )
+text = "BID FAILED !	"
+align = 1
+
+[node name="CashLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 237.0
+margin_bottom = 339.0
+custom_colors/font_color = Color( 0.796078, 0.0901961, 0.0901961, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "-25$"
+align = 1
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -196.0
+margin_top = 391.0
+margin_right = 4.0
+margin_bottom = 591.0
+rect_scale = Vector2( 2, 2 )
+alignment = 1
+
+[node name="BtnNextRound" type="Button" parent="VContainer"]
+margin_top = 39.0
+margin_right = 200.0
+margin_bottom = 89.0
+rect_min_size = Vector2( 0, 50 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "NEXT ROUND"
+
+[node name="Label" type="Label" parent="VContainer"]
+margin_top = 93.0
+margin_right = 200.0
+margin_bottom = 107.0
+
+[node name="BtnQuit" type="Button" parent="VContainer"]
+margin_top = 111.0
+margin_right = 200.0
+margin_bottom = 161.0
+rect_min_size = Vector2( 0, 50 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "MAIN MENU"
+
+[connection signal="pressed" from="VContainer/BtnNextRound" to="." method="_on_BtnNextRound_pressed"]
+[connection signal="pressed" from="VContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
