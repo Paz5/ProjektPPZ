@@ -17,51 +17,40 @@
 radius = 16.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 21.3135
+radius = 3.735
 
-[node name="Mob" type="Node2D"]
+[node name="Mob" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
 script = ExtResource( 6 )
-moveSpeed = 3.0
-attackDelay = 5
+moveSpeed = 120.0
+attackDelay = 3
 attackRange = 125
-handContainerPath = NodePath("KinematicBody2D/Animator/HandContainer")
-hurtBoxPath = NodePath("KinematicBody2D/Animator/HandContainer/Hurtbox/CollisionShape2D")
-animatorPath = NodePath("KinematicBody2D/Animator")
-spritePaths = [ NodePath("KinematicBody2D/Animator/Body"), NodePath("KinematicBody2D/Animator/HandContainer/BackHand"), NodePath("KinematicBody2D/Animator/HandContainer/FrontHand") ]
+handContainerPath = NodePath("Animator/HandContainer")
+hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox/CollisionShape2D")
+animatorPath = NodePath("Animator")
+spritePaths = [ NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand"), NodePath("Animator/Body") ]
 mobStateMachinePath = NodePath("MobStateMachine")
-
-[node name="MobIdleState" type="Node2D" parent="."]
-script = ExtResource( 8 )
 
 [node name="MobMoveState" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
-[node name="MobAttackMeleeState" type="Node2D" parent="."]
-script = ExtResource( 7 )
-
-[node name="MobStateMachine" type="Node" parent="."]
-script = ExtResource( 10 )
-
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
-
-[node name="Animator" type="Node2D" parent="KinematicBody2D"]
+[node name="Animator" type="Node2D" parent="."]
 position = Vector2( 0, -32 )
 script = ExtResource( 1 )
 bodySpritePath = NodePath("Body")
 frontHandSpritePath = NodePath("HandContainer/FrontHand")
 backHandSpritePath = NodePath("HandContainer/BackHand")
 
-[node name="Body" type="AnimatedSprite" parent="KinematicBody2D/Animator"]
+[node name="Body" type="AnimatedSprite" parent="Animator"]
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
 frame = 20
 playing = true
 
-[node name="HandContainer" type="Node2D" parent="KinematicBody2D/Animator"]
+[node name="HandContainer" type="Node2D" parent="Animator"]
 
-[node name="BackHand" type="AnimatedSprite" parent="KinematicBody2D/Animator/HandContainer"]
+[node name="BackHand" type="AnimatedSprite" parent="Animator/HandContainer"]
 material = SubResource( 1 )
 position = Vector2( 0, 4.056 )
 z_index = -1
@@ -72,7 +61,7 @@ frame = 18
 playing = true
 offset = Vector2( 0, -4.056 )
 
-[node name="FrontHand" type="AnimatedSprite" parent="KinematicBody2D/Animator/HandContainer"]
+[node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
 position = Vector2( 0, 4.056 )
 z_index = 1
 z_as_relative = false
@@ -82,14 +71,24 @@ frame = 14
 playing = true
 offset = Vector2( 0, -4.056 )
 
-[node name="Hurtbox" type="KinematicBody2D" parent="KinematicBody2D/Animator/HandContainer"]
+[node name="Hurtbox" type="KinematicBody2D" parent="Animator/HandContainer"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D/Animator/HandContainer/Hurtbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animator/HandContainer/Hurtbox"]
 position = Vector2( 33, 3 )
 shape = SubResource( 4 )
+disabled = true
 
-[node name="MobCollision" type="CollisionShape2D" parent="KinematicBody2D"]
-scale = Vector2( 1.724, 1.202 )
+[node name="MobCollision" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.724, 0.988667 )
 shape = SubResource( 2 )
 
-[connection signal="transitioned" from="MobStateMachine" to="KinematicBody2D/Animator" method="_on_MobStateMachine_transitioned"]
+[node name="MobStateMachine" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="MobAttackMeleeState" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="MobIdleState" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[connection signal="transitioned" from="MobStateMachine" to="Animator" method="_on_MobStateMachine_transitioned"]

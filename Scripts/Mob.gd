@@ -1,5 +1,5 @@
 class_name Mob
-extends Node2D
+extends KinematicBody2D
 
 export var maxHealth = 10
 var health
