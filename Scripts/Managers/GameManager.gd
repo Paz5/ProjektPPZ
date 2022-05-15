@@ -44,12 +44,10 @@ func PlayLevel():
 	if scene == null:
 		print_debug("Nie znaleziono sceny o nazwie " + randScene + " w ściezce: " + pathToScene)
 		return
-	
-	CurrentScene = get_tree().change_scene(pathToScene)
-		
-	RoundManager.PrepareLevel()
-	#RoundManager.CurrentLevel = CurrentScene.get_node("RoundData")
 
+	var levelScene = scene.instance()
+	add_child(levelScene)
+	
 
 # Uruchamia główne menu
 func LoadMainMenu():

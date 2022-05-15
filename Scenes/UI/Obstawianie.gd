@@ -1,5 +1,8 @@
 extends Control
 
+# Mikołaj - sygnał z potwierdzeniem betu
+signal BetConfirmed
+
 #Krystian - włączanie i wyłączanie odpowiednich scen przy wejściu w scene "Obstawianie"
 func _ready():
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
@@ -21,6 +24,9 @@ func _process(delta):
 func OnSceneChanged(oldScene, newScene):
 	# Mikołaj - Ustawnienie wartości slidera na 0
 	get_node("Box/BetSlider").value = 0
+	
+	# Mikołaj - Załadowanie sceny z levelem w tle
+	GameManager.PlayLevel()
 
 # Krystian - Wrócenie  wyłączenie boxa z bettem - wybieranie drużyn
 func _on_Cancel_pressed():
@@ -53,7 +59,13 @@ func _on_Confirm_pressed():
 	# Mikołaj - Odjęcie z profilu gracza tyle ile obstawiliśmy
 	PlayerProfileManager.SpendMoney(GameManager.Bet)
 	
-	GameManager.PlayLevel()
+	# Mikołaj - Wyładowanie sceny MainMenu + emit signal
+	var obstawianieScene = get_tree().get_root().get_node("Obstawianie")
+	obstawianieScene.queue_free()
+	
+	RoundManager.PrepareLevel()
+	emit_signal("BetConfirmed")
+
 	
 #Krystian - obsługa czerwonego guzika - Pressed
 func _on_BtnRed_pressed():
