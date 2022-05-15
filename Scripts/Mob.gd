@@ -11,7 +11,7 @@ export(NodePath) var hurtBoxPath
 export(NodePath) var animatorPath
 export(Array, NodePath) var spritePaths
 var handContainer: Node2D
-var hurtBox: CollisionShape2D
+var hurtBox: Area2D
 
 
 var team: TeamManager
@@ -26,14 +26,14 @@ var mobStateMachine: StateMachine
 
 func _ready():
 	health = maxHealth
+	
+func initializeMob(team : TeamManager):
+	self.team = team
+	
 	animator = get_node(animatorPath)
 	mobStateMachine = get_node(mobStateMachinePath)
 	handContainer = get_node(handContainerPath)
 	hurtBox = get_node(hurtBoxPath)
-
-	
-func initializeMob(team : TeamManager):
-	self.team = team
 
 	var idleState = get_node("MobIdleState")
 	idleState.mob = self

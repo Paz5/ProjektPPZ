@@ -8,10 +8,14 @@ export(Array, NodePath) var teamPaths : Array
 var teams : Array
 
 func _ready():
+	var i = 0
 	for teamPath in teamPaths:
 		teams.append(get_node(teamPath))
+		get_node(teamPath).teamIndex = i
 		get_node(teamPath).StartTeam(self)
 		get_node(teamPath).spawnMobs(mobsToSpawn)
+		
+		i+= 1
 
 func FindTargetFor(targetTeam : TeamManager):
 	if(teams.has(targetTeam)):
