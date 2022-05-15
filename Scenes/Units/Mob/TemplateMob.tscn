@@ -36,9 +36,6 @@ animatorPath = NodePath("Animator")
 spritePaths = [ NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand"), NodePath("Animator/Body") ]
 mobStateMachinePath = NodePath("MobStateMachine")
 
-[node name="MobMoveState" type="Node2D" parent="."]
-script = ExtResource( 9 )
-
 [node name="Animator" type="Node2D" parent="."]
 position = Vector2( 0, -32 )
 script = ExtResource( 1 )
@@ -50,7 +47,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 19
+frame = 12
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -62,7 +59,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 17
+frame = 10
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -72,7 +69,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 13
+frame = 6
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -104,6 +101,9 @@ script = ExtResource( 7 )
 
 [node name="MobIdleState" type="Node2D" parent="."]
 script = ExtResource( 8 )
+
+[node name="MobMoveState" type="Node2D" parent="."]
+script = ExtResource( 9 )
 
 [connection signal="area_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="body_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_body_entered"]

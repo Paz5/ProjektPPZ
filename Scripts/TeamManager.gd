@@ -2,8 +2,8 @@ extends Node
 
 class_name TeamManager
 
-var teamLayerDictionary = {	0 : 0b0001010100, #niebieski hit
-							1 : 0b0010101011, #niebieski hurt
+var teamLayerDictionary = {	0 : 0b0001010100, #niebieski hit zadają obrażenia
+							1 : 0b0010101011, #niebieski hurt otrzymują obrażenia
 							2 : 0b0100010100, #czerwony hit
 							3 : 0b1000101011, #czerwony hurt
 							4 : 0b0101000100, #fioletowy hit
@@ -50,3 +50,4 @@ func remobeMob(mob):
 		
 	if(mobs.size()==0):
 		GameManager.OnAllMobsDead()
+		#emit signal zamiast wywołania funkcji

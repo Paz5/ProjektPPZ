@@ -13,7 +13,6 @@ export(Array, NodePath) var spritePaths
 var handContainer: Node2D
 var hurtBox: Area2D
 
-
 var team: TeamManager
 var target: Node2D
 var animator: MobAnimator
