@@ -24,7 +24,7 @@ func Process(delta : float) -> bool:
 	#hurtBoxCollider.disabled = true
 	.Process(delta)
 	attackTimer += delta
-	print(attackTimer)
+	#print(attackTimer)
 	if(attackTimer>attackDelay):
 		MeleeAttack()
 		attackTimer = 0.0

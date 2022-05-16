@@ -13,9 +13,11 @@ func _process(delta):
 	if(target==null):
 		FindNewTarget()
 	if(target==null):
-		mobStateMachine.Transition("MobWinState")
+		mobStateMachine.Transition("MobWinState") ## Maciej: to nie powinno tu być, bo niektórzy szybciej myślą, że wygrali niż inni
 		return
 	if((position-target.position).length()<attackRange):
 		mobStateMachine.Transition("MobAttackMeleeState")
 	else:
 		mobStateMachine.Transition("MobMoveState")
+
+

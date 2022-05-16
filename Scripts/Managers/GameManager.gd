@@ -97,6 +97,8 @@ func UnloadAllChilds():
 	for child in self.get_children():
 		child.queue_free()
 	
+	
+## Maciej: Do czego służą te sygnały? Są podobne w innych menagerach!
 func OnMobKilled(mob : Mob):
 	emit_signal("mobKilled", mob)
 	

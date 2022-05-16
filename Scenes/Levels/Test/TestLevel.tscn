@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Units/Mob/TemplateMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Levels/RoundData.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/UI/Timer2-300.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/MobManager.tscn" type="PackedScene" id=5]
@@ -32,6 +33,7 @@ offset = Vector2( 0, 47.556 )
 script = ExtResource( 3 )
 
 [node name="MobManager" parent="." instance=ExtResource( 5 )]
+mobsToSpawn = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
 
 [node name="RoundUI" type="Node" parent="."]
 

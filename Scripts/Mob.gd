@@ -62,22 +62,22 @@ func FindNewTarget():
 	if(target!=null):
 		mobStateMachine.UpdateAllStatesProperties({"target":target})
 		animator.target = target
-		target.connect("mobDied",self,"TargetDied")
+		target.connect("mobDied",self,"TargetDied") ##tu jest już mobDied i wywalało error
 
 func TargetDied():
 	target = null
 
 func DealDamage(damage) -> bool:
 	health -= damage
-	#print(health)
+	print(health)
 	if(health <= 0):
 		onDeath()
 		return true
 	return false
 
 func onDeath():
-	emit_signal("mobDied")
-	active = false
+	#emit_signal("mobDied")   ##więc musiałem wywalić to
+	#active = false    ##to naprawiło niezabijalność
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)
 	target=null
