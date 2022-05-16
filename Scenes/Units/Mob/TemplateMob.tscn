@@ -5,7 +5,7 @@
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_body.res" type="SpriteFrames" id=3]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_back.res" type="SpriteFrames" id=4]
 [ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=5]
-[ext_resource path="res://Scripts/Mob.gd" type="Script" id=6]
+[ext_resource path="res://MeleeMob.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/StateMachine/States/MobAttackMeleeState.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/StateMachine/States/MobIdleState.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/StateMachine/States/MobMoveState.gd" type="Script" id=9]
@@ -27,13 +27,12 @@ scale = Vector2( 3, 3 )
 collision_layer = 2
 collision_mask = 852
 script = ExtResource( 6 )
-moveSpeed = 120.0
-attackDelay = 3
-attackRange = 60
+moveSpeed = 75.0
+attackRange = 75
 handContainerPath = NodePath("Animator/HandContainer")
 hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
 animatorPath = NodePath("Animator")
-spritePaths = [ NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand"), NodePath("Animator/Body") ]
+spritePaths = [ NodePath("Animator/Body"), NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand") ]
 mobStateMachinePath = NodePath("MobStateMachine")
 
 [node name="Animator" type="Node2D" parent="."]
@@ -47,7 +46,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 12
+frame = 13
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -59,7 +58,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 10
+frame = 11
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -69,7 +68,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 6
+frame = 7
 playing = true
 offset = Vector2( 0, -4.056 )
 

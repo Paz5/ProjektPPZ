@@ -33,28 +33,9 @@ func initializeMob(team : TeamManager):
 	mobStateMachine = get_node(mobStateMachinePath)
 	handContainer = get_node(handContainerPath)
 	hurtBox = get_node(hurtBoxPath)
-
-	var idleState = get_node("MobIdleState")
-	idleState.mob = self
-	var moveState = get_node("MobMoveState")
-	moveState.mob = self
-	var attackState = get_node("MobAttackMeleeState")
-	attackState.mob = self
-	mobStateMachine.AddState(idleState)
-	mobStateMachine.AddState(moveState)
-	mobStateMachine.AddState(attackState)
 	
 func _process(delta):
-	mobStateMachine.Run(delta)
-	if(target==null):
-		FindNewTarget()
-	if(target==null):
-		mobStateMachine.Transition("MobIdleState")
-		return
-	if((position-target.position).length()<attackRange):
-		mobStateMachine.Transition("MobAttackMeleeState")
-	else:
-		mobStateMachine.Transition("MobMoveState")
+	pass
 
 func FindNewTarget():
 	target = team.FindTarget()
