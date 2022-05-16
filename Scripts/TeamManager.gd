@@ -47,7 +47,10 @@ func spawnMobs(newMobs : Array):
 		mobInstance.initializeMob(self)
 
 		var viewportSize = get_viewport().size
-		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
+		if teamIndex==0:
+			mobInstance.position = Vector2(rng.randf_range(viewportSize.x/13,viewportSize.x/3),rng.randf_range(viewportSize.y/3,viewportSize.y-(viewportSize.y/13)))
+		else :
+			mobInstance.position = Vector2(rng.randf_range(viewportSize.x-(viewportSize.x/3),viewportSize.x-(viewportSize.x/13)),rng.randf_range(viewportSize.y/3,viewportSize.y-(viewportSize.y/13)))
 		mobInstance.setTeamMaterial(teamMaterial)
 		var id = teamIndex * 2
 

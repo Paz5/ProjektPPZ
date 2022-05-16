@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Units/Mob/TemplateMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Levels/RoundData.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/UI/Timer2-300.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/MobManager.tscn" type="PackedScene" id=5]
@@ -36,6 +37,7 @@ script = ExtResource( 3 )
 blueTeamSpawn = NodePath("../SpawnPoints/BlueTeamSpawn")
 
 [node name="MobManager" parent="." instance=ExtResource( 5 )]
+mobsToSpawn = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
 
 [node name="SpawnPoints" type="Node" parent="."]
 
