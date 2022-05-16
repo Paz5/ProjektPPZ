@@ -38,6 +38,7 @@ func Transition(stateName: String,override = false) -> void:
 	
 	if(states[stateName] != activeState):
 		emit_signal("transitioned",stateName)
+		print("transitioned: "+stateName) ##debug
 	
 	activeState.End()
 	activeState = states[stateName]

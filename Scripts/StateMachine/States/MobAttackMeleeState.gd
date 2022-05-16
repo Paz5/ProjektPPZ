@@ -18,12 +18,13 @@ func UpdateProperties(msg := {}) -> void:
 	
 func Begin():
 	.Begin()
-	attackTimer = -0.7
+	attackTimer = 0.5
 	
 func Process(delta : float) -> bool:
 	#hurtBoxCollider.disabled = true
 	.Process(delta)
 	attackTimer += delta
+	print(attackTimer)
 	if(attackTimer>attackDelay):
 		MeleeAttack()
 		attackTimer = 0.0

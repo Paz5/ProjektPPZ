@@ -49,6 +49,8 @@ func _process(delta):
 				backHandSprite.set_flip_v(false)
 		else:
 			handContainer.set_rotation_degrees(0)
+			frontHandSprite.set_flip_v(false)
+			backHandSprite.set_flip_v(false)
 		
 	bodySprite.z_index = global_position.y + 500
 	frontHandSprite.z_index = global_position.y + 500 + 1

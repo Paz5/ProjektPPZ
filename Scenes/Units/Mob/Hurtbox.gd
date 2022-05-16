@@ -3,25 +3,33 @@ extends Area2D
 export var entryDamage: float
 export(NodePath) var thisMobPath
 var thisMob: Mob
-var enemyMob = null
+var enemyMobs = []
 
 func _ready():
 	thisMob = get_node(thisMobPath)
 
 func _on_Hurtbox_area_entered(area):
 	print(area.get_parent().name)
-	if area.get_parent().active:
-		enemyMob = area.get_parent()
+	if (area.get_parent().active) && (!enemyMobs.has(area.get_parent())):
+		enemyMobs.append(area.get_parent()) 
+		
 	
 	
 func deal_damage():
-	if enemyMob!=null:
-		if enemyMob.active:
-			enemyMob.DealDamage(entryDamage)
-		else:
-			enemyMob=null
+	if enemyMobs.size()!=0:
+		for m in enemyMobs:
+			if m.health>0:
+				m.DealDamage(entryDamage)
+			
+			
 
 
 func _on_Hurtbox_area_exited(area):
-	if area.get_parent()==enemyMob:
-		enemyMob=null
+	if enemyMobs.has(area.get_parent()):
+		enemyMobs.erase(area.get_parent())
+		
+
+##debug
+func printAllEnemiesInHurtRange():
+	for m in enemyMobs:
+		print(m.name)

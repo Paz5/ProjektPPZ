@@ -1,7 +1,7 @@
 class_name Mob
 extends KinematicBody2D
 
-export var maxHealth = 10
+export var maxHealth = 100
 var health
 export var moveSpeed = 1.0
 export var attackDelay = 0.8
@@ -68,7 +68,8 @@ func TargetDied():
 
 func DealDamage(damage) -> bool:
 	health -= damage
-	if(health < 0):
+	#print(health)
+	if(health <= 0):
 		onDeath()
 		return true
 	return false
