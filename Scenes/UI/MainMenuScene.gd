@@ -11,4 +11,5 @@ func _ready():
 func _on_BtnPlay_pressed():
 	#Tymczasowe zmiana sceny na scene gry/wyboru 
 	GameManager.LoadBetScene()
+	GameManager.PlayLevel()
 
