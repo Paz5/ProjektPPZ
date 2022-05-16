@@ -29,6 +29,10 @@ func FindTarget():
 	
 func getRandomMob():
 	return mobs[rng.randf_range(0,mobs.size())]
+	
+func setAllMobsAcctivity(isActive: bool):
+	for mob in mobs:
+		mob.active = isActive
 
 func spawnMobs(newMobs : Array):
 	for newMob in newMobs:

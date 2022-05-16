@@ -46,7 +46,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 13
+frame = 19
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -58,7 +58,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 11
+frame = 17
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -68,7 +68,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 7
+frame = 13
 playing = true
 offset = Vector2( 0, -4.056 )
 

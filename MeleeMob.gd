@@ -13,6 +13,7 @@ func initializeMob(team : TeamManager):
 	
 func _process(delta):
 	._process(delta)
+	if(!active): return
 	mobStateMachine.Run(delta)
 	if(target==null):
 		FindNewTarget()

@@ -6,6 +6,7 @@ var health
 export var moveSpeed = 1.0
 export var attackDelay = 1
 export var attackRange = 50
+var active = false
 export(NodePath) var handContainerPath
 export(NodePath) var hurtBoxPath
 export(NodePath) var animatorPath
@@ -35,6 +36,7 @@ func initializeMob(team : TeamManager):
 	hurtBox = get_node(hurtBoxPath)
 	
 func _process(delta):
+	if(!active): return
 	pass
 
 func FindNewTarget():

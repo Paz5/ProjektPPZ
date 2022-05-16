@@ -16,6 +16,14 @@ func _ready():
 		get_node(teamPath).spawnMobs(mobsToSpawn)
 		
 		i+= 1
+	
+	connect("BetConfirmed",self,"OnBetConfirmed")
+		
+
+func OnBetConfirmed():
+	for team in teams:
+		team.setAllMobsAcctivity(true)
+	pass
 
 func FindTargetFor(targetTeam : TeamManager):
 	if(teams.has(targetTeam)):
