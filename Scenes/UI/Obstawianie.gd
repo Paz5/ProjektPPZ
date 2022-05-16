@@ -1,8 +1,5 @@
 extends Control
 
-# Mikołaj - sygnał z potwierdzeniem betu
-signal BetConfirmed
-
 #Krystian - włączanie i wyłączanie odpowiednich scen przy wejściu w scene "Obstawianie"
 func _ready():
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
@@ -64,7 +61,7 @@ func _on_Confirm_pressed():
 	obstawianieScene.queue_free()
 	
 	RoundManager.PrepareLevel()
-	emit_signal("BetConfirmed")
+	GameManager.OnBetConfirmed()
 
 	
 #Krystian - obsługa czerwonego guzika - Pressed

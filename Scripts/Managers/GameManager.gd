@@ -21,6 +21,7 @@ var RoundScenes = ["TestLevel.tscn"]
 signal SceneChanged(oldScene, newScene)
 signal mobKilled(mob)
 signal allMobsDead
+signal BetConfirmed
 
 func _ready():
 	# Początkowy stan gry, aktualnie startuje z menu głównego, jeśli w przyszłości zrobimy splash screeny to trzeba zmienic tu na splashe
@@ -71,3 +72,6 @@ func OnMobKilled(mob : Mob):
 	
 func OnAllMobsDead():
 	emit_signal("allMobsDead")
+	
+func OnBetConfirmed():
+	emit_signal("BetConfirmed")
