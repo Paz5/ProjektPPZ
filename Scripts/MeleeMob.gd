@@ -7,9 +7,12 @@ func initializeMob(team : TeamManager):
 	moveState.mob = self
 	var attackState = get_node("MobAttackMeleeState")
 	attackState.mob = self
+	var deathState = get_node("MobDeathState")
+	deathState.mob = self
 	mobStateMachine.AddState(idleState)
 	mobStateMachine.AddState(moveState)
 	mobStateMachine.AddState(attackState)
+	mobStateMachine.AddState(deathState)
 	
 func _process(delta):
 	._process(delta)

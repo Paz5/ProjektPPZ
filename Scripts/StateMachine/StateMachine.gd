@@ -4,12 +4,14 @@ extends Node
 var activeState: State = null
 var defaultState: State = null
 var states: Dictionary
+var readyToTransition = false
 
 signal transitioned(stateName)
 
 func Run(delta: float) -> void:
-	if(activeState.Process(delta)):
-		Transition(defaultState.get_class())
+	#if(activeState.Process(delta)):
+		#Transition(defaultState.get_class())
+	readyToTransition = activeState.Process(delta)
 	
 func AddState(newState: State, msg : = {}) -> void:
 	if(states.has(newState.get_class())):
@@ -27,8 +29,11 @@ func UpdateAllStatesProperties(msg := {}):
 		state.UpdateProperties(msg)
 		
 
-func Transition(stateName: String) -> void:
+func Transition(stateName: String,override = false) -> void:
 	if not states.has(stateName):
+		return
+		
+	if(!readyToTransition):
 		return
 	
 	if(states[stateName] != activeState):

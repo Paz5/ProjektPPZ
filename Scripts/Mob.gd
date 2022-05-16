@@ -48,14 +48,16 @@ func FindNewTarget():
 		mobStateMachine.UpdateAllStatesProperties({"target":target})
 		animator.target = target
 
-func damage(damage):
+func DealDamage(damage):
 	health -= damage
 	if(health < 0):
 		onDeath()
 
 func onDeath():
-	GameManager.OnMobKilled(self)
-	team.remobeMob(self)
+	emit_signal("mobDied",self)
+	mobStateMachine.Transition("MobDeathState",true)
+	#GameManager.OnMobKilled(self)
+	#team.mobDied(self)
 	
 func setTeamMaterial(mat : Material):
 	for path in spritePaths:

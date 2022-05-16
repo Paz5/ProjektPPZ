@@ -1,15 +1,15 @@
 extends Node
 
 class_name TeamManager
-
-var teamLayerDictionary = {	0 : 0b0001010100, #niebieski hit zadają obrażenia
-							1 : 0b0010101011, #niebieski hurt otrzymują obrażenia
-							2 : 0b0100010100, #czerwony hit
-							3 : 0b1000101011, #czerwony hurt
-							4 : 0b0101000100, #fioletowy hit
-							5 : 0b1010001011, #fioletowy hurt
-							6 : 0b0101010000, #żółty hit
-							7 : 0b1010100011, #żółty hurt
+								# 12345678
+var teamLayerDictionary = {	0 : 0b10101000, #czerwony hit otrzymują obrażenia
+							1 : 0b01010100, #czerwony hurt zadają obrażenia
+							2 : 0b10100010, #niebieski hit
+							3 : 0b01010001, #niebieski hurt
+							4 : 0b10001010, #fioletowy hit
+							5 : 0b01000101, #fioletowy hurt
+							6 : 0b00101010, #żółty hit
+							7 : 0b00010101, #żółty hurt
 							}
 
 export var teamMaterial : Material
@@ -45,10 +45,14 @@ func spawnMobs(newMobs : Array):
 		var viewportSize = get_viewport().size
 		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
 		mobInstance.setTeamMaterial(teamMaterial)
-		mobInstance.hurtBox.set_collision_layer(pow(2, teamIndex))
-		mobInstance.hurtBox.set_collision_mask(teamLayerDictionary.get(teamIndex))
+		var id = teamIndex * 2
+
+		mobInstance.hitBox.set_collision_layer(pow(2, id))
+		mobInstance.hurtBox.set_collision_layer(pow(2, id+1))
+		mobInstance.hitBox.set_collision_mask(teamLayerDictionary.get(id))
+		mobInstance.hurtBox.set_collision_mask(teamLayerDictionary.get(id+1))
 	
-func remobeMob(mob):
+func mobDied(mob):
 	if(mobs.has(mob)):
 		mobs.remove(mob)
 		

@@ -1,16 +1,17 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_body.res" type="SpriteFrames" id=3]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_back.res" type="SpriteFrames" id=4]
 [ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=5]
-[ext_resource path="res://MeleeMob.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/MeleeMob.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/StateMachine/States/MobAttackMeleeState.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/StateMachine/States/MobIdleState.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/StateMachine/States/MobMoveState.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/StateMachine/StateMachine.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Units/Mob/Hurtbox.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/StateMachine/States/MobDeathState.gd" type="Script" id=12]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -24,10 +25,11 @@ radius = 3.735
 
 [node name="Mob" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
-collision_layer = 2
-collision_mask = 852
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 6 )
-moveSpeed = 75.0
+maxHealth = 1
+moveSpeed = 180.0
 attackRange = 75
 handContainerPath = NodePath("Animator/HandContainer")
 hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
@@ -48,7 +50,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 9
+frame = 3
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -60,7 +62,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 7
+frame = 1
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -70,7 +72,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 3
+frame = 18
 playing = true
 offset = Vector2( 0, -4.056 )
 
@@ -78,6 +80,7 @@ offset = Vector2( 0, -4.056 )
 collision_layer = 2
 collision_mask = 852
 script = ExtResource( 11 )
+entryDamage = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animator/HandContainer/Hurtbox"]
 position = Vector2( 24.3333, 8.66667 )
@@ -106,6 +109,10 @@ script = ExtResource( 8 )
 [node name="MobMoveState" type="Node2D" parent="."]
 script = ExtResource( 9 )
 
+[node name="MobDeathState" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[connection signal="mobDiead" from="." to="Animator" method="_on_Mob_mobDiead"]
 [connection signal="area_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="body_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_body_entered"]
 [connection signal="transitioned" from="MobStateMachine" to="Animator" method="_on_MobStateMachine_transitioned"]
