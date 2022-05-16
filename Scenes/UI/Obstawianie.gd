@@ -23,7 +23,7 @@ func OnSceneChanged(oldScene, newScene):
 	get_node("Box/BetSlider").value = 0
 	
 	# Mikołaj - Załadowanie sceny z levelem w tle
-	GameManager.PlayLevel()
+	#GameManager.PlayLevel()   - Maciej to usunął i jest git
 
 # Krystian - Wrócenie  wyłączenie boxa z bettem - wybieranie drużyn
 func _on_Cancel_pressed():

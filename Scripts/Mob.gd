@@ -4,7 +4,7 @@ extends KinematicBody2D
 export var maxHealth = 10
 var health
 export var moveSpeed = 1.0
-export var attackDelay = 1
+export var attackDelay = 0.8
 export var attackRange = 50
 var active = false
 export(NodePath) var handContainerPath
@@ -78,6 +78,7 @@ func onDeath():
 	active = false
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)
+	target=null
 	
 func setTeamMaterial(mat : Material):
 	for path in spritePaths:

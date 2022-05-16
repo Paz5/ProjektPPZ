@@ -1,14 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Units/Mob/TemplateMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Levels/RoundData.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/UI/Timer2-300.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/MobManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=6]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 192.25, 375.5 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 350
@@ -34,20 +30,8 @@ offset = Vector2( 0, 47.556 )
 
 [node name="RoundData" type="Node" parent="."]
 script = ExtResource( 3 )
-blueTeamSpawn = NodePath("../SpawnPoints/BlueTeamSpawn")
 
 [node name="MobManager" parent="." instance=ExtResource( 5 )]
-mobsToSpawn = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
-
-[node name="SpawnPoints" type="Node" parent="."]
-
-[node name="RedTeamSpawn" type="CollisionShape2D" parent="SpawnPoints"]
-position = Vector2( 189.75, 700.5 )
-shape = SubResource( 2 )
-
-[node name="BlueTeamSpawn" type="CollisionShape2D" parent="SpawnPoints"]
-position = Vector2( 1722, 700.5 )
-shape = SubResource( 2 )
 
 [node name="RoundUI" type="Node" parent="."]
 
