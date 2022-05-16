@@ -28,7 +28,9 @@ func FindTarget():
 	return mobManager.FindTargetFor(self)
 	
 func getRandomMob():
-	return mobs[rng.randf_range(0,mobs.size())]
+	if(mobs.size()>0):
+		return mobs[rng.randf_range(0,mobs.size())]
+	return null
 	
 func setAllMobsAcctivity(isActive: bool):
 	for mob in mobs:
@@ -54,7 +56,7 @@ func spawnMobs(newMobs : Array):
 	
 func mobDied(mob):
 	if(mobs.has(mob)):
-		mobs.remove(mob)
+		mobs.erase(mob)
 		
 	if(mobs.size()==0):
 		GameManager.OnAllMobsDead()

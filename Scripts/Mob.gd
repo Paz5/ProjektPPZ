@@ -20,7 +20,7 @@ var team: TeamManager
 var target: Node2D
 var animator: MobAnimator
 
-signal mobDiead
+signal mobDied
 signal mobNeedsTarget
 
 export(NodePath) var mobStateMachinePath
@@ -38,6 +38,20 @@ func initializeMob(team : TeamManager):
 	hurtBox = get_node(hurtBoxPath)
 	hitBox = get_node(hitBoxPath)
 	
+	var idleState = get_node("MobIdleState")
+	idleState.mob = self
+	var moveState = get_node("MobMoveState")
+	moveState.mob = self
+	var deathState = get_node("MobDeathState")
+	deathState.mob = self
+	var winState = get_node("MobWinState")
+	winState.mob = self
+
+	mobStateMachine.AddState(idleState)
+	mobStateMachine.AddState(moveState)
+	mobStateMachine.AddState(winState)
+	mobStateMachine.AddState(deathState)
+	
 func _process(delta):
 	if(!active): return
 	pass
@@ -47,18 +61,23 @@ func FindNewTarget():
 	if(target!=null):
 		mobStateMachine.UpdateAllStatesProperties({"target":target})
 		animator.target = target
+		connect("mobDied",target,"TargetDied")
 
-func DealDamage(damage):
+func TargetDied():
+	target = null
+
+func DealDamage(damage) -> bool:
 	health -= damage
 	if(health < 0):
 		onDeath()
+		return true
+	return false
 
 func onDeath():
 	emit_signal("mobDied",self)
 	active = false
 	mobStateMachine.Transition("MobDeathState",true)
-	#GameManager.OnMobKilled(self)
-	#team.mobDied(self)
+	team.mobDied(self)
 	
 func setTeamMaterial(mat : Material):
 	for path in spritePaths:

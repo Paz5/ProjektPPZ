@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Scenes/Units/Mob/Hurtbox.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/StateMachine/States/MobDeathState.gd" type="Script" id=12]
 [ext_resource path="res://icon.png" type="Texture" id=13]
+[ext_resource path="res://MobWinState.gd" type="Script" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -51,7 +52,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 11
+frame = 17
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -63,7 +64,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 9
+frame = 15
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -71,14 +72,15 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 5
+frame = 11
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]
 collision_layer = 2
 collision_mask = 852
 script = ExtResource( 11 )
-entryDamage = 5.0
+entryDamage = 3.0
+thisMobPath = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animator/HandContainer/Hurtbox"]
 position = Vector2( 25.381, 0 )
@@ -115,7 +117,9 @@ script = ExtResource( 9 )
 [node name="MobDeathState" type="Node2D" parent="."]
 script = ExtResource( 12 )
 
-[connection signal="mobDiead" from="." to="Animator" method="_on_Mob_mobDiead"]
+[node name="MobWinState" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
 [connection signal="area_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="body_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_body_entered"]
 [connection signal="transitioned" from="MobStateMachine" to="Animator" method="_on_MobStateMachine_transitioned"]
