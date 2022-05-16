@@ -13,3 +13,7 @@ func _on_BtnPlay_pressed():
 	GameManager.LoadBetScene()
 	GameManager.PlayLevel()
 
+
+# Wyjście z gry
+func _on_BtnQuit_pressed():
+	get_tree().quit()

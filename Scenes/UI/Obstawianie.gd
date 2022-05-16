@@ -71,7 +71,7 @@ func _on_BtnRed_pressed():
 		get_node("Box").show()
 		get_node("Blue_Rectangle").hide()
 		GameManager.SelectedTeam = "Red"
-		GameManager.SelectedTeamIndex = 0;
+		GameManager.SelectedTeamIndex = 1;
 		$BtnRed/BtnRedAnim.set_animation("CLick")
 		$BtnBlue/BtnBlueAnim.set_animation("Default")
 		$BtnBlue.set_disabled(true)
@@ -84,7 +84,7 @@ func _on_BtnBlue_pressed():
 		get_node("Box").show()
 		get_node("Red_Rectangle").hide()
 		GameManager.SelectedTeam = "Blue"
-		GameManager.SelectedTeamIndex = 1;
+		GameManager.SelectedTeamIndex = 0;
 		$BtnBlue/BtnBlueAnim.set_animation("CLick")
 		$BtnRed/BtnRedAnim.set_animation("Default")
 		$BtnBlue.set_disabled(true)

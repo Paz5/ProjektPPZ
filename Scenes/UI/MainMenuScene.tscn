@@ -53,3 +53,4 @@ custom_fonts/font = ExtResource( 2 )
 text = "QUIT"
 
 [connection signal="pressed" from="VBoxContainer/BtnPlay" to="." method="_on_BtnPlay_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
