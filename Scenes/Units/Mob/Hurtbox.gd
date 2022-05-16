@@ -9,9 +9,10 @@ func _ready():
 	thisMob = get_node(thisMobPath)
 
 func _on_Hurtbox_area_entered(area):
-	print(area.get_parent().name)
-	if (area.get_parent().active) && (!enemyMobs.has(area.get_parent())):
-		enemyMobs.append(area.get_parent()) 
+	if area.get_parent().team.teamIndex!=thisMob.team.teamIndex:
+		print(area.get_parent().name)
+		if (area.get_parent().active) && (!enemyMobs.has(area.get_parent())):
+			enemyMobs.append(area.get_parent()) 
 		
 	
 	
@@ -20,6 +21,9 @@ func deal_damage():
 		for m in enemyMobs:
 			if m.health>0:
 				m.DealDamage(entryDamage)
+			else:
+				m.onDeath()
+				enemyMobs.erase(m)
 			
 			
 

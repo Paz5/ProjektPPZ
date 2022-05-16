@@ -29,6 +29,7 @@ var mobStateMachine: StateMachine
 func _ready():
 	health = maxHealth
 	
+	
 func initializeMob(team : TeamManager):
 	self.team = team
 	
