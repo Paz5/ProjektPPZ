@@ -1,9 +1,11 @@
 class_name MobAnimator
 extends Node2D
 
+export(NodePath) var handContainerPath
 export(NodePath) var bodySpritePath
 export(NodePath) var frontHandSpritePath
 export(NodePath) var backHandSpritePath
+var handContainer: Node2D
 var bodySprite: AnimatedSprite
 var frontHandSprite: AnimatedSprite
 var backHandSprite: AnimatedSprite
@@ -15,6 +17,7 @@ func _ready():
 	bodySprite = get_node(bodySpritePath)
 	frontHandSprite = get_node(frontHandSpritePath)
 	backHandSprite = get_node(backHandSpritePath)
+	handContainer = get_node(handContainerPath)
 
 func StartAnimation(animationName: String):
 	bodySprite.animation = animationName
@@ -35,17 +38,17 @@ func _process(delta):
 			frontHandSprite.set_flip_h(false)
 			backHandSprite.set_flip_h(false)
 		if(aimHands):
-			frontHandSprite.look_at(target.global_position - Vector2(0,100))
-			backHandSprite.look_at(target.global_position - Vector2(0,100))
 			frontHandSprite.set_flip_h(false)
 			backHandSprite.set_flip_h(false)
+			handContainer.look_at(target.global_position - Vector2(0,100))
 			if((global_position-target.global_position).x > 0):
 				frontHandSprite.set_flip_v(true)
 				backHandSprite.set_flip_v(true)
 			else:
-				bodySprite.set_flip_h(false)
 				frontHandSprite.set_flip_v(false)
 				backHandSprite.set_flip_v(false)
+		else:
+			handContainer.set_rotation_degrees(0)
 		
 	bodySprite.z_index = global_position.y + 500
 	frontHandSprite.z_index = global_position.y + 500 + 1

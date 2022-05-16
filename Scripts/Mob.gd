@@ -9,10 +9,12 @@ export var attackRange = 50
 var active = false
 export(NodePath) var handContainerPath
 export(NodePath) var hurtBoxPath
+export(NodePath) var hitBoxPath
 export(NodePath) var animatorPath
 export(Array, NodePath) var spritePaths
 var handContainer: Node2D
 var hurtBox: Area2D
+var hitBox: Area2D
 
 var team: TeamManager
 var target: Node2D
@@ -34,6 +36,7 @@ func initializeMob(team : TeamManager):
 	mobStateMachine = get_node(mobStateMachinePath)
 	handContainer = get_node(handContainerPath)
 	hurtBox = get_node(hurtBoxPath)
+	hitBox = get_node(hitBoxPath)
 	
 func _process(delta):
 	if(!active): return
