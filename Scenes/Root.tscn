@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/UI/MainMenuScene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/UI/Obstawianie.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/KoniecRundy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/UI/Statystyka.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/UI/Przegrana.tscn" type="PackedScene" id=4]
 
 [node name="Root" type="Node"]
 
@@ -16,8 +16,8 @@ margin_bottom = -4.0
 [node name="Obstawianie" parent="MainMenuScene" instance=ExtResource( 2 )]
 visible = false
 
-[node name="KoniecRundy" parent="MainMenuScene" instance=ExtResource( 3 )]
+[node name="KoniecRundyWygrana" parent="MainMenuScene" instance=ExtResource( 3 )]
 visible = false
 
-[node name="Statystyka" parent="MainMenuScene" instance=ExtResource( 5 )]
+[node name="KoniecRundyPrzegrana" parent="MainMenuScene" instance=ExtResource( 4 )]
 visible = false
