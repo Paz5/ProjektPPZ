@@ -17,7 +17,7 @@ func _ready():
 		
 		i+= 1
 	
-	connect("BetConfirmed",self,"OnBetConfirmed")
+	GameManager.connect("BetConfirmed",self,"OnBetConfirmed")
 		
 
 func OnBetConfirmed():
