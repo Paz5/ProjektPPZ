@@ -55,6 +55,7 @@ func DealDamage(damage):
 
 func onDeath():
 	emit_signal("mobDied",self)
+	active = false
 	mobStateMachine.Transition("MobDeathState",true)
 	#GameManager.OnMobKilled(self)
 	#team.mobDied(self)

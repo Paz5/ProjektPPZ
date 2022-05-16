@@ -5,6 +5,7 @@ var attackTimer = 0.0
 var attackDelay
 var handContainer
 var hurtBox
+var hurtBoxCollider : CollisionShape2D
 
 func get_class(): return "MobAttackMeleeState"
 
@@ -13,12 +14,14 @@ func UpdateProperties(msg := {}) -> void:
 	handContainer = mob.handContainer
 	attackDelay = mob.attackDelay
 	hurtBox = mob.hurtBox
+	hurtBoxCollider = hurtBox.get_child(0)
 	
 func Begin():
 	.Begin()
 	attackTimer = 0.0
 	
 func Process(delta : float) -> bool:
+	hurtBoxCollider.disabled = true
 	.Process(delta)
 	attackTimer += delta
 	if(attackTimer>attackDelay):
@@ -28,6 +31,7 @@ func Process(delta : float) -> bool:
 	return false
 	
 func MeleeAttack():
+	hurtBoxCollider.disabled = false
 	pass
 	
 func End():

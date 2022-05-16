@@ -28,6 +28,7 @@ func StartAnimation(animationName: String):
 	backHandSprite.frame = 0
 
 func _process(delta):
+	aimHands = true
 	if(target != null):
 		if((global_position-target.global_position).x > 0):
 			bodySprite.set_flip_h(true)
