@@ -18,7 +18,7 @@ var mobManager
 var mobs : Array
 var rng = RandomNumberGenerator.new()
 
-signal teamDiead
+signal teamDied(teamIndex)
 
 func _init():
 	rng.randomize()
@@ -47,10 +47,7 @@ func spawnMobs(newMobs : Array):
 		mobInstance.initializeMob(self)
 
 		var viewportSize = get_viewport().size
-		if teamIndex==0:
-			mobInstance.position = Vector2(rng.randf_range(viewportSize.x/13,viewportSize.x/3),rng.randf_range(viewportSize.y/3,viewportSize.y-(viewportSize.y/13)))
-		else :
-			mobInstance.position = Vector2(rng.randf_range(viewportSize.x-(viewportSize.x/3),viewportSize.x-(viewportSize.x/13)),rng.randf_range(viewportSize.y/3,viewportSize.y-(viewportSize.y/13)))
+		mobInstance.position = Vector2(rng.randf_range(0,viewportSize.x),rng.randf_range(0,viewportSize.y))
 		mobInstance.setTeamMaterial(teamMaterial)
 		var id = teamIndex * 2
 
@@ -64,4 +61,4 @@ func mobDied(mob):
 		mobs.erase(mob)
 		
 	if(mobs.size()==0):
-		emit_signal("teamDiead",teamIndex,self)
+		emit_signal("teamDied", teamIndex)

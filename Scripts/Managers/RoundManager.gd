@@ -67,8 +67,12 @@ func PrepareLevel():
 	timerStarted = true
 	timerText = CurrentLevel.GetTimerObject()
 
+	SubscribeSignal(CurrentLevel.GetMobManager())
+
 # Resetuje wszystkie zmienne - należy wywołać po zakończeniu rundy
 func Reset():
+	UnsinscribeSignal(CurrentLevel.GetMobManager())
+	
 	redTeamLostUnits = 0
 	redTeamAliveUnits = 0
 	
@@ -80,6 +84,26 @@ func Reset():
 	
 	CurrentLevel = null
 
+# Tworzy nasłuch na sygnału teamów
+func SubscribeSignal(var mobManager):
+	for team in mobManager.teams:
+		team.connect ("teamDied", self, "OnteamDied")
+	
+# Odłącza nasłuch na sygnały z teamów po zakończeniu rundy	
+func UnsinscribeSignal(var mobManager):
+	for team in mobManager.teams:
+		team.disconnect ("teamDied", self, "OnteamDied")
+
 # Todo - Sprawdzenie do którego zespołu należał mob
 func OnMobKilled(mob):
 	print(mob)
+	
+func OnteamDied(teamIndex):
+	var wonBet = GameManager.SelectedTeamIndex == teamIndex
+	
+	if(wonBet):
+		PlayerProfileManager.AddMoney(GameManager.Bet * 2)
+	
+	GameManager.Bet = 0
+	GameManager.LoadEndRoundScene(wonBet)
+

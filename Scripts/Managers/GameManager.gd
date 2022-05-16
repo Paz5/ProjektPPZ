@@ -10,7 +10,9 @@ var CurrentScene
 var Bet
 
 # Wybrany zespół który wygra
-var SelectedTeam 
+var SelectedTeam
+# Todo - zamienić SelectedTeamIndex na SelectedTeam
+var SelectedTeamIndex 
 
 # Tablica ze scenami z których będzie losowana 1 na której odbędzie się bitwa
 # Ważne! Todo: Sceny te muszą znajdować się w tym samym katalogu
@@ -63,9 +65,37 @@ func LoadBetScene():
 	emit_signal("SceneChanged", "MainMenuScene", "Obstawianie")
 	
 # Ładowanie sceny z końcem rundy
-func LoadEndRoundScene():
-	get_tree().change_scene("res://Scenes/UI/KoniecRundy.tscn")
-	emit_signal("SceneChanged", "Obstawianie", "KoniecRundy")
+func LoadEndRoundScene(var roundWon):
+	
+	RoundManager.Reset()
+	
+	var endScene = null
+	
+	if (roundWon):
+		endScene = ResourceLoader.load("res://Scenes/UI/Przegrana.tscn")
+		emit_signal("SceneChanged", "Runda", "KoniecRundyWygrana")
+	else:
+		endScene = ResourceLoader.load("res://Scenes/UI/Przegrana.tscn")
+		emit_signal("SceneChanged", "Runda", "KoniecRundyPrzegrana")
+		
+	if endScene == null:
+		print_debug("Nie znaleziono sceny o nazwie " + endScene + " w ściezce: res://Scenes/UI/")
+		return
+		
+	var t = Timer.new()
+	t.set_wait_time(3)
+	t.set_one_shot(true)
+	self.add_child(t)
+	t.start()
+	yield(t, "timeout")
+
+	var instanceScene = endScene.instance()
+	add_child(instanceScene)	
+
+# Zwalnia z pamięci wszystkie instacjonowane sceny tworzone w GameManagerze	
+func UnloadAllChilds():
+	for child in self.get_children():
+		child.queue_free()
 	
 func OnMobKilled(mob : Mob):
 	emit_signal("mobKilled", mob)
