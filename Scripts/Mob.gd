@@ -61,7 +61,7 @@ func FindNewTarget():
 	if(target!=null):
 		mobStateMachine.UpdateAllStatesProperties({"target":target})
 		animator.target = target
-		connect("mobDied",target,"TargetDied")
+		target.connect("mobDied",self,"TargetDied")
 
 func TargetDied():
 	target = null
@@ -74,7 +74,7 @@ func DealDamage(damage) -> bool:
 	return false
 
 func onDeath():
-	emit_signal("mobDied",self)
+	emit_signal("mobDied")
 	active = false
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)
