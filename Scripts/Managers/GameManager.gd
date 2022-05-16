@@ -72,7 +72,7 @@ func LoadEndRoundScene(var roundWon):
 	var endScene = null
 	
 	if (roundWon):
-		endScene = ResourceLoader.load("res://Scenes/UI/Przegrana.tscn")
+		endScene = ResourceLoader.load("res://Scenes/UI/KoniecRundy.tscn")
 		emit_signal("SceneChanged", "Runda", "KoniecRundyWygrana")
 	else:
 		endScene = ResourceLoader.load("res://Scenes/UI/Przegrana.tscn")
