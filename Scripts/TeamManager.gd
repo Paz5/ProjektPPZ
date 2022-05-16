@@ -18,6 +18,8 @@ var mobManager
 var mobs : Array
 var rng = RandomNumberGenerator.new()
 
+signal teamDiead
+
 func _init():
 	rng.randomize()
 
@@ -59,5 +61,4 @@ func mobDied(mob):
 		mobs.erase(mob)
 		
 	if(mobs.size()==0):
-		GameManager.OnAllMobsDead()
-		#emit signal zamiast wywołania funkcji
+		emit_signal("teamDiead",teamIndex,self)
