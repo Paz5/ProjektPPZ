@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/UI/MainMenuScene.gd" type="Script" id=1]
 [ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Themes/Button_Theme_main_menu.tres" type="Theme" id=3]
-[ext_resource path="res://Fonts/Pixeled_Font_Titles.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Fonts/Panderosa.tres" type="DynamicFont" id=4]
 
 [node name="MainMenuScene" type="Control"]
 anchor_right = 1.0
@@ -15,7 +15,7 @@ anchor_right = 1.0
 margin_top = 162.0
 margin_bottom = 459.0
 custom_fonts/font = ExtResource( 4 )
-text = "TYTUL GRY
+text = "BATTLES OF ELM
 "
 align = 1
 
