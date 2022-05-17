@@ -3,16 +3,7 @@ extends Node2D
 func _ready():
 	print("Wygrana: SceneChanged connect")
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
-
-func OnSceneChanged(oldScene, newScene):
-	print("Wygrana - oldscene: "+oldScene)
-	print("Wygrana - newscene: "+newScene)
-	if (newScene != "KoniecRundyWygrana"): 
-		return;
 	ChangeBetValue()
-	
-	# Mikołaj - Dodanie do profilu gracza naszą wygraną
-	# Mikołaj - Todo - sprawdzenie rezultatu rundy, chyba że będzie split na scenę z przegraną i scenę z wygraną
 	
 
 func _process(delta):
@@ -34,4 +25,4 @@ func _on_BtnNextRound_pressed():
 func ChangeBetValue():
 	print("wygrałeś")
 	get_node("Control/CashLabel").set_text("+$"+str(GameManager.Bet))
-	#PlayerProfileManager.AddMoney(GameManager.Bet)
+	#PlayerProfileManager.AddMoney(GameManager.Bet) #RoundManager już to robi

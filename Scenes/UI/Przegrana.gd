@@ -3,12 +3,6 @@ extends Node2D
 func _ready():
 	print("Przegrana: SceneChanged connect")
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
-
-func OnSceneChanged(oldScene, newScene):
-	print("Przegrana - oldscene: "+oldScene)
-	print("Przegrana - newscene: "+newScene)
-	if (newScene != "KoniecRundyPrzegrana"):
-		return;
 	ChangeBetValue()
 
 func _process(delta):
