@@ -33,7 +33,7 @@ func Transition(stateName: String,override = false) -> void:
 	if not states.has(stateName):
 		return
 		
-	if(!readyToTransition):
+	if(!readyToTransition && !override):
 		return
 	
 	if(states[stateName] != activeState):

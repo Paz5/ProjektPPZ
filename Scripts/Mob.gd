@@ -76,8 +76,8 @@ func DealDamage(damage) -> bool:
 	return false
 
 func onDeath():
-	#emit_signal("mobDied")   ##więc musiałem wywalić to
-	#active = false    ##to naprawiło niezabijalność
+	emit_signal("mobDied")   ##więc musiałem wywalić to
+	active = false    ##to naprawiło niezabijalność
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)
 	target=null
