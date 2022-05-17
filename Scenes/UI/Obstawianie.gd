@@ -39,13 +39,14 @@ func _on_HSlider_value_changed(value):
 	$"/root/GameManager".Bet=value
 
 
-
-func _on_Timer_timeout():
-	get_node("Control/BetLabel_Message").hide()
+## Maciej: ta funkcja i tak nigdy się nie wykonuje
+#func _on_Timer_timeout():
+#	print("timeout")
+#	get_node("Control/BetLabel_Message").hide()
 	
 	
-	# Mikołaj - Ustawnienie maksymalnej wartości slidera na taką ile mamy pieniędzy
-	get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.money
+#	# Mikołaj - Ustawnienie maksymalnej wartości slidera na taką ile mamy pieniędzy
+#	get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.money
 
 
 
@@ -78,6 +79,7 @@ func _on_BtnRed_pressed():
 		$Control/BtnBlue/BtnBlueAnim.set_animation("Default")
 		$Control/BtnBlue.set_disabled(true)
 		$Control/BtnRed.set_disabled(true)
+		get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.money
 		
 #Krystian - obsługa niebieskiego guzika - Pressed
 func _on_BtnBlue_pressed():
@@ -91,6 +93,7 @@ func _on_BtnBlue_pressed():
 		$Control/BtnRed/BtnRedAnim.set_animation("Default")
 		$Control/BtnBlue.set_disabled(true)
 		$Control/BtnRed.set_disabled(true) 
+		get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.money
 		
 # Krystian - Jeżeli najechane na button'a Czerwony - Hover
 func _on_BtnRed_mouse_entered():

@@ -69,7 +69,7 @@ func TargetDied():
 
 func DealDamage(damage) -> bool:
 	health -= damage
-	print(health)
+	#print(health)
 	if(health <= 0):
 		onDeath()
 		return true
@@ -87,4 +87,5 @@ func setTeamMaterial(mat : Material):
 		get_node(path).material = mat
 	
 func _on_AttackRange_area_entered(area):
-	print(area)
+	#print(area)
+	pass
