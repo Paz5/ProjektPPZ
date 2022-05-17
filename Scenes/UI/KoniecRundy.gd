@@ -1,17 +1,19 @@
-extends Control
+extends Node2D
 
 func _ready():
-	
+	print("poszedł connect Koniec rundy")
 	GameManager.connect("SceneChanged", self, "OnSceneChanged")
 
 func OnSceneChanged(oldScene, newScene):
 	if (newScene != "KoniecRundy"): return;
 	
-	get_node("CashLabel").set_text("+$"+str($"/root/GameManager".Bet))
+	get_node("Control/CashLabel").set_text("+$"+str($"/root/GameManager".Bet))
 	
 	# Mikołaj - Dodanie do profilu gracza naszą wygraną
 	# Mikołaj - Todo - sprawdzenie rezultatu rundy, chyba że będzie split na scenę z przegraną i scenę z wygraną
 	PlayerProfileManager.AddMoney(GameManager.Bet)
+	print(oldScene)
+	print(newScene)
 
 func _process(delta):
 	pass

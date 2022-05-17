@@ -16,63 +16,100 @@
 default_font = ExtResource( 4 )
 VBoxContainer/constants/separation = 4
 
-[node name="Obstawianie" type="Control"]
+[node name="Obstawianie" type="Node2D"]
+z_index = 2000
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 960.0
-margin_bottom = 540.0
-script = ExtResource( 2 )
+margin_right = 1920.0
+margin_bottom = 1080.0
 
-[node name="ColorRect_Black" type="ColorRect" parent="."]
+[node name="ColorRect_Black" type="ColorRect" parent="Control"]
+visible = false
 modulate = Color( 1, 0, 0, 0.478431 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.00784314, 0.00784314, 0.00784314, 0.611765 )
 
-[node name="Red_Rectangle" type="TextureRect" parent="."]
-anchor_left = 1.0
+[node name="Red_Rectangle" type="TextureRect" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -960.0
 
-[node name="ColorRect_Blue" type="ColorRect" parent="Red_Rectangle"]
-modulate = Color( 1, 0, 0, 0.478431 )
+[node name="ColorRect_Blue" type="ColorRect" parent="Control/Red_Rectangle"]
+modulate = Color( 1, 0, 0, 0.196078 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 51, 246 )
 color = Color( 1, 0, 0, 1 )
 
-[node name="Blue_Rectangle" type="TextureRect" parent="."]
+[node name="Blue_Rectangle" type="TextureRect" parent="Control"]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 960.0
 
-[node name="ColorRect_Blue" type="ColorRect" parent="Blue_Rectangle"]
-modulate = Color( 0.109804, 0.101961, 0.501961, 0.478431 )
+[node name="ColorRect_Blue" type="ColorRect" parent="Control/Blue_Rectangle"]
+modulate = Color( 0.109804, 0.101961, 0.501961, 0.196078 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.137255, 0.0980392, 0.8, 1 )
 
-[node name="Box" type="Control" parent="."]
+[node name="BtnRed" type="Button" parent="Control"]
+anchor_left = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.7
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+
+[node name="BtnRedAnim" type="AnimatedSprite" parent="Control/BtnRed"]
+material = ExtResource( 10 )
+position = Vector2( 280, 130 )
+scale = Vector2( 4.83654, 5.61142 )
+frames = ExtResource( 5 )
+animation = "Default"
+playing = true
+
+[node name="BtnBlue" type="Button" parent="Control"]
+anchor_right = 0.3
+anchor_bottom = 0.7
+custom_fonts/font = ExtResource( 4 )
+custom_styles/hover = ExtResource( 9 )
+custom_styles/pressed = ExtResource( 9 )
+custom_styles/focus = ExtResource( 9 )
+custom_styles/disabled = ExtResource( 9 )
+custom_styles/normal = ExtResource( 9 )
+
+[node name="BtnBlueAnim" type="AnimatedSprite" parent="Control/BtnBlue"]
+material = ExtResource( 11 )
+position = Vector2( 290, 130 )
+scale = Vector2( 4.85226, 5.61277 )
+frames = ExtResource( 6 )
+animation = "Default"
+playing = true
+
+[node name="Box" type="Control" parent="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -372.5
-margin_top = -225.0
-margin_right = 372.5
-margin_bottom = 225.0
+margin_left = -375.0
+margin_top = -240.0
+margin_right = 375.0
+margin_bottom = 210.0
 theme = SubResource( 1 )
 
-[node name="ColorRect" type="ColorRect" parent="Box"]
+[node name="ColorRect" type="ColorRect" parent="Control/Box"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.45098 )
 
-[node name="Confirm" type="Button" parent="Box"]
+[node name="Confirm" type="Button" parent="Control/Box"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 36.5
@@ -83,7 +120,7 @@ theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "CONFIRM"
 
-[node name="Cancel" type="Button" parent="Box"]
+[node name="Cancel" type="Button" parent="Control/Box"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -96,7 +133,7 @@ theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "CANCEL"
 
-[node name="BetSlider" type="HSlider" parent="Box"]
+[node name="BetSlider" type="HSlider" parent="Control/Box"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -112,7 +149,7 @@ custom_icons/grabber = ExtResource( 7 )
 custom_styles/slider = ExtResource( 8 )
 ticks_on_borders = true
 
-[node name="BetLabel" type="Label" parent="Box"]
+[node name="BetLabel" type="Label" parent="Control/Box"]
 anchor_right = 1.0
 margin_left = 0.5
 margin_top = 57.0
@@ -124,62 +161,29 @@ text = "$0
 "
 align = 1
 
-[node name="BtnRed" type="Button" parent="."]
-margin_left = 1443.0
-margin_top = 150.0
-margin_right = 1841.0
-margin_bottom = 280.0
-custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/disabled = ExtResource( 9 )
-custom_styles/normal = ExtResource( 9 )
-text = "RED"
-
-[node name="BtnRedAnim" type="AnimatedSprite" parent="BtnRed"]
-material = ExtResource( 10 )
-position = Vector2( 160, 10 )
-scale = Vector2( 4.83654, 5.61142 )
-frames = ExtResource( 5 )
-animation = "Default"
-playing = true
-
-[node name="BtnBlue" type="Button" parent="."]
-margin_left = 108.0
-margin_top = 150.0
-margin_right = 506.0
-margin_bottom = 280.0
-custom_fonts/font = ExtResource( 4 )
-custom_styles/hover = ExtResource( 9 )
-custom_styles/pressed = ExtResource( 9 )
-custom_styles/focus = ExtResource( 9 )
-custom_styles/disabled = ExtResource( 9 )
-custom_styles/normal = ExtResource( 9 )
-text = "BLUE"
-
-[node name="BtnBlueAnim" type="AnimatedSprite" parent="BtnBlue"]
-material = ExtResource( 11 )
-position = Vector2( 220, 10 )
-scale = Vector2( 4.85226, 5.61277 )
-frames = ExtResource( 6 )
-animation = "Default"
-playing = true
-
-[node name="BetLabel_Message" type="Label" parent="."]
-anchor_right = 1.0
-margin_top = 372.0
-margin_bottom = 519.0
+[node name="BetLabel_Message" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -245.0
+margin_top = -90.0
+margin_right = 241.0
+margin_bottom = 36.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0627451 )
+custom_constants/shadow_offset_x = 5
+custom_constants/shadow_offset_y = 5
+custom_constants/shadow_as_outline = 0
 custom_fonts/font = ExtResource( 3 )
 text = "MAKE  A  BET !"
 align = 1
 
-[connection signal="pressed" from="Box/Confirm" to="." method="_on_Confirm_pressed"]
-[connection signal="pressed" from="Box/Cancel" to="." method="_on_Cancel_pressed"]
-[connection signal="value_changed" from="Box/BetSlider" to="." method="_on_HSlider_value_changed"]
-[connection signal="mouse_entered" from="BtnRed" to="." method="_on_BtnRed_mouse_entered"]
-[connection signal="mouse_exited" from="BtnRed" to="." method="_on_BtnRed_mouse_exited"]
-[connection signal="pressed" from="BtnRed" to="." method="_on_BtnRed_pressed"]
-[connection signal="mouse_entered" from="BtnBlue" to="." method="_on_BtnBlue_mouse_entered"]
-[connection signal="mouse_exited" from="BtnBlue" to="." method="_on_BtnBlue_mouse_exited"]
-[connection signal="pressed" from="BtnBlue" to="." method="_on_BtnBlue_pressed"]
+[connection signal="mouse_entered" from="Control/BtnRed" to="." method="_on_BtnRed_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BtnRed" to="." method="_on_BtnRed_mouse_exited"]
+[connection signal="pressed" from="Control/BtnRed" to="." method="_on_BtnRed_pressed"]
+[connection signal="mouse_entered" from="Control/BtnBlue" to="." method="_on_BtnBlue_mouse_entered"]
+[connection signal="mouse_exited" from="Control/BtnBlue" to="." method="_on_BtnBlue_mouse_exited"]
+[connection signal="pressed" from="Control/BtnBlue" to="." method="_on_BtnBlue_pressed"]
+[connection signal="pressed" from="Control/Box/Confirm" to="." method="_on_Confirm_pressed"]
+[connection signal="pressed" from="Control/Box/Cancel" to="." method="_on_Cancel_pressed"]
+[connection signal="value_changed" from="Control/Box/BetSlider" to="." method="_on_HSlider_value_changed"]

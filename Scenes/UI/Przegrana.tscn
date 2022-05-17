@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Themes/Button_Theme_main_menu.tres" type="Theme" id=1]
-[ext_resource path="res://Scenes/UI/KoniecRundy.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/UI/Przegrana.gd" type="Script" id=2]
 [ext_resource path="res://Fonts/Pixeled_Font_Titles.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/UI/Statystyka.tscn" type="PackedScene" id=5]
@@ -11,15 +11,25 @@
 size = 30
 font_data = ExtResource( 6 )
 
-[node name="KoniecRundy" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-rect_pivot_offset = Vector2( -849, -81 )
+[node name="Przegrana" type="Node2D"]
+z_index = 2000
 script = ExtResource( 2 )
 
-[node name="Statystyka" parent="." instance=ExtResource( 5 )]
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 
-[node name="MessageLabel_GoodBet" type="Label" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Control"]
+modulate = Color( 1, 1, 1, 0.588235 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Statystyka" parent="Control" instance=ExtResource( 5 )]
+
+[node name="MessageLabel_GoodBet" type="Label" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 339.0
@@ -30,7 +40,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "BID FAILED !	"
 align = 1
 
-[node name="CashLabel" type="Label" parent="."]
+[node name="CashLabel" type="Label" parent="Control"]
 anchor_right = 1.0
 margin_top = 237.0
 margin_bottom = 339.0
@@ -39,17 +49,17 @@ custom_fonts/font = SubResource( 1 )
 text = "-25$"
 align = 1
 
-[node name="VContainer" type="VBoxContainer" parent="."]
+[node name="VContainer" type="VBoxContainer" parent="Control"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -196.0
 margin_top = 391.0
-margin_right = 4.0
+margin_right = 200.0
 margin_bottom = 591.0
 rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 200, 0 )
 alignment = 1
 
-[node name="BtnNextRound" type="Button" parent="VContainer"]
+[node name="BtnNextRound" type="Button" parent="Control/VContainer"]
 margin_top = 39.0
 margin_right = 200.0
 margin_bottom = 89.0
@@ -58,12 +68,12 @@ theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "NEXT ROUND"
 
-[node name="Label" type="Label" parent="VContainer"]
+[node name="Label" type="Label" parent="Control/VContainer"]
 margin_top = 93.0
 margin_right = 200.0
 margin_bottom = 107.0
 
-[node name="BtnQuit" type="Button" parent="VContainer"]
+[node name="BtnQuit" type="Button" parent="Control/VContainer"]
 margin_top = 111.0
 margin_right = 200.0
 margin_bottom = 161.0
@@ -72,5 +82,5 @@ theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "MAIN MENU"
 
-[connection signal="pressed" from="VContainer/BtnNextRound" to="." method="_on_BtnNextRound_pressed"]
-[connection signal="pressed" from="VContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
+[connection signal="pressed" from="Control/VContainer/BtnNextRound" to="." method="_on_BtnNextRound_pressed"]
+[connection signal="pressed" from="Control/VContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
