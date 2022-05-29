@@ -1,0 +1,175 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Themes/BUTTONX.tres" type="StyleBox" id=1]
+[ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/UI/Fighter.png" type="Texture" id=3]
+[ext_resource path="res://Fonts/arial.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Themes/ButtonTexture_main_menu.tres" type="StyleBox" id=5]
+[ext_resource path="res://Fonts/Panderosa.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scenes/UI/ShopScene.gd" type="Script" id=7]
+[ext_resource path="res://Themes/ShopButton.tres" type="StyleBox" id=8]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.290196, 0.270588, 0.258824, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.2, 0.164706, 0.141176, 1 )
+
+[sub_resource type="Theme" id=3]
+Button/styles/disabled = ExtResource( 1 )
+Button/styles/focus = ExtResource( 1 )
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 1 )
+Button/styles/pressed = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 70
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.67451, 0.67451, 0.67451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.290196, 0.270588, 0.258824, 1 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 50
+font_data = ExtResource( 4 )
+
+[sub_resource type="Theme" id=10]
+default_font = ExtResource( 6 )
+Button/styles/disabled = ExtResource( 5 )
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = ExtResource( 8 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+margin_left = 675.0
+margin_top = 357.0
+margin_right = 1093.0
+margin_bottom = 838.0
+texture = ExtResource( 3 )
+expand = true
+
+[node name="BrownUpperPanel" type="Panel" parent="Panel"]
+anchor_right = 1.0
+margin_bottom = 162.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="QuitButton" type="Button" parent="Panel/BrownUpperPanel"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -188.0
+margin_top = -72.0
+margin_right = -101.0
+margin_bottom = 9.0
+rect_scale = Vector2( 1.75, 1.75 )
+theme = SubResource( 3 )
+
+[node name="Label" type="Label" parent="Panel/BrownUpperPanel"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -364.0
+margin_top = 38.0
+margin_right = 364.0
+margin_bottom = 183.0
+custom_fonts/font = SubResource( 4 )
+text = "SHOP
+"
+align = 1
+valign = 1
+
+[node name="GrayLine" type="Panel" parent="Panel"]
+anchor_right = 1.0
+margin_top = 151.0
+margin_bottom = 162.0
+custom_styles/panel = SubResource( 5 )
+
+[node name="ScrollPanel" type="Panel" parent="Panel"]
+margin_top = 162.0
+margin_right = 516.0
+margin_bottom = 1080.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/ScrollPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollPanel/ScrollContainer"]
+margin_right = 516.0
+margin_bottom = 918.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Fighter" type="Button" parent="Panel/ScrollPanel/ScrollContainer/VBoxContainer"]
+margin_right = 516.0
+margin_bottom = 426.0
+icon = ExtResource( 3 )
+
+[node name="Fighter2" type="Button" parent="Panel/ScrollPanel/ScrollContainer/VBoxContainer"]
+margin_top = 430.0
+margin_right = 516.0
+margin_bottom = 856.0
+icon = ExtResource( 3 )
+
+[node name="DescriptionPanel" type="Panel" parent="Panel"]
+margin_left = 1296.0
+margin_top = 162.0
+margin_right = 1732.0
+margin_bottom = 1080.0
+custom_styles/panel = SubResource( 6 )
+
+[node name="Nazwa" type="Label" parent="Panel/DescriptionPanel"]
+anchor_right = 1.0
+margin_top = 195.0
+margin_bottom = 300.0
+custom_fonts/font = SubResource( 7 )
+text = "Bully
+"
+
+[node name="Opis" type="Label" parent="Panel/DescriptionPanel"]
+anchor_right = 1.0
+margin_top = 300.0
+margin_right = 86.0
+margin_bottom = 399.0
+custom_fonts/font = SubResource( 8 )
+text = "Mele Unit His punches
+are slow and heavy
+Quite tanky."
+
+[node name="Cena" type="Label" parent="Panel/DescriptionPanel"]
+anchor_right = 1.0
+margin_top = 447.0
+margin_bottom = 564.0
+custom_fonts/font = SubResource( 9 )
+text = "$550
+"
+
+[node name="Button" type="Button" parent="Panel/DescriptionPanel"]
+anchor_right = 1.0
+margin_top = 543.0
+margin_bottom = 659.0
+theme = SubResource( 10 )
+text = "UNLOCK"
+
+[connection signal="pressed" from="Panel/BrownUpperPanel/QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="Panel/ScrollPanel/ScrollContainer/VBoxContainer/Fighter2" to="." method="_on_Fighter2_pressed"]
