@@ -25,9 +25,7 @@ func ChangeBetValue():
 	print("przegrałeś")
 	get_node("Control/CashLabel").set_text("-$"+str(GameManager.Bet))
 	#PlayerProfileManager.SpendMoney(GameManager.Bet)
-	
-
-#Olena - Przycisk wyjścia do MainMenu 
+ 
 func _on_BtnX_pressed():
 	GameManager.Bet=0
 	GameManager.UnloadAllChilds()
