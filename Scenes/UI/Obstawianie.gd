@@ -121,7 +121,7 @@ func _on_BtnBlue_mouse_exited():
 	if GameManager.SelectedTeam != "Blue" && $Control/BtnBlue/BtnBlueAnim.get_animation() != "CLick":
 		$Control/BtnBlue/BtnBlueAnim.set_animation("Default")
 
-
+#Olena - Przycisk wyjścia do MainMenu 
 func _on_BtnX_pressed():
 	GameManager.Bet=0
 	GameManager.UnloadAllChilds()

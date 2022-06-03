@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Themes/Button_Theme_main_menu.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/Przegrana.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Fonts/Pixeled_Font.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Scenes/UI/Statystyka.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/Pixeled.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Sprites/UI/ButtonX.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -82,5 +83,15 @@ theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "MAIN MENU"
 
+[node name="BtnX" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 987.0
+margin_right = 71.0
+margin_bottom = 1017.0
+rect_scale = Vector2( 2, 2 )
+icon = ExtResource( 7 )
+flat = true
+
 [connection signal="pressed" from="Control/VContainer/BtnNextRound" to="." method="_on_BtnNextRound_pressed"]
 [connection signal="pressed" from="Control/VContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]
+[connection signal="pressed" from="BtnX" to="." method="_on_BtnX_pressed"]

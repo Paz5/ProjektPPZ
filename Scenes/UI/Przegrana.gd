@@ -26,3 +26,9 @@ func ChangeBetValue():
 	get_node("Control/CashLabel").set_text("-$"+str(GameManager.Bet))
 	#PlayerProfileManager.SpendMoney(GameManager.Bet)
 	
+
+#Olena - Przycisk wyjścia do MainMenu 
+func _on_BtnX_pressed():
+	GameManager.Bet=0
+	GameManager.UnloadAllChilds()
+	get_tree().change_scene("res://Scenes/UI/MainMenuScene.tscn")
