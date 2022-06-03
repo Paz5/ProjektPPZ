@@ -120,3 +120,9 @@ func _on_BtnBlue_mouse_entered():
 func _on_BtnBlue_mouse_exited():
 	if GameManager.SelectedTeam != "Blue" && $Control/BtnBlue/BtnBlueAnim.get_animation() != "CLick":
 		$Control/BtnBlue/BtnBlueAnim.set_animation("Default")
+
+
+func _on_BtnX_pressed():
+	GameManager.Bet=0
+	GameManager.UnloadAllChilds()
+	get_tree().change_scene("res://Scenes/UI/MainMenuScene.tscn")

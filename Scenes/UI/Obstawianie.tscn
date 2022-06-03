@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Themes/BetScene_Theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/Obstawianie.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/UI/Empty_teksturka.tres" type="StyleBox" id=9]
 [ext_resource path="res://Shaders and Materials/MobRecolorRed.tres" type="Material" id=10]
 [ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=11]
+[ext_resource path="res://Sprites/UI/ButtonX.png" type="Texture" id=12]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 4 )
@@ -178,6 +179,15 @@ custom_fonts/font = ExtResource( 3 )
 text = "MAKE  A  BET !"
 align = 1
 
+[node name="BtnX" type="Button" parent="."]
+margin_left = 35.0
+margin_top = 987.0
+margin_right = 71.0
+margin_bottom = 1017.0
+rect_scale = Vector2( 2, 2 )
+icon = ExtResource( 12 )
+flat = true
+
 [connection signal="mouse_entered" from="Control/BtnRed" to="." method="_on_BtnRed_mouse_entered"]
 [connection signal="mouse_exited" from="Control/BtnRed" to="." method="_on_BtnRed_mouse_exited"]
 [connection signal="pressed" from="Control/BtnRed" to="." method="_on_BtnRed_pressed"]
@@ -187,3 +197,4 @@ align = 1
 [connection signal="pressed" from="Control/Box/Confirm" to="." method="_on_Confirm_pressed"]
 [connection signal="pressed" from="Control/Box/Cancel" to="." method="_on_Cancel_pressed"]
 [connection signal="value_changed" from="Control/Box/BetSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="pressed" from="BtnX" to="." method="_on_BtnX_pressed"]
