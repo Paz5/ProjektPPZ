@@ -55,6 +55,16 @@ _global_script_classes=[ {
 "path": "res://Scripts/StateMachine/States/MobState.gd"
 }, {
 "base": "Node",
+"class": "PlayerProfile",
+"language": "GDScript",
+"path": "res://Scripts/PlayerProfile/PlayerProfile.gd"
+}, {
+"base": "Node",
+"class": "PlayerProfileData",
+"language": "GDScript",
+"path": "res://Scripts/PlayerProfile/PlayerProfileData.gd"
+}, {
+"base": "Node",
 "class": "RoundData",
 "language": "GDScript",
 "path": "res://Scripts/Levels/RoundData.gd"
@@ -84,6 +94,8 @@ _global_script_class_icons={
 "MobManager": "",
 "MobMoveState": "",
 "MobState": "",
+"PlayerProfile": "",
+"PlayerProfileData": "",
 "RoundData": "",
 "State": "",
 "StateMachine": "",
@@ -93,7 +105,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ProjektPPZ"
-run/main_scene="res://Scenes/Root.tscn"
+run/main_scene="res://Scenes/UI/LogowanieScene.tscn"
 config/icon="res://icon.png"
 
 [autoload]

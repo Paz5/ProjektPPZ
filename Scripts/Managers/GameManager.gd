@@ -33,7 +33,7 @@ func _ready():
 	var root = get_tree().get_root()
 	CurrentScene = root.get_child(root.get_child_count() - 1)
 	
-	PlayerProfileManager.LoadGame()
+	#PlayerProfileManager.LoadGame()
 
 # Uruchamia losową planszę z rundą na podstawie levelName
 func PlayLevel():

@@ -1,7 +1,10 @@
 extends Control
 
+var playerProfileNameLabel;
+
 func _ready():
-	pass # Replace with function body.
+	playerProfileNameLabel = get_node("PlayerProfileNameLabel")
+	playerProfileNameLabel.text = "Witaj " + PlayerProfileManager.CurrentSelectedProfile.profileName
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

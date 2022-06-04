@@ -57,7 +57,7 @@ func _on_Confirm_pressed():
 	print(GameManager.Bet)
 	
 	# Mikołaj - Odjęcie z profilu gracza tyle ile obstawiliśmy
-	PlayerProfileManager.SpendMoney(GameManager.Bet)
+	PlayerProfileManager.CurrentSelectedProfile.SpendMoney(GameManager.Bet)
 	
 	# Mikołaj - Wyładowanie sceny MainMenu + emit signal
 	var obstawianieScene = get_tree().get_root().get_node("Obstawianie")
@@ -79,7 +79,7 @@ func _on_BtnRed_pressed():
 		$Control/BtnBlue/BtnBlueAnim.set_animation("Default")
 		$Control/BtnBlue.set_disabled(true)
 		$Control/BtnRed.set_disabled(true)
-		get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.money
+		get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.CurrentSelectedProfile.GetCurrentMoney()
 		
 #Krystian - obsługa niebieskiego guzika - Pressed
 func _on_BtnBlue_pressed():
@@ -93,7 +93,7 @@ func _on_BtnBlue_pressed():
 		$Control/BtnRed/BtnRedAnim.set_animation("Default")
 		$Control/BtnBlue.set_disabled(true)
 		$Control/BtnRed.set_disabled(true) 
-		get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.money
+		get_node("Control/Box/BetSlider").max_value = PlayerProfileManager.CurrentSelectedProfile.GetCurrentMoney()
 		
 # Krystian - Jeżeli najechane na button'a Czerwony - Hover
 func _on_BtnRed_mouse_entered():

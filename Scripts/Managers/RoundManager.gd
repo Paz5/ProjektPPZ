@@ -102,7 +102,7 @@ func OnteamDied(teamIndex):
 	var wonBet = GameManager.SelectedTeamIndex == teamIndex
 	
 	if(wonBet):
-		PlayerProfileManager.AddMoney(GameManager.Bet * 2)
+		PlayerProfileManager.CurrentSelectedProfile.AddMoney(GameManager.Bet * 2)
 	
 	print("Game manager LoadEndRoundScene")
 	GameManager.LoadEndRoundScene(wonBet)
