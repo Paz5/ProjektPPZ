@@ -13,6 +13,10 @@ func _on_BtnPlay_pressed():
 	GameManager.LoadBetScene()
 	GameManager.PlayLevel()
 
+func _on_BtnLeaderboard_pressed():
+#	GameManager.UnloadAllChilds()
+#	get_tree().change_scene("res://Scenes/UI/Leaderboard.tscn")
+	pass
 
 # Wyjście z gry
 func _on_BtnQuit_pressed():
