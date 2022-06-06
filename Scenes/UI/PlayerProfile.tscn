@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/UI/PlayerProfile.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/UI/ButtonX.png" type="Texture" id=3]
+
+[node name="PlayerProfile" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="BtnX" type="Button" parent="Control"]
+margin_left = 35.0
+margin_top = 987.0
+margin_right = 71.0
+margin_bottom = 1017.0
+rect_scale = Vector2( 2, 2 )
+icon = ExtResource( 3 )
+flat = true
+
+[connection signal="pressed" from="Control/BtnX" to="." method="_on_BtnX_pressed"]
