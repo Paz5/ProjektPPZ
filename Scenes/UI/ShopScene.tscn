@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Themes/BUTTONX.tres" type="StyleBox" id=1]
-[ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Sprites/UI/TopBar.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/UI/Fighter.png" type="Texture" id=3]
 [ext_resource path="res://Fonts/arial.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Themes/ButtonTexture_main_menu.tres" type="StyleBox" id=5]
@@ -14,20 +14,6 @@ bg_color = Color( 0.290196, 0.270588, 0.258824, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.2, 0.164706, 0.141176, 1 )
-
-[sub_resource type="Theme" id=3]
-Button/styles/disabled = ExtResource( 1 )
-Button/styles/focus = ExtResource( 1 )
-Button/styles/hover = ExtResource( 1 )
-Button/styles/normal = ExtResource( 1 )
-Button/styles/pressed = ExtResource( 1 )
-
-[sub_resource type="DynamicFont" id=4]
-size = 70
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.67451, 0.67451, 0.67451, 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.290196, 0.270588, 0.258824, 1 )
@@ -51,6 +37,13 @@ Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = ExtResource( 8 )
 
+[sub_resource type="Theme" id=3]
+Button/styles/disabled = ExtResource( 1 )
+Button/styles/focus = ExtResource( 1 )
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 1 )
+Button/styles/pressed = ExtResource( 1 )
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -70,53 +63,24 @@ texture = ExtResource( 3 )
 expand = true
 
 [node name="BrownUpperPanel" type="Panel" parent="Panel"]
+visible = false
 anchor_right = 1.0
 margin_bottom = 162.0
 custom_styles/panel = SubResource( 2 )
 
-[node name="QuitButton" type="Button" parent="Panel/BrownUpperPanel"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -188.0
-margin_top = -72.0
-margin_right = -101.0
-margin_bottom = 9.0
-rect_scale = Vector2( 1.75, 1.75 )
-theme = SubResource( 3 )
-
-[node name="Label" type="Label" parent="Panel/BrownUpperPanel"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -364.0
-margin_top = 38.0
-margin_right = 364.0
-margin_bottom = 183.0
-custom_fonts/font = SubResource( 4 )
-text = "SHOP
-"
-align = 1
-valign = 1
-
-[node name="GrayLine" type="Panel" parent="Panel"]
-anchor_right = 1.0
-margin_top = 151.0
-margin_bottom = 162.0
-custom_styles/panel = SubResource( 5 )
-
 [node name="ScrollPanel" type="Panel" parent="Panel"]
-margin_top = 162.0
+margin_top = 125.0
 margin_right = 516.0
-margin_bottom = 1080.0
+margin_bottom = 1085.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/ScrollPanel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = 32.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollPanel/ScrollContainer"]
 margin_right = 516.0
-margin_bottom = 918.0
+margin_bottom = 992.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -169,7 +133,39 @@ anchor_right = 1.0
 margin_top = 543.0
 margin_bottom = 659.0
 theme = SubResource( 10 )
+custom_fonts/font = ExtResource( 6 )
 text = "UNLOCK"
+clip_text = true
 
-[connection signal="pressed" from="Panel/BrownUpperPanel/QuitButton" to="." method="_on_QuitButton_pressed"]
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+anchor_right = 1.0
+margin_left = -300.0
+margin_right = -1720.0
+margin_bottom = 40.0
+rect_scale = Vector2( 5, 5 )
+texture = ExtResource( 2 )
+stretch_mode = 5
+
+[node name="QuitButton" type="Button" parent="Panel/TextureRect2"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -75.0005
+margin_top = 3.0
+margin_right = -60.0003
+margin_bottom = 18.6725
+theme = SubResource( 3 )
+
+[node name="Label" type="Label" parent="Panel/TextureRect2"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_right = -22.0002
+margin_bottom = 145.0
+rect_scale = Vector2( 0.2, 0.2 )
+rect_pivot_offset = Vector2( -20, -2 )
+custom_fonts/font = ExtResource( 6 )
+text = "SHOP"
+align = 1
+valign = 1
+
 [connection signal="pressed" from="Panel/ScrollPanel/ScrollContainer/VBoxContainer/Fighter2" to="." method="_on_Fighter2_pressed"]
+[connection signal="pressed" from="Panel/TextureRect2/QuitButton" to="." method="_on_QuitButton_pressed"]
