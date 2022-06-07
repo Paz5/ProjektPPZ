@@ -61,9 +61,19 @@ func Idle():
 	StartAnimation("Idle")
 	aimHands = false
 
-func Attack():
+func AttackMelee():
 	StartAnimation("Attack")
 	aimHands = true
+	
+func PrepareProjectile():
+	StartAnimation("Load")
+	aimHands = false
+	pass
+	
+func FireProjectile():
+	StartAnimation("Shoot")
+	aimHands = true
+	pass
 	
 func Death():
 	StartAnimation("Death")
@@ -83,7 +93,11 @@ func _on_MobStateMachine_transitioned(stateName):
 		"MobIdleState":
 			Idle()
 		"MobAttackMeleeState":
-			Attack()
+			AttackMelee()
+		"MobAttackRangedState":
+			PrepareProjectile()
+		"MobFireRangedState":
+			FireProjectile()
 		"MobDeathState":
 			Death()
 		"MobMoveState":

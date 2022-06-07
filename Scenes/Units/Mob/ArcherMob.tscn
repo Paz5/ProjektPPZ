@@ -1,12 +1,12 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Mob/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Archer/Archer_back.res" type="SpriteFrames" id=2]
 [ext_resource path="res://Sprites/Units/Mob/Archer/Archer_front.res" type="SpriteFrames" id=3]
 [ext_resource path="res://Sprites/Units/Mob/Archer/Archer_body.res" type="SpriteFrames" id=4]
 [ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=5]
-[ext_resource path="res://Scripts/Mob/MeleeMob.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/StateMachine/MobAttackRangedState.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Mob/RangedMob.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/StateMachine/States/MobAttackRangedState.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/StateMachine/States/MobIdleState.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/StateMachine/States/MobMoveState.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/StateMachine/StateMachine.gd" type="Script" id=10]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Scripts/StateMachine/States/MobDeathState.gd" type="Script" id=12]
 [ext_resource path="res://icon.png" type="Texture" id=13]
 [ext_resource path="res://MobWinState.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/StateMachine/States/MobFireRangedState.gd" type="Script" id=15]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -25,21 +26,21 @@ radius = 12.3738
 [sub_resource type="CircleShape2D" id=2]
 radius = 3.735
 
-[node name="TemplateMob" type="KinematicBody2D"]
+[node name="ArcherMob" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 6 )
 maxHealth = 10
-moveSpeed = 140.0
-attackDelay = 2.0
-attackRange = 675
+moveSpeed = 150.0
+attackDelay = 1.4
+attackRange = 400
 handContainerPath = NodePath("Animator/HandContainer")
-hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
 hitBoxPath = NodePath("Hitbox")
 animatorPath = NodePath("Animator")
 spritePaths = [ NodePath("Animator/Body"), NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand") ]
 mobStateMachinePath = NodePath("MobStateMachine")
+loadDelay = 1.0
 
 [node name="Animator" type="Node2D" parent="."]
 position = Vector2( 0, -32 )
@@ -52,8 +53,8 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 [node name="Body" type="AnimatedSprite" parent="Animator"]
 material = ExtResource( 5 )
 frames = ExtResource( 4 )
-animation = "Idle"
-frame = 1
+animation = "Shoot"
+frame = 21
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -65,7 +66,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 21
+frame = 3
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -109,6 +110,9 @@ script = ExtResource( 10 )
 
 [node name="MobAttackRangedState" type="Node2D" parent="."]
 script = ExtResource( 7 )
+
+[node name="MobFireRangedState" type="Node2D" parent="."]
+script = ExtResource( 15 )
 
 [node name="MobIdleState" type="Node2D" parent="."]
 script = ExtResource( 8 )

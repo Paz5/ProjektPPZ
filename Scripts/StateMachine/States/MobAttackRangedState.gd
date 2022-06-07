@@ -1,7 +1,7 @@
 extends MobAttackState
 
-var attackTimer = 0.0
-var attackDelay
+var loadTimer = 0.0
+var loadDelay
 var handContainer
 
 func get_class(): return "MobAttackRangedState"
@@ -9,30 +9,20 @@ func get_class(): return "MobAttackRangedState"
 func UpdateProperties(msg := {}) -> void:
 	.UpdateProperties(msg)
 	handContainer = mob.handContainer
-	attackDelay = mob.attackDelay
+	loadDelay = mob.loadDelay
 	
 func Begin():
 	.Begin()
-	attackTimer = 0.5
+	loadTimer = 0
 	
 func Process(delta : float) -> bool:
 	.Process(delta)
-	attackTimer += delta
-	if(attackTimer>attackDelay):
-		RangedAttack()
-		attackTimer = 0.0
-		#return false w domyśle
+	loadTimer += delta
+	if(loadTimer>loadDelay):
+		stateMachine.readyToTransition = true
+		stateMachine.Transition("MobFireRangedState")
+		loadTimer = 0
 	return false
-	
-func RangedAttack():
-	
-	pass
-	
-func PrepareProjectile():
-	pass
-	
-func LaunchProjectile():
-	pass
 	
 func End():
 	.End()

@@ -35,6 +35,11 @@ _global_script_classes=[ {
 "path": "res://Scripts/StateMachine/States/MobAttackState.gd"
 }, {
 "base": "Node2D",
+"class": "MobFireRangedState",
+"language": "GDScript",
+"path": "res://Scripts/StateMachine/States/MobFireRangedState.gd"
+}, {
+"base": "Node2D",
 "class": "MobIdleState",
 "language": "GDScript",
 "path": "res://Scripts/StateMachine/States/MobIdleState.gd"
@@ -90,6 +95,7 @@ _global_script_class_icons={
 "MobAnimator": "",
 "MobAttackMeleeState": "",
 "MobAttackState": "",
+"MobFireRangedState": "",
 "MobIdleState": "",
 "MobManager": "",
 "MobMoveState": "",

@@ -35,11 +35,11 @@ moveSpeed = 180.0
 attackDelay = 1.0
 attackRange = 75
 handContainerPath = NodePath("Animator/HandContainer")
-hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
 hitBoxPath = NodePath("Hitbox")
 animatorPath = NodePath("Animator")
 spritePaths = [ NodePath("Animator/Body"), NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand") ]
 mobStateMachinePath = NodePath("MobStateMachine")
+hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
 
 [node name="Animator" type="Node2D" parent="."]
 position = Vector2( 0, -32 )
@@ -53,7 +53,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 9
+frame = 12
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -65,7 +65,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 13
+frame = 16
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -73,7 +73,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 11
+frame = 14
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]

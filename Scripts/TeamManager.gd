@@ -55,9 +55,11 @@ func spawnMobs(newMobs : Array):
 		var id = teamIndex * 2
 
 		mobInstance.hitBox.set_collision_layer(pow(2, id))
-		mobInstance.hurtBox.set_collision_layer(pow(2, id+1))
+		if(mobInstance.hurtBox != null):
+			mobInstance.hurtBox.set_collision_layer(pow(2, id+1))
 		mobInstance.hitBox.set_collision_mask(teamLayerDictionary.get(id))
-		mobInstance.hurtBox.set_collision_mask(teamLayerDictionary.get(id+1))
+		if(mobInstance.hurtBox != null):
+			mobInstance.hurtBox.set_collision_mask(teamLayerDictionary.get(id+1))
 	
 func mobDied(mob):
 	if(mobs.has(mob)):

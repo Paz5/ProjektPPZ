@@ -18,6 +18,7 @@ func AddState(newState: State, msg : = {}) -> void:
 		return
 	states[newState.get_class()] = newState
 	newState.UpdateProperties(msg)
+	newState.stateMachine = self
 	if(activeState == null):
 		activeState = newState
 		defaultState = newState
