@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/MobManager.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Units/Mob/TemplateMob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Units/Mob/BoxerMob.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Units/Mob/ArcherMob.tscn" type="PackedScene" id=4]
 
 [node name="Round" type="Node2D"]
 
 [node name="MobManager" parent="." instance=ExtResource( 1 )]
-mobsToSpawn = [ ExtResource( 3 ) ]
+mobsToSpawn = [ ExtResource( 3 ), ExtResource( 4 ) ]
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )

@@ -17,12 +17,12 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Mob",
 "language": "GDScript",
-"path": "res://Scripts/Mob.gd"
+"path": "res://Scripts/Mob/Mob.gd"
 }, {
 "base": "Node2D",
 "class": "MobAnimator",
 "language": "GDScript",
-"path": "res://Scripts/MobAnimator.gd"
+"path": "res://Scripts/Mob/MobAnimator.gd"
 }, {
 "base": "Node2D",
 "class": "MobAttackMeleeState",

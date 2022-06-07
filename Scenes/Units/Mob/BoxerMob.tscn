@@ -25,7 +25,7 @@ radius = 12.3738
 [sub_resource type="CircleShape2D" id=2]
 radius = 3.735
 
-[node name="TemplateMob" type="KinematicBody2D"]
+[node name="BoxerMob" type="KinematicBody2D"]
 scale = Vector2( 3, 3 )
 collision_layer = 0
 collision_mask = 0
@@ -53,7 +53,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 15
+frame = 9
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -73,7 +73,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 9
+frame = 11
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]

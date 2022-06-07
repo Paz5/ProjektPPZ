@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
-[ext_resource path="res://Scenes/Units/Mob/TemplateMob.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Units/Mob/BoxerMob.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Levels/RoundData.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/UI/Timer2-300.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/MobManager.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/Units/Mob/ArcherMob.tscn" type="PackedScene" id=7]
 
 [sub_resource type="DynamicFont" id=3]
 size = 350
@@ -34,7 +35,7 @@ offset = Vector2( 0, 47.556 )
 script = ExtResource( 3 )
 
 [node name="MobManager" parent="." instance=ExtResource( 5 )]
-mobsToSpawn = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 2 ) ]
+mobsToSpawn = [ ExtResource( 2 ), ExtResource( 2 ), ExtResource( 7 ) ]
 
 [node name="RoundUI" type="Node2D" parent="."]
 z_index = 2001
