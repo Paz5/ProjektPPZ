@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node",
+"base": "Node2D",
 "class": "ArrowProjectile",
 "language": "GDScript",
 "path": "res://Scripts/ArrowProjectile.gd"
@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/PlayerProfile/PlayerProfileData.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Projectile",
 "language": "GDScript",
 "path": "res://Scripts/Projectile.gd"

@@ -1,10 +1,8 @@
-extends Node
+extends Node2D
 class_name Projectile
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var startPos: Vector2
+var endPos: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
