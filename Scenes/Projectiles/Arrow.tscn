@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Projectiles/Arrow.res" type="SpriteFrames" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26, 6 )
+
+[node name="Arrow" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2, 2 )
+frames = ExtResource( 1 )
+animation = "Fly"
+frame = 3
+playing = true
