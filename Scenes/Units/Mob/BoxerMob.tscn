@@ -53,7 +53,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 20
+frame = 16
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -65,7 +65,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 3
+frame = 20
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -73,7 +73,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 1
+frame = 18
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]

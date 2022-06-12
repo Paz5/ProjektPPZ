@@ -1,15 +1,13 @@
 extends Area2D
 
 export var entryDamage: float
-export(NodePath) var thisMobPath
+var teamIndex
 var thisMob: Mob
 var enemyMobs = []
 
-func _ready():
-	thisMob = get_node(thisMobPath)
 
 func _on_Hurtbox_area_entered(area):
-	if area.get_parent().team.teamIndex!=thisMob.team.teamIndex:
+	if area.get_parent().team.teamIndex!=teamIndex:
 		#print(area.get_parent().name)
 		if (area.get_parent().active) && (!enemyMobs.has(area.get_parent())):
 			enemyMobs.append(area.get_parent()) 
