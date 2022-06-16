@@ -67,6 +67,7 @@ func TargetDied():
 	target = null
 
 func DealDamage(damage) -> bool:
+	emit_signal("mobHit",self)
 	health -= damage
 	#print(health)
 	if(health <= 0):
