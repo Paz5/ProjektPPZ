@@ -1,54 +1,118 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Fonts/Pixeled.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/UI/LogowanieScene.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/UI/Login_input_TextBox.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/UI/Login_box.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/UI/Login_Accept_Button.png" type="Texture" id=5]
+[ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 200, 100 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 27
 font_data = ExtResource( 1 )
 
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 3 )
+normal_map = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 150, 25 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 3 )
+normal_map = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 150, 25 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 150, 25 )
+
 [sub_resource type="DynamicFont" id=2]
-size = 26
-font_data = ExtResource( 1 )
+size = 29
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 31
-font_data = ExtResource( 1 )
+size = 29
+font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 5 )
+normal_map = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 100, 25 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+normal_map = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 100, 25 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 5 )
+normal_map = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 100, 25 )
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 5 )
+normal_map = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 100, 25 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 5 )
+normal_map = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 100, 25 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Background" type="PanelContainer" parent="."]
-margin_left = 414.0
-margin_top = 294.0
-margin_right = 1550.0
-margin_bottom = 700.0
+margin_left = 561.0
+margin_top = 396.0
+margin_right = 1329.0
+margin_bottom = 741.0
+custom_styles/panel = SubResource( 4 )
 
 [node name="PlayerProfileInput" type="LineEdit" parent="."]
-margin_left = 490.0
-margin_top = 389.0
-margin_right = 1454.0
-margin_bottom = 522.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 658.0
+margin_top = 491.0
+margin_right = 1258.0
+margin_bottom = 591.0
 custom_fonts/font = SubResource( 1 )
+custom_styles/read_only = SubResource( 5 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 422.0
-margin_top = 296.0
-margin_right = 1544.0
-margin_bottom = 370.0
+margin_left = 377.0
+margin_top = 409.0
+margin_right = 1499.0
+margin_bottom = 483.0
 custom_fonts/font = SubResource( 2 )
-text = "Podaj nazwe profilu"
+text = "Insert your profile  name"
 align = 1
 valign = 1
 
 [node name="ApplyButton" type="Button" parent="."]
-margin_left = 777.0
-margin_top = 564.0
-margin_right = 1133.0
-margin_bottom = 658.0
+margin_left = 798.0
+margin_top = 626.0
+margin_right = 1098.0
+margin_bottom = 701.0
+custom_colors/font_color_disabled = Color( 0.207843, 0.207843, 0.207843, 1 )
+custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 8 )
 disabled = true
-text = "Akceptuj"
+text = "Accept"
 
 [connection signal="text_changed" from="PlayerProfileInput" to="." method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="ApplyButton" to="." method="_on_Button_pressed"]
