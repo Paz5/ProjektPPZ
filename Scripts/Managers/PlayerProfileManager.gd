@@ -38,3 +38,32 @@ func LoadGame(var profileName):
 	CurrentSelectedProfile.playerProfileData.SaveData = fromFile
 	CurrentSelectedProfile.InitValuesFromSaveData()
 	
+# todo - refactor
+func LoadDataFromSave(var profileName):
+	var playerProfile = PlayerProfile.new(profileName)
+	var file = File.new()
+
+	file.open_encrypted_with_pass(pathToFileSave + profileName + ".sav", File.READ, "SmiesznyKlucz")
+	var fromFile = parse_json(file.get_as_text())
+	playerProfile.playerProfileData.SaveData = fromFile
+	return playerProfile.playerProfileData.SaveData
+	
+# Zwraca tablicę string z nazwami zapisanych profili
+func GetAllSaveProfiles():
+	var files = []
+	var directory = Directory.new()
+	
+	directory.open(pathToFileSave)
+	directory.list_dir_begin()
+	
+	while true:
+		var file = directory.get_next()
+		print_debug(file.get_extension())
+		if (file == null or file.empty()):
+			break
+		elif file.get_extension() == "sav":
+			files.append(file)
+			
+	directory.list_dir_end()
+	
+	return files

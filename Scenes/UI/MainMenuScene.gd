@@ -14,9 +14,7 @@ func _on_BtnPlay_pressed():
 
 # Przycisk LEADERBOARD
 func _on_BtnLeaderboard_pressed():
-#	GameManager.UnloadAllChilds()
-#	get_tree().change_scene("res://Scenes/UI/Leaderboard.tscn")
-	pass
+	GameManager.LoadLeaderboard()
 
 # Przycisk PLAYER PROFILE
 func _on_BtnPlayerProfile_button_down():

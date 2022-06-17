@@ -97,6 +97,11 @@ func LoadPlayerProfile():
 	get_tree().change_scene("res://Scenes/UI/PlayerProfile.tscn")
 	emit_signal("SceneChanged", "MainMenuScene", "PlayerProfileScene")
 
+# Ładowanie sceny leaderboaard
+func LoadLeaderboard():
+	get_tree().change_scene("res://Scenes/UI/Leaderboard.tscn")
+	emit_signal("SceneChanged", "MainMenuScene", "LeaderboardScene")
+
 # Zwalnia z pamięci wszystkie instacjonowane sceny tworzone w GameManagerze	
 func UnloadAllChilds():
 	for child in self.get_children():

@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Fonts/Pixeled_Font_Titles.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/UI/ProfilePanel.gd" type="Script" id=2]
+
+[node name="ProfilePanel" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -880.0
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 2.0
+margin_right = 1919.0
+margin_bottom = 201.0
+color = Color( 0.0784314, 0.0627451, 0.0627451, 0.505882 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 60.0
+margin_right = 1915.0
+margin_bottom = 201.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="RankLabel" type="Label" parent="HBoxContainer"]
+margin_top = 37.0
+margin_right = 36.0
+margin_bottom = 163.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "1:"
+align = 2
+
+[node name="PlayerNameLabel" type="Label" parent="HBoxContainer"]
+margin_left = 40.0
+margin_top = 37.0
+margin_right = 490.0
+margin_bottom = 163.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Player name"
+align = 2
+
+[node name="LevelLabel" type="Label" parent="HBoxContainer"]
+margin_left = 494.0
+margin_top = 37.0
+margin_right = 647.0
+margin_bottom = 163.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "2137"
+align = 2
+
+[node name="TotalWinRatioLabel" type="Label" parent="HBoxContainer"]
+margin_left = 651.0
+margin_top = 37.0
+margin_right = 939.0
+margin_bottom = 163.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "58proc."
+align = 2

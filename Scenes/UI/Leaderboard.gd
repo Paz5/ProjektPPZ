@@ -1,14 +1,20 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 func _ready():
-	pass
-	
-	
-	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	var index = 1
+	var saveFiles = PlayerProfileManager.GetAllSaveProfiles()
+	for file in saveFiles:
+		var profilePanel = load("res://Scenes/UI/ProfilePanel.tscn")
+		var instance = profilePanel.instance()
+		var profileName = file.split(".")[0]
+		
+		get_node("Leaderboard/LeaderboardContainer").add_child(instance)
+		
+		var saveData = PlayerProfileManager.LoadDataFromSave(profileName)
+		#(var rankIndex, var playerName, var level, var totalWinRatio):
+		instance.Init(str(index), profileName, saveData["Level"], saveData["TotalWinRatio"])
+		
+		index += 1
+
+func _on_BtnQuit_button_down():
+	GameManager.LoadMainMenu()

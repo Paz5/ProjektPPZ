@@ -120,7 +120,11 @@ func CalculateWinRatio():
 		if (i >= 0):
 			winRounds = winRounds + 1
 	
-	playerProfileData.totalWinRatio = (float(winRounds) / playerProfileData.totalPlayedRounds) * 100
+	if (winRounds > 0):
+		playerProfileData.totalWinRatio = (float(winRounds) / playerProfileData.totalPlayedRounds) * 100
+	elif (winRounds == 0):
+		playerProfileData.totalWinRatio = 0
+		
 	UpdateValueInSaveData("TotalWinRatio", playerProfileData.totalWinRatio)
 	PlayerProfileManager.SaveGame(profileName)	
 
