@@ -4,14 +4,20 @@ export var entryDamage: float
 var teamIndex
 var thisMob: Mob
 var enemyMobs = []
+export var dealDamageOnEntry = false
 
 
 func _on_Hurtbox_area_entered(area):
 	if area.get_parent().team.teamIndex!=teamIndex:
 		#print(area.get_parent().name)
 		if (area.get_parent().active) && (!enemyMobs.has(area.get_parent())):
-			enemyMobs.append(area.get_parent()) 
-		
+			var m = area.get_parent()
+			enemyMobs.append(m)
+			if(dealDamageOnEntry):
+				if m.health>0:
+					m.DealDamage(entryDamage)
+					print(entryDamage)
+
 	
 	
 func deal_damage():

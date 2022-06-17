@@ -2,7 +2,7 @@ extends Mob
 
 func initializeMob(team : TeamManager):
 	.initializeMob(team)
-	hurtBox = get_node(hurtBoxPath)
+
 	var attackState = get_node("MobAttackMeleeState")
 	attackState.mob = self
 	mobStateMachine.AddState(attackState)

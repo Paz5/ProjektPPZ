@@ -10,9 +10,12 @@ extents = Vector2( 14, 3 )
 [node name="Arrow" type="Node2D"]
 rotation = -1.57079
 script = ExtResource( 2 )
+hurtBoxPath = NodePath("Hurtbox")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource( 3 )
+entryDamage = 5.0
+dealDamageOnEntry = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource( 1 )
@@ -20,5 +23,8 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "Fly"
-frame = 3
+frame = 5
 playing = true
+
+[connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_exited"]

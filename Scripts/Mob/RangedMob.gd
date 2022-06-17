@@ -16,6 +16,7 @@ func initializeMob(team : TeamManager):
 	var fireState = get_node("MobFireRangedState")
 	fireState.mob = self
 	mobStateMachine.AddState(fireState)
+
 	
 func _process(delta):
 	._process(delta)

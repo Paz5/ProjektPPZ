@@ -26,3 +26,6 @@ func SpawnProjectile():
 	get_parent().add_child(b)
 	b.startPos = mob.projectileOrigin.global_position
 	b.endPos = mob.target.global_position
+	
+	b.hurtBox.set_collision_mask(mob.hurtBox.get_collision_mask())
+	b.hurtBox.set_collision_layer(mob.hurtBox.get_collision_layer())

@@ -34,9 +34,10 @@ collision_mask = 0
 script = ExtResource( 6 )
 maxHealth = 10
 moveSpeed = 150.0
-attackDelay = 3.0
+attackDelay = 2.0
 attackRange = 400
 handContainerPath = NodePath("Animator/HandContainer")
+hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
 hitBoxPath = NodePath("Hitbox")
 animatorPath = NodePath("Animator")
 spritePaths = [ NodePath("Animator/Body"), NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand") ]
@@ -69,7 +70,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 14
+frame = 19
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -83,6 +84,8 @@ playing = true
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]
 collision_layer = 2
 collision_mask = 852
+monitoring = false
+monitorable = false
 script = ExtResource( 11 )
 entryDamage = 3.0
 
