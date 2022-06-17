@@ -53,7 +53,7 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 16
+frame = 19
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -65,7 +65,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 20
+frame = 2
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -73,7 +73,6 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 18
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]
@@ -81,7 +80,6 @@ collision_layer = 2
 collision_mask = 852
 script = ExtResource( 11 )
 entryDamage = 3.0
-thisMobPath = NodePath("../../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animator/HandContainer/Hurtbox"]
 position = Vector2( 25.381, 0 )

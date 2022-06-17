@@ -5,10 +5,7 @@ extends Control
 # var a = 2
 # var b = "text"
 func _ready():
-	var hs = $Panel/ScrollContainer/Highscore
-	var new = hs.get_node("Entity").duplicate()
-	
-	hs.add_child(new)
+	pass
 	
 	
 	

@@ -37,6 +37,7 @@ func initializeMob(team : TeamManager):
 	mobStateMachine = get_node(mobStateMachinePath)
 	handContainer = get_node(handContainerPath)
 	hitBox = get_node(hitBoxPath)
+	hurtBox = get_node(hurtBoxPath)
 	
 	var idleState = get_node("MobIdleState")
 	idleState.mob = self
