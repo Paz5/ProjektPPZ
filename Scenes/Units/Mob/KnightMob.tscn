@@ -1,0 +1,126 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Scripts/Mob/MobAnimator.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Units/Mob/Knight/Knight_front.res" type="SpriteFrames" id=2]
+[ext_resource path="res://Sprites/Units/Mob/Knight/Knight_body.res" type="SpriteFrames" id=3]
+[ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=5]
+[ext_resource path="res://Scripts/Mob/MeleeMob.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/StateMachine/States/MobAttackMeleeState.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/StateMachine/States/MobIdleState.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/StateMachine/States/MobMoveState.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/StateMachine/StateMachine.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Mob/Hurtbox.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/StateMachine/States/MobDeathState.gd" type="Script" id=12]
+[ext_resource path="res://icon.png" type="Texture" id=13]
+[ext_resource path="res://MobWinState.gd" type="Script" id=14]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 12.3738
+
+[sub_resource type="CapsuleShape2D" id=4]
+height = 24.6667
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.735
+
+[node name="TemplateMob" type="KinematicBody2D"]
+scale = Vector2( 3, 3 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 6 )
+maxHealth = 10
+moveSpeed = 180.0
+attackDelay = 0.7
+attackRange = 90
+handContainerPath = NodePath("Animator/HandContainer")
+hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
+hitBoxPath = NodePath("Hitbox")
+animatorPath = NodePath("Animator")
+spritePaths = [ NodePath("Animator/Body"), NodePath("Animator/HandContainer/BackHand"), NodePath("Animator/HandContainer/FrontHand") ]
+mobStateMachinePath = NodePath("MobStateMachine")
+
+[node name="Animator" type="Node2D" parent="."]
+position = Vector2( 0, -32 )
+script = ExtResource( 1 )
+handContainerPath = NodePath("HandContainer")
+bodySpritePath = NodePath("Body")
+frontHandSpritePath = NodePath("HandContainer/FrontHand")
+backHandSpritePath = NodePath("HandContainer/BackHand")
+
+[node name="Body" type="AnimatedSprite" parent="Animator"]
+material = ExtResource( 5 )
+frames = ExtResource( 3 )
+animation = "Idle"
+frame = 19
+playing = true
+
+[node name="HandContainer" type="Node2D" parent="Animator"]
+position = Vector2( 0, 0.666666 )
+
+[node name="BackHand" type="AnimatedSprite" parent="Animator/HandContainer"]
+material = SubResource( 1 )
+z_index = -1
+z_as_relative = false
+animation = "Idle"
+playing = true
+
+[node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
+z_index = 1
+z_as_relative = false
+frames = ExtResource( 2 )
+animation = "Idle"
+frame = 23
+playing = true
+
+[node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]
+collision_layer = 2
+collision_mask = 852
+script = ExtResource( 11 )
+entryDamage = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Animator/HandContainer/Hurtbox"]
+position = Vector2( 22.676, 3.65 )
+scale = Vector2( 2, 2.5 )
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Animator/HandContainer/Hurtbox"]
+visible = false
+position = Vector2( 25.3333, 0 )
+scale = Vector2( 0.373333, 0.333333 )
+texture = ExtResource( 13 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 168
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -22.027 )
+shape = SubResource( 4 )
+
+[node name="MobCollision" type="CollisionShape2D" parent="."]
+scale = Vector2( 1.724, 0.988667 )
+shape = SubResource( 2 )
+
+[node name="MobStateMachine" type="Node" parent="."]
+script = ExtResource( 10 )
+
+[node name="MobAttackMeleeState" type="Node2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="MobIdleState" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="MobMoveState" type="Node2D" parent="."]
+script = ExtResource( 9 )
+
+[node name="MobDeathState" type="Node2D" parent="."]
+script = ExtResource( 12 )
+
+[node name="MobWinState" type="Node2D" parent="."]
+script = ExtResource( 14 )
+
+[connection signal="area_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_entered"]
+[connection signal="area_exited" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_exited"]
+[connection signal="body_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_body_entered"]
+[connection signal="transitioned" from="MobStateMachine" to="Animator" method="_on_MobStateMachine_transitioned"]

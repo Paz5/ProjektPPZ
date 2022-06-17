@@ -85,6 +85,7 @@ custom_fonts/font = SubResource( 1 )
 custom_styles/read_only = SubResource( 5 )
 custom_styles/focus = SubResource( 6 )
 custom_styles/normal = SubResource( 7 )
+align = 1
 
 [node name="Label" type="Label" parent="."]
 margin_left = 377.0

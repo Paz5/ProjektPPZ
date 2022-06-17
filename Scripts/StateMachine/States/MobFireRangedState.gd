@@ -16,7 +16,8 @@ func UpdateProperties(msg := {}) -> void:
 func Process(delta : float) -> bool:
 	attackTimer += delta
 	if(attackTimer>attackDelay):
-		SpawnProjectile()
+		if(mob.target!=null):
+			SpawnProjectile()
 		attackTimer = 0
 		return true
 	return false
