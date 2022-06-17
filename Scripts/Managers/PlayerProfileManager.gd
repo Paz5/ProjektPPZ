@@ -23,6 +23,7 @@ func SaveGame(var profileName):
 	var toFile = to_json(CurrentSelectedProfile.playerProfileData.SaveData)
 	
 	var file = File.new()
+	
 	file.open_encrypted_with_pass(pathToFileSave + profileName + ".sav", File.WRITE, "SmiesznyKlucz")
 	file.store_string(toFile)
 	file.close()

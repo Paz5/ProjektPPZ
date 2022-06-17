@@ -101,8 +101,20 @@ func OnMobKilled(mob):
 func OnteamDied(teamIndex):
 	var wonBet = GameManager.SelectedTeamIndex == teamIndex
 	
+	PlayerProfileManager.CurrentSelectedProfile.IncrementTotalPlayedRounds()
+	
 	if(wonBet):
 		PlayerProfileManager.CurrentSelectedProfile.AddMoney(GameManager.Bet * 2)
+		PlayerProfileManager.CurrentSelectedProfile.AddNewResult(GameManager.Bet)
+	else:
+		PlayerProfileManager.CurrentSelectedProfile.AddNewResult(-GameManager.Bet)
+	
+	PlayerProfileManager.CurrentSelectedProfile.CalculateWinRatio()
+	
+	if (PlayerProfileManager.CurrentSelectedProfile.GetTotalWinRatio() >= 50):
+		PlayerProfileManager.CurrentSelectedProfile.AddEloPoints(16)
+	else:
+		PlayerProfileManager.CurrentSelectedProfile.DecreaseEloPoints(8)
 	
 	print("Game manager LoadEndRoundScene")
 	GameManager.LoadEndRoundScene(wonBet)

@@ -122,7 +122,7 @@ margin_left = -137.0
 margin_right = 463.0
 margin_bottom = 126.0
 rect_scale = Vector2( 1.25, 1.25 )
-custom_colors/font_color = Color( 0.219608, 0.654902, 0, 1 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "$12345"
 align = 2
@@ -138,57 +138,30 @@ custom_fonts/font = ExtResource( 4 )
 text = "Last bets"
 align = 2
 
-[node name="Bet1" type="Label" parent="Control/Panel/DescriptionPanelRight"]
-margin_left = 50.0
-margin_top = 270.0
-margin_right = 650.0
-margin_bottom = 396.0
-rect_scale = Vector2( 0.9, 0.9 )
+[node name="LastBetsContainer" type="VBoxContainer" parent="Control/Panel/DescriptionPanelRight"]
+anchor_left = -0.378
+anchor_right = -0.378
+margin_left = 664.8
+margin_top = 305.0
+margin_right = 779.8
+margin_bottom = 804.0
+
+[node name="Bet1" type="Label" parent="Control/Panel/DescriptionPanelRight/LastBetsContainer"]
+visible = false
+margin_right = 312.0
+margin_bottom = 126.0
 custom_colors/font_color = Color( 0.219608, 0.654902, 0, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "+25"
 align = 2
 
-[node name="Bet2" type="Label" parent="Control/Panel/DescriptionPanelRight"]
-margin_left = 50.0
-margin_top = 340.0
-margin_right = 650.0
-margin_bottom = 466.0
-rect_scale = Vector2( 0.9, 0.9 )
+[node name="Bet2" type="Label" parent="Control/Panel/DescriptionPanelRight/LastBetsContainer"]
+visible = false
+margin_right = 312.0
+margin_bottom = 126.0
 custom_colors/font_color = Color( 0.890196, 0.231373, 0.231373, 1 )
 custom_fonts/font = ExtResource( 5 )
 text = "-25"
 align = 2
 
-[node name="Bet3" type="Label" parent="Control/Panel/DescriptionPanelRight"]
-margin_left = 50.0
-margin_top = 410.0
-margin_right = 650.0
-margin_bottom = 536.0
-rect_scale = Vector2( 0.9, 0.9 )
-custom_colors/font_color = Color( 0.219608, 0.654902, 0, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "+25"
-align = 2
-
-[node name="Bet4" type="Label" parent="Control/Panel/DescriptionPanelRight"]
-margin_left = 50.0
-margin_top = 480.0
-margin_right = 650.0
-margin_bottom = 606.0
-rect_scale = Vector2( 0.9, 0.9 )
-custom_colors/font_color = Color( 0.890196, 0.231373, 0.231373, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "-25"
-align = 2
-
-[node name="Bet5" type="Label" parent="Control/Panel/DescriptionPanelRight"]
-margin_left = 50.0
-margin_top = 560.0
-margin_right = 650.0
-margin_bottom = 686.0
-rect_scale = Vector2( 0.9, 0.9 )
-custom_colors/font_color = Color( 0.890196, 0.231373, 0.231373, 1 )
-custom_fonts/font = ExtResource( 5 )
-text = "-25"
-align = 2
+[connection signal="button_down" from="Control/Panel/TextureRect2/QuitButton" to="." method="_on_QuitButton_button_down"]

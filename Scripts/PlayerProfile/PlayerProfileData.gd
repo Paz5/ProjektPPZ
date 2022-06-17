@@ -12,6 +12,7 @@ var eloPoints
 var totalWinRatio
 var last10roundsWinRatio
 var totalPlayedRounds
+var roundsResults
 # Todo - Tablica z odblokowanymi mobami
 
 # Dictionary<String, Value> 
@@ -23,5 +24,6 @@ var SaveData = 	{
 		"ELOPoints" : eloPoints,
 		"TotalWinRatio" : totalWinRatio,
 		"Last10roundsWinRatio" : last10roundsWinRatio,
-		"TotalPlayedRounds" : totalPlayedRounds
+		"TotalPlayedRounds" : totalPlayedRounds,
+		"RoundsResults" : roundsResults
 	}

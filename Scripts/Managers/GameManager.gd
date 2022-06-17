@@ -92,6 +92,11 @@ func LoadEndRoundScene(var roundWon):
 	var instanceScene = endScene.instance()
 	add_child(instanceScene)	
 
+# Ładowanie sceny z profilem gracza
+func LoadPlayerProfile():
+	get_tree().change_scene("res://Scenes/UI/PlayerProfile.tscn")
+	emit_signal("SceneChanged", "MainMenuScene", "PlayerProfileScene")
+
 # Zwalnia z pamięci wszystkie instacjonowane sceny tworzone w GameManagerze	
 func UnloadAllChilds():
 	for child in self.get_children():
