@@ -9,7 +9,7 @@ func _ready():
 	get_node("Control/Panel/DescriptionPanelLeft/PlayerName").text = PlayerProfileManager.CurrentSelectedProfile.profileName
 	get_node("Control/Panel/DescriptionPanelLeft/Level").text = "Level: " + str(PlayerProfileManager.CurrentSelectedProfile.GetCurrentLevel())
 	get_node("Control/Panel/DescriptionPanelLeft/GamePlayed").text = "Games played: " + str(PlayerProfileManager.CurrentSelectedProfile.GetTotalPlayedRounds())
-	get_node("Control/Panel/DescriptionPanelLeft/WinRatio").text = "Win ratio: " + str(PlayerProfileManager.CurrentSelectedProfile.GetTotalWinRatio()) + "proc."
+	get_node("Control/Panel/DescriptionPanelLeft/WinRatio").text = "Win ratio: " + str(PlayerProfileManager.CurrentSelectedProfile.GetTotalWinRatio()) + " percent"
 	get_node("Control/Panel/DescriptionPanelRight/Money").text = "$" + str(PlayerProfileManager.CurrentSelectedProfile.GetCurrentMoney())
 
 	if PlayerProfileManager.CurrentSelectedProfile.GetRoundResults().size() <= 5:
@@ -27,10 +27,10 @@ func CreateNewLabel(var balance):
 	
 	if (balance >= 0):
 		label.set("custom_colors/font_color", Color(0, 1, 0))	
-		label.text = "+$" + str(balance)
+		label.text = "+ $" + str(balance)
 	else:
 		label.set("custom_colors/font_color", Color(1, 0, 0))
-		label.text = "-$" + str(abs(balance))
+		label.text = "- $" + str(abs(balance))
 	
 	lastBetsContainer.add_child(label)
 
