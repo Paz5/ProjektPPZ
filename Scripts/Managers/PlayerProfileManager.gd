@@ -58,7 +58,7 @@ func GetAllSaveProfiles():
 	
 	while true:
 		var file = directory.get_next()
-		print_debug(file.get_extension())
+
 		if (file == null or file.empty()):
 			break
 		elif file.get_extension() == "sav":

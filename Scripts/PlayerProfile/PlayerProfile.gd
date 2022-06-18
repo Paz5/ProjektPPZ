@@ -19,6 +19,7 @@ func InitValues():
 	SetMoney(120)
 	SetEloPoints(100)
 	SetTotalPlayedRounds(0)
+	SetTotalWinRatio(0)
 	SetRoundsResults([])
 
 # Wartości z SaveData
