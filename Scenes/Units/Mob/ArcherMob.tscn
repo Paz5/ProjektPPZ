@@ -70,7 +70,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 26
+frame = 2
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]

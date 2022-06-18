@@ -15,6 +15,7 @@ export(Array, NodePath) var spritePaths
 var handContainer: Node2D
 var hurtBox: Area2D
 var hitBox: Area2D
+var sprite
 
 var team: TeamManager
 var target: Node2D
@@ -82,10 +83,13 @@ func onDeath():
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)
 	target=null
+	hurtBox.queue_free()
+	hitBox.queue_free()
 	
 func setTeamMaterial(mat : Material):
 	for path in spritePaths:
 		get_node(path).material = mat
+		sprite = get_node(path)
 	
 func _on_AttackRange_area_entered(area):
 	#print(area)
