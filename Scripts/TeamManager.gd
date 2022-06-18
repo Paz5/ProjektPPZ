@@ -40,6 +40,11 @@ func setAllMobsAcctivity(isActive: bool):
 
 func spawnMobs(newMobs : Array):
 	for newMob in newMobs:
+		var rand = rng.randf_range(0,1)
+		if(rand > 0.5):
+			continue
+		
+		
 		var mobInstance = newMob.instance()
 		add_child(mobInstance)
 		mobs.append(mobInstance)
