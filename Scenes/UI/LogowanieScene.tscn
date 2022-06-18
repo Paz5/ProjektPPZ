@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Fonts/Pixeled.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/UI/LogowanieScene.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprites/UI/Login_box.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/UI/Login_Accept_Button.png" type="Texture" id=5]
 [ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Scenes/UI/TłoScene.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 4 )
@@ -64,6 +65,12 @@ region_rect = Rect2( 0, 0, 100, 25 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Container" type="Container" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="Control" parent="Container" instance=ExtResource( 7 )]
 
 [node name="Background" type="PanelContainer" parent="."]
 margin_left = 561.0
