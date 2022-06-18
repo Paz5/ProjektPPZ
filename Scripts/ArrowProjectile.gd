@@ -7,6 +7,7 @@ var shootHeight = 100
 var height = .01
 var fallTime = 1
 var lastPos = Vector2(0,0)
+var finishedFlight = false
 
 func _ready():
 	lastPos = global_position
@@ -19,5 +20,15 @@ func _process(delta):
 		timer += delta/travelTime
 		height = shootHeight * sin(deg2rad(timer*90))+.01
 		rotation = (global_position-lastPos).angle()
-		lastPos = global_position
-	
+		lastPos = global_position		
+		
+	elif(!finishedFlight):
+		finishedFlight = true
+		get_node("AnimatedSprite").animation = "Hit"
+		hurtBox.queue_free()
+
+
+
+func _on_Hurtbox_area_entered(area):
+	queue_free()
+	pass # Replace with function body.

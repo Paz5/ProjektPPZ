@@ -23,8 +23,9 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "Fly"
-frame = 7
+frame = 3
 playing = true
 
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="area_exited" from="Hurtbox" to="Hurtbox" method="_on_Hurtbox_area_exited"]

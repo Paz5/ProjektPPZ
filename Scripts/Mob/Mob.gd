@@ -82,6 +82,8 @@ func onDeath():
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)
 	target=null
+	hurtBox.queue_free()
+	hitBox.queue_free()
 	
 func setTeamMaterial(mat : Material):
 	for path in spritePaths:
