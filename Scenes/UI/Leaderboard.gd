@@ -11,8 +11,9 @@ func _ready():
 		get_node("Leaderboard/LeaderboardContainer").add_child(instance)
 		
 		var saveData = PlayerProfileManager.LoadDataFromSave(profileName)
+		var fakeProfile = PlayerProfile.new(" ")
 
-		instance.Init(str(index), profileName, saveData["Level"], saveData["TotalWinRatio"])
+		instance.Init(str(index), profileName, saveData["Level"], fakeProfile.UpdateVariableFromSaveData(saveData, "TotalWinRatio", 0))
 		
 		index += 1
 

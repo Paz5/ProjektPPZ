@@ -24,12 +24,12 @@ func InitValues():
 
 # Wartości z SaveData
 func InitValuesFromSaveData():
-	SetLevel(UpdateVariableFromSaveData("Level", 1))
-	SetMoney(UpdateVariableFromSaveData("Money", 120))
-	SetEloPoints(UpdateVariableFromSaveData("ELOPoints", 100))
-	SetTotalPlayedRounds(UpdateVariableFromSaveData("TotalPlayedRounds", 0))
-	SetTotalWinRatio(UpdateVariableFromSaveData("TotalWinRatio", 0))
-	SetRoundsResults(UpdateVariableFromSaveData("RoundsResults", []))
+	SetLevel(UpdateVariableFromSaveData(playerProfileData.SaveData, "Level", 1))
+	SetMoney(UpdateVariableFromSaveData(playerProfileData.SaveData, "Money", 120))
+	SetEloPoints(UpdateVariableFromSaveData(playerProfileData.SaveData, "ELOPoints", 100))
+	SetTotalPlayedRounds(UpdateVariableFromSaveData(playerProfileData.SaveData, "TotalPlayedRounds", 0))
+	SetTotalWinRatio(UpdateVariableFromSaveData(playerProfileData.SaveData, "TotalWinRatio", 0))
+	SetRoundsResults(UpdateVariableFromSaveData(playerProfileData.SaveData, "RoundsResults", []))
 	
 	CalculateWinRatio()
 
@@ -38,10 +38,10 @@ func UpdateValueInSaveData(var key, var value):
 	playerProfileData.SaveData[key] = value
 
 # Aktualizuje wartość zmiennej na podstawie wartości w dictionary, jeśli nie ma, to zwraca wartość domyślną
-func UpdateVariableFromSaveData(var key, var defaultValue):
-	if (playerProfileData.SaveData.has(key)):
-		if(playerProfileData.SaveData[key] != null):
-			return playerProfileData.SaveData[key]
+func UpdateVariableFromSaveData(var saveData, var key, var defaultValue):
+	if (saveData.has(key)):
+		if(saveData[key] != null):
+			return saveData[key]
 		else:
 			return defaultValue
 			
