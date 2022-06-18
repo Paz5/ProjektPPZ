@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/PlayerProfile/PlayerProfileData.gd"
 }, {
-"base": "Control",
+"base": "Container",
 "class": "ProfilePanel",
 "language": "GDScript",
 "path": "res://Scenes/UI/ProfilePanel.gd"

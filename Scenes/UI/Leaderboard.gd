@@ -8,7 +8,7 @@ func _ready():
 		var instance = profilePanel.instance()
 		var profileName = file.split(".")[0]
 		
-		get_node("Leaderboard/LeaderboardContainer").add_child(instance)
+		get_node("Leaderboard/ScrollContainer/LeaderboardContainer").add_child(instance)
 		
 		var saveData = PlayerProfileManager.LoadDataFromSave(profileName)
 		var fakeProfile = PlayerProfile.new(" ")
