@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Projectiles/Arrow.res" type="SpriteFrames" id=1]
 [ext_resource path="res://Scripts/ArrowProjectile.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Mob/Hurtbox.gd" type="Script" id=3]
+[ext_resource path="res://Shaders and Materials/MobRecolorBlue.tres" type="Material" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14, 3 )
@@ -11,6 +12,7 @@ extents = Vector2( 14, 3 )
 rotation = -1.57079
 script = ExtResource( 2 )
 hurtBoxPath = NodePath("Hurtbox")
+spritePath = NodePath("AnimatedSprite")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource( 3 )
@@ -21,9 +23,10 @@ dealDamageOnEntry = true
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = ExtResource( 4 )
 frames = ExtResource( 1 )
 animation = "Fly"
-frame = 3
+frame = 5
 playing = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
