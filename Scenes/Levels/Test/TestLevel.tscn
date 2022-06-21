@@ -39,7 +39,7 @@ offset = Vector2( 0, 47.556 )
 script = ExtResource( 3 )
 
 [node name="MobManager" parent="." instance=ExtResource( 5 )]
-mobsToSpawn = [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 2 ) ]
+mobsToSpawn = [ ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ), ExtResource( 7 ) ]
 
 [node name="RoundUI" type="Node2D" parent="."]
 z_index = 2001

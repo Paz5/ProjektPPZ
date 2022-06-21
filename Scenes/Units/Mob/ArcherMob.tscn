@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/Mob/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Archer/Archer_back.res" type="SpriteFrames" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://MobWinState.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/StateMachine/States/MobFireRangedState.gd" type="Script" id=15]
 [ext_resource path="res://Scenes/Projectiles/Arrow.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Audio/Archer_Attack.wav" type="AudioStream" id=17]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -32,11 +33,12 @@ scale = Vector2( 3, 3 )
 collision_layer = 0
 collision_mask = 0
 script = ExtResource( 6 )
+afterAttackDelay = 0.0
 maxHealth = 10
 moveSpeed = 150.0
-framesBeforeFirstAttack = 17
-framesBetweenAttacks = 17
-attackRange = 600
+framesBeforeFirstAttack = 21
+framesBetweenAttacks = 21
+attackRange = 1000
 handContainerPath = NodePath("Animator/HandContainer")
 hurtBoxPath = NodePath("Animator/HandContainer/Hurtbox")
 hitBoxPath = NodePath("Hitbox")
@@ -71,7 +73,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 11
+frame = 9
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -134,6 +136,9 @@ script = ExtResource( 12 )
 
 [node name="MobWinState" type="Node2D" parent="."]
 script = ExtResource( 14 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
 
 [connection signal="area_entered" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_entered"]
 [connection signal="area_exited" from="Animator/HandContainer/Hurtbox" to="Animator/HandContainer/Hurtbox" method="_on_Hurtbox_area_exited"]

@@ -3,6 +3,7 @@ extends "res://Scripts/StateMachine/States/MobAttackState.gd"
 
 var attackTimer = 0.0
 var afterAttackTimer = 0.0
+var canAttack = true
 var attackDelay
 var fbfa
 var fba
@@ -10,7 +11,7 @@ var handContainer
 var hurtBox
 var hurtBoxCollider : CollisionShape2D
 var firstAttack = true
-var canAttack = true
+
 
 func get_class(): return "MobAttackMeleeState"
 

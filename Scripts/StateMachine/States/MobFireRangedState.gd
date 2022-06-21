@@ -4,6 +4,8 @@ extends "res://Scripts/StateMachine/States/MobState.gd"
 func get_class(): return "MobFireRangedState"
 
 var projectile: PackedScene
+var afterAttackTimer = 0.0
+var canAttack = true
 var attackTimer = 0.0
 var attackDelay
 var fbfa
@@ -23,19 +25,32 @@ func Process(delta : float) -> bool:
 	if(firstAttack):
 		if(attackTimer>fbfa/10):
 			if(mob.target!=null):
-				SpawnProjectile()
-				attackTimer = 0
-				firstAttack=false
+				if(canAttack):
+					SpawnProjectile()
+					canAttack=false
+				afterAttackTimer += delta
+				if(afterAttackTimer>mob.afterAttackDelay):
+					attackTimer = 0.0
+					afterAttackTimer = 0.0
+					firstAttack=false
+					canAttack=true
 				return true
 	else:
 		if(attackTimer>attackDelay):
 			if(mob.target!=null):
-				SpawnProjectile()
-			attackTimer = 0
-			return true
+				if(canAttack):
+					SpawnProjectile()
+					canAttack=false
+				afterAttackTimer += delta
+				if(afterAttackTimer>mob.afterAttackDelay):
+					attackTimer = 0.0
+					afterAttackTimer = 0.0
+					canAttack=true
+				return true
 	return false
 	
 func SpawnProjectile():
+	get_node("../AudioStreamPlayer").play()
 	var b = projectile.instance()
 	get_parent().add_child(b)
 	b.startPos = mob.projectileOrigin.global_position

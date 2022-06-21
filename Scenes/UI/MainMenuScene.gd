@@ -4,7 +4,7 @@ var playerProfileNameLabel;
 
 func _ready():
 	playerProfileNameLabel = get_node("PlayerProfileNameLabel")
-	playerProfileNameLabel.text = "Witaj " + PlayerProfileManager.CurrentSelectedProfile.profileName
+	playerProfileNameLabel.text = "Welcome " + PlayerProfileManager.CurrentSelectedProfile.profileName
 	
 #Przycisk PLAY
 func _on_BtnPlay_pressed():

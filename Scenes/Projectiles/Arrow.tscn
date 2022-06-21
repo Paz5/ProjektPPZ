@@ -16,7 +16,7 @@ spritePath = NodePath("AnimatedSprite")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource( 3 )
-entryDamage = 7.0
+entryDamage = 50.0
 dealDamageOnEntry = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -26,7 +26,6 @@ shape = SubResource( 1 )
 material = ExtResource( 4 )
 frames = ExtResource( 1 )
 animation = "Fly"
-frame = 5
 playing = true
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]

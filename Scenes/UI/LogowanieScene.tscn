@@ -100,7 +100,7 @@ margin_top = 409.0
 margin_right = 1499.0
 margin_bottom = 483.0
 custom_fonts/font = SubResource( 2 )
-text = "Insert your profile  name"
+text = "Insert your profile name"
 align = 1
 valign = 1
 
