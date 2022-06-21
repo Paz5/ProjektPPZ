@@ -40,7 +40,7 @@ func _ready():
 func Sort():
 	for i in range(1, saveDatas.size(), 2):
 		for j in range(1, saveDatas.size() - 1, 2):
-			if(saveDatas[j]["TotalWinRatio"] < saveDatas[j + 2]["TotalWinRatio"]):
+			if(saveDatas[j]["Level"] < saveDatas[j + 2]["Level"]):
 				var temp1 = saveDatas[j + 2]
 				var temp2 = saveDatas[j + 1]
 				
