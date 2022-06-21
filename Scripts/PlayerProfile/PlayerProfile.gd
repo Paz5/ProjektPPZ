@@ -110,6 +110,29 @@ func DecreaseEloPoints(var value : int):
 # Pobiera aktualne punkty ELO
 func GetCurrentEloPoints() -> int: return playerProfileData.eloPoints
 
+func CalculateEloPoints():
+	var winRounds = 0
+	
+	if (GetRoundResults().size() < 10):
+		for i in GetRoundResults():
+			if (i >= 0):
+				winRounds = winRounds + 1
+	else:
+		for i in range(GetRoundResults().size() - 10, GetRoundResults().size()):
+			if (i >= 0):
+				winRounds = winRounds + 1
+				
+	var result = (float(winRounds) / 10) * 100
+	
+	if (result >= 50):
+		AddEloPoints(18)
+	else:
+		DecreaseEloPoints(8)
+		
+	if (GetCurrentEloPoints() >= GetCurrentLevel() + 1 * 100):
+		AddLevel(1)
+	
+
 # ======== TotalWinRatio ========
 
 # Obliczenie win ratio ze wszystkich rozgrywek

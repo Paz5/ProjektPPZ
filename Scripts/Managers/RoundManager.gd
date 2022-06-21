@@ -120,6 +120,7 @@ func OnteamDied(teamIndex):
 		PlayerProfileManager.CurrentSelectedProfile.AddNewResult(-GameManager.Bet)
 	
 	PlayerProfileManager.CurrentSelectedProfile.CalculateWinRatio()
+	PlayerProfileManager.CurrentSelectedProfile.CalculateEloPoints()
 	
 	if (PlayerProfileManager.CurrentSelectedProfile.GetTotalWinRatio() >= 50):
 		PlayerProfileManager.CurrentSelectedProfile.AddEloPoints(16)
