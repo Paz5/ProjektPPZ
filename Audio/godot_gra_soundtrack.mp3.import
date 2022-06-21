@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/godot_gra_soundtrack.mp3-87e577291c5e6fd6948fd7b827914758.mp3str"
+
+[deps]
+
+source_file="res://Audio/godot_gra_soundtrack.mp3"
+dest_files=[ "res://.import/godot_gra_soundtrack.mp3-87e577291c5e6fd6948fd7b827914758.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

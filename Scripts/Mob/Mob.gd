@@ -1,10 +1,12 @@
 class_name Mob
 extends KinematicBody2D
 
+export var afterAttackDelay = 0.5
 export var maxHealth = 100
 var health
 export var moveSpeed = 1.0
-export var attackDelay = 0.8
+export var framesBeforeFirstAttack = 0
+export var framesBetweenAttacks = 1
 export var attackRange = 50
 var active = false
 export(NodePath) var handContainerPath

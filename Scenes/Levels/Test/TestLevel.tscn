@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Levels/MountainGrassland/BG_1_Battlefield.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Units/Mob/KnightMob.tscn" type="PackedScene" id=2]
@@ -8,12 +8,15 @@
 [ext_resource path="res://Fonts/ponderosa.regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://Scenes/Units/Mob/ArcherMob.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Units/Mob/BoxerMob.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Music/music.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFont" id=3]
 size = 350
 font_data = ExtResource( 6 )
 
 [node name="TestLevel" type="Node2D"]
+
+[node name="AudioPlayer" parent="." instance=ExtResource( 9 )]
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 3, 3 )

@@ -24,6 +24,7 @@ var timeHourStr=""
 func _ready():
 	GameManager.connect("mobKilled", self, "OnMobKilled")
 	
+	
 func _process(delta):
 	if (!timerStarted || timerText == null) : return
 	
@@ -57,6 +58,7 @@ func _process(delta):
 
 # Przygotowuje poziom, uruchamia timer
 func PrepareLevel():
+	get_node("../GameManager").get_child(get_node("../GameManager").get_child_count() - 1).get_node("AudioPlayer/AudioStreamPlayer").volume_db = -10
 	var t = Timer.new()
 	t.set_wait_time(0.1)
 	t.set_one_shot(true)

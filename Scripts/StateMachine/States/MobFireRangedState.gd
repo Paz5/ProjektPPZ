@@ -6,20 +6,33 @@ func get_class(): return "MobFireRangedState"
 var projectile: PackedScene
 var attackTimer = 0.0
 var attackDelay
+var fbfa
+var fba
+var firstAttack = true
 
 func UpdateProperties(msg := {}) -> void:
 	.UpdateProperties(msg)
-	attackDelay = mob.attackDelay
+	fbfa = mob.framesBeforeFirstAttack
+	fba = mob.framesBetweenAttacks
+	attackDelay = fba/10
 	projectile = mob.projectile
 
 	
 func Process(delta : float) -> bool:
 	attackTimer += delta
-	if(attackTimer>attackDelay):
-		if(mob.target!=null):
-			SpawnProjectile()
-		attackTimer = 0
-		return true
+	if(firstAttack):
+		if(attackTimer>fbfa/10):
+			if(mob.target!=null):
+				SpawnProjectile()
+				attackTimer = 0
+				firstAttack=false
+				return true
+	else:
+		if(attackTimer>attackDelay):
+			if(mob.target!=null):
+				SpawnProjectile()
+			attackTimer = 0
+			return true
 	return false
 	
 func SpawnProjectile():

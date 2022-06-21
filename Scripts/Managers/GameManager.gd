@@ -92,6 +92,10 @@ func LoadEndRoundScene(var roundWon):
 	var instanceScene = endScene.instance()
 	add_child(instanceScene)	
 
+# Ładowanie sceny z muzyką
+func LoadAudioPlayer():
+	add_child(ResourceLoader.load("res://Scenes/Music/music.tscn").instance())
+
 # Ładowanie sceny z profilem gracza
 func LoadPlayerProfile():
 	get_tree().change_scene("res://Scenes/UI/PlayerProfile.tscn")

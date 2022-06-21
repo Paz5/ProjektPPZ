@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/grasslands.mp3-59545e67409c9c1ea0048c7c30ce4e4a.mp3str"
+
+[deps]
+
+source_file="res://Audio/grasslands.mp3"
+dest_files=[ "res://.import/grasslands.mp3-59545e67409c9c1ea0048c7c30ce4e4a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

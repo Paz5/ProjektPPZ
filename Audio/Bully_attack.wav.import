@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Bully_attack.wav-e61018041f5ad3bcdec609fa57012965.sample"
+
+[deps]
+
+source_file="res://Audio/Bully_attack.wav"
+dest_files=[ "res://.import/Bully_attack.wav-e61018041f5ad3bcdec609fa57012965.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=false
+compress/mode=0
