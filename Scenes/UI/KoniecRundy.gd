@@ -11,12 +11,14 @@ func _process(delta):
 	
 
 func _on_BtnQuit_pressed():
+	RoundManager.Reset()
 	GameManager.Bet=0
 	GameManager.UnloadAllChilds()
 	get_tree().change_scene("res://Scenes/UI/MainMenuScene.tscn")
 
 
 func _on_BtnNextRound_pressed():
+	RoundManager.Reset()
 	GameManager.Bet=0
 	get_tree().change_scene("res://Scenes/UI/Obstawianie.tscn")
 	GameManager.UnloadAllChilds()

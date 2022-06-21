@@ -62,9 +62,10 @@ func _on_Confirm_pressed():
 	# Mikołaj - Wyładowanie sceny MainMenu + emit signal
 	var obstawianieScene = get_tree().get_root().get_node("Obstawianie")
 	obstawianieScene.queue_free()
-	
+
 	RoundManager.PrepareLevel()
 	GameManager.OnBetConfirmed()
+	
 
 	
 #Krystian - obsługa czerwonego guzika - Pressed

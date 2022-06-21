@@ -81,6 +81,7 @@ func DealDamage(damage) -> bool:
 
 func onDeath():
 	emit_signal("mobDied")   ##więc musiałem wywalić to
+	RoundManager.AddMobToLostUnits(self)
 	active = false    ##to naprawiło niezabijalność
 	mobStateMachine.Transition("MobDeathState",true)
 	team.mobDied(self)

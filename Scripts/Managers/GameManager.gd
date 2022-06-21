@@ -67,8 +67,6 @@ func LoadBetScene():
 # Ładowanie sceny z końcem rundy
 func LoadEndRoundScene(var roundWon):
 	
-	RoundManager.Reset()
-	
 	var endScene = null
 	
 	if (roundWon):

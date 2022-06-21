@@ -3,11 +3,11 @@ extends Manager
 # Referencja do klasy LevelData z danymi o aktualnym poziomie, należy ustawić na null przy powrocie do menu
 var CurrentLevel : RoundData
 
-var redTeamLostUnits
-var redTeamAliveUnits
+var redTeamLostUnits = 0
+var redTeamAliveUnits = 0
 
-var blueTeamLostUnits
-var blueTeamAliveUnits
+var blueTeamLostUnits = 0
+var blueTeamAliveUnits = 0
 
 var timerStarted
 var time = 0
@@ -96,12 +96,20 @@ func UnsinscribeSignal(var mobManager):
 	for team in mobManager.teams:
 		team.disconnect ("teamDied", self, "OnteamDied")
 
+func AddMobToLostUnits(var mob):
+	if (mob.team.teamIndex == 0):
+		blueTeamLostUnits += 1
+	elif(mob.team.teamIndex == 1):
+		redTeamLostUnits += 1
+
 # Todo - Sprawdzenie do którego zespołu należał mob
 func OnMobKilled(mob):
 	print(mob)
 	
 func OnteamDied(teamIndex):
 	var wonBet = GameManager.SelectedTeamIndex == teamIndex
+	redTeamAliveUnits = CurrentLevel.GetMobManager().teams[0].mobs.size()
+	blueTeamAliveUnits = CurrentLevel.GetMobManager().teams[1].mobs.size()
 	
 	PlayerProfileManager.CurrentSelectedProfile.IncrementTotalPlayedRounds()
 	
@@ -120,6 +128,4 @@ func OnteamDied(teamIndex):
 	
 	print("Game manager LoadEndRoundScene")
 	GameManager.LoadEndRoundScene(wonBet)
-	#GameManager.Bet = 0
-	
 
