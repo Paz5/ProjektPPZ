@@ -129,7 +129,7 @@ func CalculateEloPoints():
 	else:
 		DecreaseEloPoints(8)
 		
-	if (GetCurrentEloPoints() >= GetCurrentLevel() + 1 * 100):
+	if (GetCurrentEloPoints() >= (GetCurrentLevel() + 1) * 100):
 		AddLevel(1)
 	
 
