@@ -23,10 +23,10 @@ func _ready():
 	
 	Sort();
 	
-	for i in range(0, saveDatas.size(), 2):
+	for i in range(0, saveDatasSorted.size(), 2):
 		var profilePanel = load("res://Scenes/UI/ProfilePanel.tscn")
 		var instance = profilePanel.instance()
-		var profileName = saveDatas[i].split(".")[0]
+		var profileName = saveDatasSorted[i].split(".")[0]
 		
 		get_node("Leaderboard/ScrollContainer/LeaderboardContainer").add_child(instance)
 		
@@ -38,6 +38,7 @@ func _ready():
 		index += 1
 
 func Sort():
+	
 	for i in range(1, saveDatas.size(), 2):
 		for j in range(1, saveDatas.size() - 1, 2):
 			if(saveDatas[j]["Level"] < saveDatas[j + 2]["Level"]):
