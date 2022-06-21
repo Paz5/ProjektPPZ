@@ -98,9 +98,9 @@ func UnsinscribeSignal(var mobManager):
 
 func AddMobToLostUnits(var mob):
 	if (mob.team.teamIndex == 0):
-		blueTeamLostUnits += 1
-	elif(mob.team.teamIndex == 1):
 		redTeamLostUnits += 1
+	elif(mob.team.teamIndex == 1):
+		blueTeamLostUnits += 1
 
 # Todo - Sprawdzenie do którego zespołu należał mob
 func OnMobKilled(mob):
@@ -108,8 +108,8 @@ func OnMobKilled(mob):
 	
 func OnteamDied(teamIndex):
 	var wonBet = GameManager.SelectedTeamIndex == teamIndex
-	redTeamAliveUnits = CurrentLevel.GetMobManager().teams[0].mobs.size()
-	blueTeamAliveUnits = CurrentLevel.GetMobManager().teams[1].mobs.size()
+	redTeamAliveUnits = CurrentLevel.GetMobManager().teams[CurrentLevel.GetMobManager().teams[0].teamIndex].mobs.size()
+	blueTeamAliveUnits = CurrentLevel.GetMobManager().teams[CurrentLevel.GetMobManager().teams[1].teamIndex].mobs.size()
 	
 	PlayerProfileManager.CurrentSelectedProfile.IncrementTotalPlayedRounds()
 	
