@@ -130,7 +130,8 @@ _global_script_class_icons={
 
 config/name="ProjektPPZ"
 run/main_scene="res://Scenes/UI/LogowanieScene.tscn"
-config/icon="res://icon.png"
+config/icon="res://Icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 

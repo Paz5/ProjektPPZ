@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Mob/MobAnimator.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Units/Mob/Bully/Bully_front.res" type="SpriteFrames" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Scripts/StateMachine/StateMachine.gd" type="Script" id=10]
 [ext_resource path="res://Scripts/Mob/Hurtbox.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/StateMachine/States/MobDeathState.gd" type="Script" id=12]
-[ext_resource path="res://icon.png" type="Texture" id=13]
 [ext_resource path="res://MobWinState.gd" type="Script" id=14]
 [ext_resource path="res://Audio/Bully_attack.wav" type="AudioStream" id=15]
 
@@ -54,7 +53,6 @@ backHandSpritePath = NodePath("HandContainer/BackHand")
 material = ExtResource( 5 )
 frames = ExtResource( 3 )
 animation = "Idle"
-frame = 5
 playing = true
 
 [node name="HandContainer" type="Node2D" parent="Animator"]
@@ -66,7 +64,7 @@ z_index = -1
 z_as_relative = false
 frames = ExtResource( 4 )
 animation = "Idle"
-frame = 9
+frame = 4
 playing = true
 
 [node name="FrontHand" type="AnimatedSprite" parent="Animator/HandContainer"]
@@ -74,7 +72,7 @@ z_index = 1
 z_as_relative = false
 frames = ExtResource( 2 )
 animation = "Idle"
-frame = 7
+frame = 2
 playing = true
 
 [node name="Hurtbox" type="Area2D" parent="Animator/HandContainer"]
@@ -86,12 +84,6 @@ entryDamage = 5.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Animator/HandContainer/Hurtbox"]
 position = Vector2( 25.381, 0 )
 shape = SubResource( 3 )
-
-[node name="Sprite" type="Sprite" parent="Animator/HandContainer/Hurtbox"]
-visible = false
-position = Vector2( 25.3333, 0 )
-scale = Vector2( 0.373333, 0.333333 )
-texture = ExtResource( 13 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_mask = 168
